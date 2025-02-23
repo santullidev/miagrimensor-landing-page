@@ -42,7 +42,7 @@ const faq = [
 
 const FAQ = () => {
   return (
-    <div id="faq" className="w-full max-w-screen-lg mx-auto py-20 px-6">
+    <div id="faq" className="w-full max-w-screen-xl mx-auto py-20 px-6">
       <h2 className="md:text-center text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter">
         Frequently Asked Questions
       </h2>

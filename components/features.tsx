@@ -49,11 +49,11 @@ const features = [
 
 const Features = () => {
   return (
-    <div id="features" className="max-w-screen-lg mx-auto w-full py-20 px-6">
+    <div id="features" className="max-w-screen-xl mx-auto w-full py-20 px-6">
       <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight sm:max-w-xl sm:text-center sm:mx-auto">
         Boost Your Strategy with Smart Features
       </h2>
-      <div className="mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+      <div className="mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
         {features.map((feature) => (
           <Card
             key={feature.title}
@@ -69,7 +69,7 @@ const Features = () => {
               </p>
             </CardHeader>
             <CardContent className="mt-auto px-0 pb-0">
-              <div className="bg-muted h-40 ml-6 rounded-tl-xl" />
+              <div className="bg-muted h-52 ml-6 rounded-tl-xl" />
             </CardContent>
           </Card>
         ))}

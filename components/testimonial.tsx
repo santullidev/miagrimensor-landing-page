@@ -6,8 +6,6 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { StarIcon } from "lucide-react";
@@ -97,11 +95,14 @@ const Testimonial = () => {
   }, [api]);
 
   return (
-    <div id="testimonials" className="w-full py-12 px-6">
+    <div
+      id="testimonials"
+      className="w-full max-w-screen-xl mx-auto py-12 px-6"
+    >
       <h2 className="mb-14 text-5xl md:text-5xl font-bold text-center tracking-tight">
         Testimonials
       </h2>
-      <div className="container w-full lg:max-w-screen-lg xl:max-w-screen-xl mx-auto px-12">
+      <div className="container w-full mx-auto">
         <Carousel setApi={setApi}>
           <CarouselContent>
             {testimonials.map((testimonial) => (
@@ -110,8 +111,6 @@ const Testimonial = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
         </Carousel>
         <div className="flex items-center justify-center gap-2">
           {Array.from({ length: count }).map((_, index) => (

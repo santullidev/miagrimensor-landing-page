@@ -2,13 +2,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, CirclePlay } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 
 const Hero = () => {
   return (
-    <div className="h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden border-b border-accent">
-      <div className="max-w-screen-xl w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12 lg:py-0">
-        <div className="my-auto">
+    <div className="min-h-[calc(100vh-4rem)] w-full flex items-center justify-center overflow-hidden border-b border-accent">
+      <div className="max-w-screen-xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-0">
+        <div className="max-w-xl">
           <Badge className="rounded-full py-1 border-none">
             Just released v1.0.0
           </Badge>
@@ -33,12 +32,12 @@ const Hero = () => {
             </Button>
           </div>
         </div>
-        <div className="relative w-full aspect-video lg:aspect-auto lg:w-[1000px] lg:h-screen bg-accent rounded-xl lg:rounded-none">
+        <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square">
           <Image
             src="/placeholder.svg"
             fill
             alt=""
-            className="object-cover rounded-xl lg:rounded-none"
+            className="object-cover rounded-xl"
           />
         </div>
       </div>
