@@ -17,6 +17,7 @@ A modern, responsive landing page template built with Next.js, Tailwind CSS, and
 - 🎯 Built with Next.js 15
 - 💅 Styled with Tailwind CSS
 - 🧩 Built with [Shadcn UI](https://ui.shadcn.com) and [Shadcn UI Blocks](https://shadcnui-blocks.com)
+- 🌙 Dark mode support
 
 ## Getting Started
 
