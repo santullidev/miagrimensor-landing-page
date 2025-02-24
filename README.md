@@ -1,6 +1,6 @@
 # Beautiful Shadcn UI Landing Page
 
-A modern, responsive landing page template built with Next.js, Tailwind CSS, and Shadcn UI components.
+A modern, responsive landing page template built with Next.js, Tailwind CSS, and Shadcn UI, and Shadcn UI Blocks.
 
 ## Demo
 
@@ -24,28 +24,20 @@ A modern, responsive landing page template built with Next.js, Tailwind CSS, and
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/beautiful-shadcn-ui-landing-page.git
-cd beautiful-shadcn-ui-landing-page
+git clone https://github.com/akash3444/shadcn-ui-landing-page.git
+cd shadcn-ui-landing-page
 ```
 
 2. Install dependencies:
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
 ```
 
 3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
