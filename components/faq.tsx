@@ -42,11 +42,14 @@ const faq = [
 
 const FAQ = () => {
   return (
-    <div id="faq" className="w-full max-w-screen-xl mx-auto py-20 px-6">
-      <h2 className="md:text-center text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter">
+    <div
+      id="faq"
+      className="w-full max-w-screen-xl mx-auto py-12 xs:py-20 px-6"
+    >
+      <h2 className="md:text-center text-3xl xs:text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter">
         Frequently Asked Questions
       </h2>
-      <p className="mt-1.5 md:text-center text-lg text-muted-foreground">
+      <p className="mt-1.5 md:text-center xs:text-lg text-muted-foreground">
         Quick answers to common questions about our products and services.
       </p>
 

@@ -97,9 +97,9 @@ const Testimonial = () => {
   return (
     <div
       id="testimonials"
-      className="w-full max-w-screen-xl mx-auto py-12 px-6"
+      className="w-full max-w-screen-xl mx-auto py-6 xs:py-12 px-6"
     >
-      <h2 className="mb-14 text-5xl md:text-5xl font-bold text-center tracking-tight">
+      <h2 className="mb-8 xs:mb-14 text-4xl md:text-5xl font-bold text-center tracking-tight">
         Testimonials
       </h2>
       <div className="container w-full mx-auto">

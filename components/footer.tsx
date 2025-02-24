@@ -157,7 +157,7 @@ const footerSections = [
 
 const Footer = () => {
   return (
-    <footer className="mt-20 dark bg-background border-t">
+    <footer className="mt-12 xs:mt-20 dark bg-background border-t">
       <div className="max-w-screen-xl mx-auto py-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-10 px-6 xl:px-0">
         <div className="col-span-full xl:col-span-2">
           {/* Logo */}
@@ -206,7 +206,7 @@ const Footer = () => {
       <Separator />
       <div className="max-w-screen-xl mx-auto py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6 xl:px-0">
         {/* Copyright */}
-        <span className="text-muted-foreground">
+        <span className="text-muted-foreground text-center xs:text-start">
           &copy; {new Date().getFullYear()}{" "}
           <Link href="https://shadcnui-blocks.com" target="_blank">
             Shadcn UI Blocks

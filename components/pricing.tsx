@@ -53,9 +53,11 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <div id="pricing" className="max-w-screen-lg mx-auto py-20 px-6">
-      <h1 className="text-5xl font-bold text-center tracking-tight">Pricing</h1>
-      <div className="mt-14 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-0">
+    <div id="pricing" className="max-w-screen-lg mx-auto py-12 xs:py-20 px-6">
+      <h1 className="text-4xl xs:text-5xl font-bold text-center tracking-tight">
+        Pricing
+      </h1>
+      <div className="mt-8 xs:mt-14 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-0">
         {plans.map((plan) => (
           <div
             key={plan.name}
