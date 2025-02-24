@@ -15,7 +15,7 @@ A modern, responsive landing page template built with Next.js, Tailwind CSS, and
 - 🎨 Modern and clean design
 - 📱 Fully responsive layout
 - 🎯 Built with Next.js 15
-- 💅 Styled with Tailwind CSS
+- 💅 Styled with Tailwind CSS `3.4` & `4.0`
 - 🧩 Built with [Shadcn UI](https://ui.shadcn.com) and [Shadcn UI Blocks](https://shadcnui-blocks.com)
 - 🌙 Dark mode support
 
@@ -28,19 +28,28 @@ git clone https://github.com/akash3444/shadcn-ui-landing-page.git
 cd shadcn-ui-landing-page
 ```
 
-2. Install dependencies:
+2. To use Tailwind CSS v4.0:
+
+- Ensure you’re using Node.js 20 or higher.
+- Switch to the tailwind-v4 branch:
+
+```bash
+git checkout tailwind-v4
+```
+
+3. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Start the development server:
+4. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 ## Customization
 
