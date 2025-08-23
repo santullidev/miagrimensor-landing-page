@@ -26,10 +26,15 @@ export const NavigationSheet = () => {
         <NavMenu orientation="vertical" className="mt-12" />
 
         <div className="mt-8 space-y-4">
-          <Button variant="outline" className="w-full sm:hidden">
-            Sign In
+          <Button 
+            variant="outline" 
+            className="w-full sm:hidden"
+            asChild
+          >
+            <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
+              Whatsapp
+            </a>
           </Button>
-          <Button className="w-full xs:hidden">Get Started</Button>
         </div>
       </SheetContent>
     </Sheet>

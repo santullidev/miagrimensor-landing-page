@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   BookCheck,
   ChartPie,
@@ -8,64 +8,109 @@ import {
   Goal,
   Users,
   Zap,
+  ArrowLeft,
   X,
   ChevronLeft,
   ChevronRight,
   ZoomIn,
   ZoomOut,
   RotateCcw,
-  ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar/navbar";
+import ScrollToTop from "@/components/scroll-to-top";
 
-const features = [
+const services = [
   {
     icon: Goal,
     title: "Estados Parcelarios",
     description:
       "El Estado Parcelario - también conocido como cédula catastral - es la tarea que realiza un Agrimensor al momento de una venta o hipoteca de un inmueble. Como establece la Ley 10.707 esta tarea o trámite es obligatorio en la Provincia de Buenos Aires.",
-    image: "/estados-parcelarios.jpg", // Cambia por tu imagen
+    details: [
+      "Certificación de medidas y límites del inmueble",
+      "Verificación de documentación catastral",
+      "Informe técnico para escrituración",
+      "Cumplimiento de normativas provinciales",
+      "Asesoramiento legal en el proceso"
+    ],
+    image: "/estados-parcelarios.jpg",
   },
   {
     icon: BookCheck,
     title: "Planos de Mensura",
     description:
       "Este plano es la medición, ubicación y documentación de un inmueble y sus límites conforme a las causas jurídicas que lo originan, es decir, la aplicación del título de propiedad al terreno propiamente dicho. La mensura es la generadora de las parcelas catastrales.",
-    image: "/planos-mensura.jpg", // Cambia por tu imagen
+    details: [
+      "Medición precisa de terrenos",
+      "Delimitación de linderos",
+      "Documentación técnica completa",
+      "Plano catastral oficial",
+      "Certificación profesional"
+    ],
+    image: "/planos-mensura.jpg",
   },
   {
     icon: ChartPie,
     title: "Subdivisiones urbanas y rurales",
     description:
-      "El agrimensor realiza el plano de Subdivisiones que genera y determina derechos sobre un edificio con multiples viviendas, locales y cocheras que han sido adquiridos por distintos propietarios en forma separada pero que tienen ciertos derechos y obligaciones en común. ",
-    image: "/subdivisiones.jpg", // Cambia por tu imagen
+      "El agrimensor realiza el plano de Subdivisiones que genera y determina derechos sobre un edificio con multiples viviendas, locales y cocheras que han sido adquiridos por distintos propietarios en forma separada pero que tienen ciertos derechos y obligaciones en común.",
+    details: [
+      "División de propiedades horizontales",
+      "Reglamento de copropiedad",
+      "Plano de subdivisión oficial",
+      "Asesoramiento en propiedad horizontal",
+      "Gestión ante organismos oficiales"
+    ],
+    image: "/subdivisiones.jpg",
   },
   {
     icon: Users,
     title: "Declaraciones Juradas (revalúos)",
     description:
-      "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/declaraciones-juradas.jpg", // Cambia por tu imagen
+      "Servicio especializado en la actualización de valores catastrales y declaraciones juradas para inmuebles, asegurando el cumplimiento de las normativas fiscales vigentes.",
+    details: [
+      "Actualización de valores catastrales",
+      "Declaraciones juradas de bienes",
+      "Asesoramiento fiscal inmobiliario",
+      "Gestión ante organismos recaudadores",
+      "Optimización de cargas impositivas"
+    ],
+    image: "/declaraciones-juradas.jpg",
   },
   {
     icon: FolderSync,
     title: "Urbanizaciones – Loteos",
     description:
-      "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/urbanizaciones.jpg", // Cambia por tu imagen
+      "Desarrollo integral de proyectos urbanísticos y loteos, desde la planificación inicial hasta la aprobación final, cumpliendo con todas las normativas urbanísticas y ambientales.",
+    details: [
+      "Planificación urbanística completa",
+      "Aprobación de loteos",
+      "Infraestructura y servicios",
+      "Normativas urbanísticas",
+      "Gestión ambiental"
+    ],
+    image: "/urbanizaciones.jpg",
   },
   {
     icon: Zap,
     title: "Amojonamientos",
     description:
-      "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/amojonamientos.jpg", // Cambia por tu imagen
+      "Servicio de delimitación física de terrenos mediante la colocación de mojones y marcación de límites, esencial para resolver conflictos de linderos y establecer claramente la propiedad.",
+    details: [
+      "Colocación de mojones oficiales",
+      "Delimitación de linderos",
+      "Resolución de conflictos de límites",
+      "Acta de amojonamiento",
+      "Certificación de límites"
+    ],
+    image: "/amojonamientos.jpg",
   },
 ];
 
-const Features = () => {
+export default function ServiciosPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
@@ -89,7 +134,7 @@ const Features = () => {
 
   const nextImage = () => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % features.length);
+      setSelectedImageIndex((selectedImageIndex + 1) % services.length);
       setZoom(1);
       setRotation(0);
       setPosition({ x: 0, y: 0 });
@@ -98,7 +143,7 @@ const Features = () => {
 
   const prevImage = () => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex(selectedImageIndex === 0 ? features.length - 1 : selectedImageIndex - 1);
+      setSelectedImageIndex(selectedImageIndex === 0 ? services.length - 1 : selectedImageIndex - 1);
       setZoom(1);
       setRotation(0);
       setPosition({ x: 0, y: 0 });
@@ -189,65 +234,86 @@ const Features = () => {
 
   return (
     <>
-      <div
-        id="features"
-        className="max-w-7xl mx-auto w-full py-12 xs:py-20 px-6"
-      >
-        <div className="text-center mb-12">
-          <h2 className="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight mb-4">
-            SERVICIOS DE AGRIMENSURA<br />
-            Servicios principales
-          </h2>
-          <Link 
-            href="/servicios"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
-          >
-            Ver todos los servicios
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-        
-        <div className="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="flex flex-col border rounded-xl overflow-hidden shadow-none hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+      {/* Navbar */}
+      <Navbar />
+      
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <div className="bg-gradient-to-b from-primary/10 to-background border-b">
+          <div className="max-w-7xl mx-auto px-6 py-8">
+            <Link 
+              href="/"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
             >
-              <CardHeader className="cursor-pointer" onClick={() => window.location.href = '/servicios'}>
-                <feature.icon className="text-primary" />
-                <h4 className="mt-3! text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h4>
-                <p className="mt-1 text-muted-foreground text-sm xs:text-[17px] group-hover:text-foreground/80 transition-colors">
-                  {feature.description}
-                </p>
-                <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity mt-2">
-                  <span className="text-sm font-medium">Ver más detalles</span>
-                  <ArrowRight size={14} />
-                </div>
-              </CardHeader>
-              <CardContent className="mt-auto px-0 pb-0">
-                <div 
-                  className="relative h-52 ml-6 rounded-tl-xl overflow-hidden cursor-pointer"
-                  onClick={() => openImageModal(index)}
-                >
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
-                      <ZoomIn size={24} className="text-gray-700" />
+              <ArrowLeft size={16} />
+              Volver al inicio
+            </Link>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+              Servicios de Agrimensura
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl">
+              Servicios profesionales integrales de agrimensura para particulares, empresas e instituciones. 
+              Más de 15 años de experiencia en la Provincia de Buenos Aires.
+            </p>
+          </div>
+        </div>
+
+        {/* Servicios */}
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="grid gap-8">
+            {services.map((service, index) => (
+              <Card key={index} className="overflow-hidden">
+                <div className="grid md:grid-cols-2 gap-0">
+                  {/* Imagen */}
+                  <div 
+                    className="relative h-64 md:h-full cursor-pointer group"
+                    onClick={() => openImageModal(index)}
+                  >
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
+                        <ZoomIn size={24} className="text-gray-700" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Contenido */}
+                  <div className="p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <service.icon className="text-primary" size={24} />
+                      <h2 className="text-2xl font-bold">{service.title}</h2>
+                    </div>
+                    
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    <div className="space-y-3">
+                      <h3 className="font-semibold text-lg">Incluye:</h3>
+                      <ul className="space-y-2">
+                        {service.details.map((detail, detailIndex) => (
+                          <li key={detailIndex} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Footer original */}
+      <Footer />
 
       {/* Modal mejorado para imagen grande */}
       {selectedImageIndex !== null && (
@@ -336,8 +402,8 @@ const Features = () => {
               onMouseLeave={handleMouseUp}
             >
               <Image
-                src={features[selectedImageIndex].image}
-                alt={features[selectedImageIndex].title}
+                src={services[selectedImageIndex].image}
+                alt={services[selectedImageIndex].title}
                 width={1200}
                 height={800}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg transition-transform duration-300 ease-out"
@@ -352,7 +418,7 @@ const Features = () => {
 
           {/* Indicador de imagen - Z-index alto */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm z-[60]">
-            {selectedImageIndex + 1} de {features.length} - {features[selectedImageIndex].title}
+            {selectedImageIndex + 1} de {services.length} - {services[selectedImageIndex].title}
           </div>
 
           {/* Atajos de teclado - Z-index alto */}
@@ -365,8 +431,7 @@ const Features = () => {
           </div>
         </div>
       )}
+      <ScrollToTop />
     </>
   );
-};
-
-export default Features;
+}

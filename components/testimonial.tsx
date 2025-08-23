@@ -15,65 +15,63 @@ import { useEffect, useState } from "react";
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    company: "TechCorp",
+    name: "María González",
+    designation: "Estado Parcelario",
+    company: "Avellaneda",
     testimonial:
-      "This product has completely transformed the way we work. The efficiency and ease of use are unmatched! " +
-      "We were struggling with productivity before, but this tool has streamlined our entire process. ",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+      "Excelente trabajo realizado por Pablo. El estado parcelario se completó en tiempo récord y con total precisión. " +
+      "Muy profesional y responsable en todo el proceso. Lo recomiendo ampliamente.",
+    avatar: "/persona-1.jfif",
   },
   {
     id: 2,
-    name: "Jane Smith",
-    designation: "Product Manager",
-    company: "InnovateX",
+    name: "Carlos Rodríguez",
+    designation: "Plano de Mensura",
+    company: "Lanús",
     testimonial:
-      "An amazing tool that simplifies complex tasks. Highly recommended for professionals in the industry. " +
-      "The intuitive interface makes it easy to onboard new team members, and the automation features save us countless hours every week. ",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+      "Pablo es un agrimensor de primera. Realizó el plano de mensura de mi terreno con tecnología de última generación. " +
+      "El resultado fue impecable y el trámite salió sin problemas.",
+    avatar: "/persona-2.jfif",
   },
   {
     id: 3,
-    name: "Michael Johnson",
-    designation: "UX Designer",
-    company: "DesignPro",
+    name: "Ana Martínez",
+    designation: "Subdivisión PH",
+    company: "Lomas de Zamora",
     testimonial:
-      "The user experience is top-notch! The interface is clean, intuitive, and easy to navigate. " +
-      "As a designer, I appreciate the attention to detail and well-thought-out UI components. " +
-      "It makes designing and prototyping so much more efficient.",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+      "Contraté a Pablo para la subdivisión de mi propiedad. Su experiencia y conocimiento técnico fueron fundamentales. " +
+      "El trabajo se realizó con la máxima calidad y cumpliendo todos los plazos establecidos.",
+    avatar: "/persona-3.jfif",
   },
   {
     id: 4,
-    name: "Emily Davis",
-    designation: "Marketing Specialist",
-    company: "BrandBoost",
+    name: "Roberto Fernández",
+    designation: "Relevamiento Topográfico",
+    company: "Vicente López",
     testimonial:
-      "I've seen a significant improvement in our team's productivity since we started using this service. " +
-      "The ability to track performance, analyze data, and collaborate across teams has been a game-changer.",
-    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+      "Pablo realizó un relevamiento topográfico completo de mi terreno. Su equipo y metodología son de primer nivel. " +
+      "Los planos entregados fueron exactos y detallados. Muy satisfecho con el servicio.",
+    avatar: "/persona-4.jfif",
   },
   {
     id: 5,
-    name: "Daniel Martinez",
-    designation: "Full-Stack Developer",
-    company: "CodeCrafters",
+    name: "Laura Pérez",
+    designation: "Estado Parcelario",
+    company: "CABA",
     testimonial:
-      "The best investment we've made! The support team is also super responsive and helpful. " +
-      "As a developer, I appreciate the well-documented API, the flexibility of integrations, and the robust security features.",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+      "Necesitaba un estado parcelario urgente y Pablo lo resolvió en el día. Su eficiencia y profesionalismo son excepcionales. " +
+      "Definitivamente volveré a contratarlo para futuros trabajos.",
+    avatar: "/persona-5.jfif",
   },
   {
     id: 6,
-    name: "Sophia Lee",
-    designation: "Data Analyst",
-    company: "InsightTech",
+    name: "Diego Silva",
+    designation: "Plano de Mensura",
+    company: "San Isidro",
     testimonial:
-      "This tool has saved me hours of work! The analytics and reporting features are incredibly powerful. " +
-      "I can now generate detailed reports in minutes, which previously took days to compile. " +
-      "helping us make smarter, data-backed decisions.",
-    avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+      "Pablo es sin duda el mejor agrimensor que he conocido. Su atención al detalle y precisión técnica son sobresalientes. " +
+      "El plano de mensura superó todas mis expectativas. Totalmente recomendado.",
+    avatar: "/persona-6.jfif",
   },
 ];
 const Testimonial = () => {
@@ -97,10 +95,10 @@ const Testimonial = () => {
   return (
     <div
       id="testimonials"
-      className="w-full max-w-(--breakpoint-xl) mx-auto py-6 xs:py-12 px-6"
+      className="w-full max-w-7xl mx-auto py-6 xs:py-12 px-6"
     >
       <h2 className="mb-8 xs:mb-14 text-4xl md:text-5xl font-bold text-center tracking-tight">
-        Testimonials
+        Mis Clientes
       </h2>
       <div className="container w-full mx-auto">
         <Carousel setApi={setApi}>
@@ -137,9 +135,9 @@ const TestimonialCard = ({
     <div className="flex items-center justify-between gap-20">
       <div className="hidden lg:block relative shrink-0 aspect-3/4 max-w-[18rem] w-full bg-muted-foreground/20 rounded-xl">
         <Image
-          src="/placeholder.svg"
+          src={testimonial.avatar}
           fill
-          alt=""
+          alt={`${testimonial.name} - ${testimonial.designation}`}
           className="object-cover rounded-xl"
         />
 
@@ -163,6 +161,12 @@ const TestimonialCard = ({
         <div className="flex items-center justify-between gap-1">
           <div className="hidden sm:flex md:hidden items-center gap-4">
             <Avatar className="w-8 h-8 md:w-10 md:h-10">
+              <Image
+                src={testimonial.avatar}
+                alt={testimonial.name}
+                fill
+                className="object-cover"
+              />
               <AvatarFallback className="text-xl font-medium bg-primary text-primary-foreground">
                 {testimonial.name.charAt(0)}
               </AvatarFallback>
@@ -185,6 +189,12 @@ const TestimonialCard = ({
         </p>
         <div className="flex sm:hidden md:flex mt-6 items-center gap-4">
           <Avatar>
+            <Image
+              src={testimonial.avatar}
+              alt={testimonial.name}
+              fill
+              className="object-cover"
+            />
             <AvatarFallback className="text-xl font-medium bg-primary text-primary-foreground">
               {testimonial.name.charAt(0)}
             </AvatarFallback>

@@ -9,45 +9,84 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Beautiful Shadcn UI Landing Page",
+  title: "Agrimensor Pablo Venerus - Excelencia en Agrimensura | Avellaneda, Buenos Aires",
   description:
-    "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+    "Agrimensor Pablo Venerus en Avellaneda. Servicios de agrimensura, topografía e ingeniería con más de 14 años de experiencia. Estados parcelarios, mensuras, amojonamientos y más. Zona de cobertura: CABA y Gran Buenos Aires.",
   keywords: [
-    "Shadcn UI Landing Page",
-    "Shadcn UI Blocks",
-    "Shadcn UI",
-    "Landing Page",
-    "Tailwind CSS Landing Page",
-    "Beautiful Shadcn UI Landing Page",
-    "Next.js 15 Landing Page",
-    "Simple Landing Page",
-    "Landing Page Template",
-    "Landing Page Design",
+    "Agrimensor",
+    "Agrimensura",
+    "Topografía",
+    "Estados Parcelarios",
+    "Mensura",
+    "Amojonamientos",
+    "Avellaneda",
+    "Buenos Aires",
+    "CABA",
+    "Gran Buenos Aires",
+    "Pablo Venerus",
+    "Ingeniería",
+    "Catastro",
+    "Propiedad Horizontal",
+    "Urbanizaciones",
+    "Loteos",
+    "Relevamientos Topográficos",
+    "GPS Geodésico",
+    "Estación Total",
   ],
   openGraph: {
     type: "website",
-    siteName: "Shadcn Landing Page",
-    locale: "en_US",
-    url: "https://shadcn-landing-page.vercel.app",
-    title: "Shadcn Landing Page",
+    siteName: "Agrimensor Pablo Venerus",
+    locale: "es_AR",
+    url: "https://miagrimensor.com",
+    title: "Agrimensor Pablo Venerus - Excelencia en Agrimensura",
     description:
-      "A beautiful landing page built with Shadcn UI, Next.js 15, Tailwind CSS, and Shadcn UI Blocks.",
+      "Servicios profesionales de agrimensura y topografía en Avellaneda, Buenos Aires. Más de 14 años de experiencia. Estados parcelarios, mensuras y amojonamientos.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Shadcn UI Landing Page Preview",
+        alt: "Agrimensor Pablo Venerus - Servicios de Agrimensura",
       },
     ],
   },
   authors: [
     {
-      name: "Akash Moradiya",
-      url: "https://shadcnui-blocks.com",
+      name: "Pablo Venerus",
+      url: "https://miagrimensor.com",
     },
   ],
-  creator: "Akash Moradiya",
+  creator: "Pablo Venerus",
+  twitter: {
+    card: "summary_large_image",
+    title: "Agrimensor Pablo Venerus - Excelencia en Agrimensura",
+    description: "Servicios profesionales de agrimensura y topografía en Avellaneda, Buenos Aires. Más de 14 años de experiencia.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://miagrimensor.com",
+  },
+  category: "Professional Services",
+  classification: "Agrimensura y Topografía",
+  other: {
+    "geo.region": "AR-B",
+    "geo.placename": "Avellaneda, Buenos Aires",
+    "geo.position": "-34.6627;-58.3647",
+    "ICBM": "-34.6627, -58.3647",
+    "DC.title": "Agrimensor Pablo Venerus",
+    "DC.creator": "Pablo Venerus",
+    "DC.subject": "Agrimensura, Topografía, Estados Parcelarios",
+    "DC.description": "Servicios profesionales de agrimensura y topografía",
+    "DC.publisher": "Pablo Venerus",
+    "DC.contributor": "Pablo Venerus",
+    "DC.date": "2024",
+    "DC.type": "Service",
+    "DC.format": "text/html",
+    "DC.identifier": "https://miagrimensor.com",
+    "DC.language": "es-AR",
+    "DC.coverage": "Avellaneda, Buenos Aires, Argentina",
+    "DC.rights": "Copyright 2024 Pablo Venerus",
+  },
   icons: [
     {
       rel: "icon",
@@ -85,8 +124,20 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "tu-codigo-de-verificacion-google",
+    yandex: "tu-codigo-de-verificacion-yandex",
+    yahoo: "tu-codigo-de-verificacion-yahoo",
+  },
 };
 
 export default function RootLayout({
@@ -95,10 +146,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es-AR" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+            {children}
         </ThemeProvider>
       </body>
     </html>
