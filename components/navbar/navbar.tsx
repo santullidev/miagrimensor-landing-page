@@ -8,12 +8,14 @@ const Navbar = () => {
   return (
     <nav className="h-14 sm:h-16 bg-background border-b border-accent">
       <div className="h-full flex items-center justify-between max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
-        <Logo />
+        <div className="flex-shrink-0">
+          <Logo />
+        </div>
 
         {/* Desktop Menu */}
         <NavMenu className="hidden md:block" />
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <ThemeToggle />
           <Button 
             className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2"
