@@ -66,22 +66,22 @@ const Hero = () => {
       
       {/* Contenido principal */}
       <div className="relative z-20 w-full flex items-center justify-center min-h-[calc(100vh-4rem)]">
-        <div className="max-w-7xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-8 xl:py-12">
-          <div className="max-w-xl">
+        <div className="max-w-7xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-4 sm:px-6 py-12 lg:py-8 xl:py-12 overflow-hidden">
+          <div className="max-w-xl w-full">
             <Badge className="rounded-full py-1 border-none bg-white/90 text-slate-900 hover:bg-white shadow-lg backdrop-blur-sm">
               Agrimensor Pablo Venerus
             </Badge>
-            <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight text-white">
+            <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2] tracking-tight text-white break-words">
               Servicios integrales de agrimensura y topografía
             </h1>
-            <p className="mt-6 max-w-[60ch] xs:text-lg text-slate-200">
+            <p className="mt-6 max-w-[60ch] xs:text-lg text-slate-200 break-words">
               Estados parcelarios, mensura y planos para escriturar con rapidez y respaldo.
               Desde principios del año 2010,  ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes. 
             </p>
-            <div className="mt-12 flex flex-col sm:flex-row items-center gap-4">
+            <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 w-full">
               <Button
                 size="lg"
-                className="w-full sm:w-auto rounded-full text-base bg-green-500 hover:bg-green-600 text-white shadow-lg"
+                className="w-full sm:w-auto rounded-full text-base bg-green-500 hover:bg-green-600 text-white shadow-lg min-w-0"
                 asChild
               >
                 <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
@@ -91,7 +91,7 @@ const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto rounded-full text-base shadow-none bg-white/90 hover:bg-white dark:bg-slate-800/90 dark:hover:bg-slate-800 dark:text-white dark:border-slate-600 border-gray-300"
+                className="w-full sm:w-auto rounded-full text-base shadow-none bg-white/90 hover:bg-white dark:bg-slate-800/90 dark:hover:bg-slate-800 dark:text-white dark:border-slate-600 border-gray-300 min-w-0"
                 asChild
               >
                 <a href="/servicios">
@@ -114,7 +114,7 @@ const Hero = () => {
             
             {/* Overlay con título */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 z-10">
-              <p className="text-white text-sm font-medium">
+              <p className="text-white text-sm font-medium break-words">
                 {heroImages[currentImageIndex].title}
               </p>
             </div>

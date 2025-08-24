@@ -64,14 +64,68 @@
   
   html {
     @apply scroll-smooth;
+    overflow-x: hidden;
   }
   
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   
   button {
     @apply cursor-pointer;
+  }
+  
+  /* Prevenir overflow horizontal en todos los elementos */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Contenedores principales */
+  .container, .max-w-7xl, .max-w-screen-xl {
+    @apply px-4 sm:px-6 lg:px-8;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Grid y flex containers */
+  .grid, .flex {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Texto que no debe desbordar */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Imágenes responsivas */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Botones que no deben desbordar */
+  button, .btn, [role="button"] {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Navegación responsiva */
+  nav {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Footer responsivo */
+  footer {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   
   /* Transiciones suaves para modo oscuro */

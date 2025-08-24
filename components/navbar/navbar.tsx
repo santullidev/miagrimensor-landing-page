@@ -6,19 +6,19 @@ import ThemeToggle from "../theme-toggle";
 
 const Navbar = () => {
   return (
-    <nav className="h-16 bg-background border-b border-accent">
-      <div className="h-full flex items-center justify-between max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
-        <div className="flex-shrink-0 min-w-0 flex-1 max-w-[60%] sm:max-w-none">
+    <nav className="h-16 bg-background border-b border-accent w-full overflow-hidden">
+      <div className="h-full flex items-center justify-between max-w-7xl mx-auto px-3 sm:px-4 md:px-6 w-full overflow-hidden">
+        <div className="flex-shrink-0 min-w-0 flex-1 max-w-[60%] sm:max-w-none overflow-hidden">
           <Logo />
         </div>
 
         {/* Desktop Menu */}
         <NavMenu className="hidden md:block flex-shrink-0" />
 
-        <div className="flex items-center gap-1 sm:gap-2 md:gap-3 flex-shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2 md:gap-3 flex-shrink-0 overflow-hidden">
           <ThemeToggle />
           <Button 
-            className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 cursor-pointer"
+            className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 cursor-pointer min-w-0"
             size="sm"
             asChild
           >

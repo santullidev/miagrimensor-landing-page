@@ -118,26 +118,26 @@ const contactInfo = [
 
 const Footer = () => {
   return (
-    <footer className="mt-12 xs:mt-20 dark bg-background border-t">
-      <div className="max-w-7xl mx-auto py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-8 px-6">
-        <div className="col-span-full xl:col-span-2">
+    <footer className="mt-12 xs:mt-20 dark bg-background border-t w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-8 px-4 sm:px-6 w-full overflow-hidden">
+        <div className="col-span-full xl:col-span-2 overflow-hidden">
           {/* Logo */}
-          <div className="flex-shrink-0 mb-4">
+          <div className="flex-shrink-0 mb-4 overflow-hidden">
             <Logo_2/>
           </div>
 
-          <p className="mt-3 text-muted-foreground">
+          <p className="mt-3 text-muted-foreground break-words">
             Estados parcelarios, mensura y planos para escriturar con rapidez y respaldo. Desde principios del año 2010, ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes.
           </p>
 
           {/* Información de contacto */}
           <div className="mt-4 space-y-2">
             {contactInfo.map((info, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <info.icon className="text-primary" size={16} />
+              <div key={index} className="flex items-center gap-3 overflow-hidden">
+                <info.icon className="text-primary flex-shrink-0" size={16} />
                 <Link 
                   href={info.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors break-words"
                 >
                   {info.value}
                 </Link>
