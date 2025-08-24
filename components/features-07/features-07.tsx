@@ -1,6 +1,6 @@
 import {
   BookCheck,
-  ChartPie,
+  BarChart3,
   FolderSync,
   Goal,
   Users,
@@ -8,7 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 
 const features = [
@@ -17,63 +17,63 @@ const features = [
     title: "Relevamientos Topográficos",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-1.jfif",
+    image: "/otros-servicios/otros-servicios-1.jfif",
   },
   {
     icon: BookCheck,
     title: "Deslinde y Amojonamientos",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-2.jfif",
+    image: "/otros-servicios/otros-servicios-2.jpg",
   },
   {
-    icon: ChartPie,
+    icon: BarChart3,
     title: "Planos de Mensura",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-3.jfif",
+    image: "/otros-servicios/otros-servicios-3.webp",
   },
   {
     icon: Users,
     title: "Loteos y Barrios Cerrados",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-4.jfif",
+    image: "/otros-servicios/otros-servicios-4.avif",
   },
   {
     icon: FolderSync,
     title: "Propiedad Horizontal",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-5.jfif",
+    image: "/otros-servicios/otros-servicios-5.jpg",
   },
   {
     icon: Zap,
     title: "Estados Parcelarios",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-6.jfif",
+    image: "/otros-servicios/otros-servicios-6.jfif",
   },
   {
     icon: BookCheck,
     title: "Planos de Mensura",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-7.jfif",
+    image: "/otros-servicios/otros-servicios-7.jfif",
   },
   {
-    icon: ChartPie,
+    icon: BarChart3,
     title: "Subdivisión de Propiedades",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-8.jfif",
+    image: "/otros-servicios/otros-servicios-8.jfif",
   },
   {
     icon: Goal,
     title: "Subdivisión de Propiedades",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/otros-servicios-9.jfif",
+    image: "/otros-servicios/otros-servicios-9.jfif",
   },
 ];
 
@@ -94,12 +94,11 @@ const Features07Page = () => {
           {features.slice(0, 6).map((feature) => (
             <Link key={feature.title} href="/otros-servicios">
               <div className="flex gap-6 hover:ring rounded-lg p-2 -mx-2 sm:mx-0 max-w-lg transition-all duration-300 hover:scale-105">
-                <div className="relative h-24 aspect-square shrink-0 rounded-lg bg-muted overflow-hidden">
-                  <Image
+                <div className="relative h-24 aspect-square shrink-0 rounded-lg bg-gray-100 overflow-hidden">
+                  <img
                     src={feature.image}
                     alt={feature.title}
-                    fill
-                    className="rounded-lg object-cover"
+                    className="rounded-lg object-cover w-full h-full"
                   />
                 </div>
                 <div className="">

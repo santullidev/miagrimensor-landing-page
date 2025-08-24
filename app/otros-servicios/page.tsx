@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
   X,
-  ChevronLeft,
-  ChevronRight,
   ZoomIn,
   ZoomOut,
   RotateCcw,
@@ -28,7 +26,7 @@ import {
   Car,
   TreePine,
 } from "lucide-react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Footer from "@/components/footer";
@@ -49,7 +47,7 @@ const otrosServicios = [
       "Coordenadas georreferenciadas",
       "Informe técnico completo"
     ],
-    image: "/otros-servicios-1.jfif",
+    image: "/otros-servicos-page/otros-servicios-page-1.jpg",
     category: "Topografía",
     duration: "2-5 días",
     complexity: "Media",
@@ -69,7 +67,7 @@ const otrosServicios = [
       "Informe detallado",
       "Asesoramiento legal"
     ],
-    image: "/otros-servicios-2.jfif",
+    image: "/otros-servicos-page/otros-servicios-page-2.jpg",
     category: "Legal",
     duration: "1-3 días",
     complexity: "Baja",
@@ -89,7 +87,7 @@ const otrosServicios = [
       "Gestión ante organismos",
       "Asesoramiento integral"
     ],
-    image: "/otros-servicios-3.jfif",
+    image: "/otros-servicos-page/otros-servicios-page-3.jpg",
     category: "Automotor",
     duration: "1-2 días",
     complexity: "Baja",
@@ -109,7 +107,7 @@ const otrosServicios = [
       "Informe técnico",
       "Recomendaciones ambientales"
     ],
-    image: "/otros-servicios-4.jfif",
+    image: "/otros-servicos-page/otros-servicios-page-4.jpg",
     category: "Ambiental",
     duration: "3-7 días",
     complexity: "Alta",
@@ -129,7 +127,7 @@ const otrosServicios = [
       "Informe detallado",
       "Asesoramiento técnico"
     ],
-    image: "/otros-servicios-5.jfif",
+    image: "/otros-servicos-page/otros-servicios-page-5.png",
     category: "Cálculos",
     duration: "1-2 días",
     complexity: "Media",
@@ -149,7 +147,7 @@ const otrosServicios = [
       "Presentación en juicio",
       "Seguimiento del caso"
     ],
-    image: "/otros-servicios-6.jfif",
+    image: "/otros-servicos-page/otros-servicios-page-6.jpg",
     category: "Judicial",
     duration: "5-15 días",
     complexity: "Alta",
@@ -202,23 +200,7 @@ export default function OtrosServiciosPage() {
     setPosition({ x: 0, y: 0 });
   };
 
-  const nextImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % otrosServicios.length);
-      setZoom(1);
-      setRotation(0);
-      setPosition({ x: 0, y: 0 });
-    }
-  };
 
-  const prevImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex(selectedImageIndex === 0 ? otrosServicios.length - 1 : selectedImageIndex - 1);
-      setZoom(1);
-      setRotation(0);
-      setPosition({ x: 0, y: 0 });
-    }
-  };
 
   const handleZoomIn = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -269,12 +251,6 @@ export default function OtrosServiciosPage() {
         switch (e.key) {
           case 'Escape':
             closeImageModal();
-            break;
-          case 'ArrowRight':
-            nextImage();
-            break;
-          case 'ArrowLeft':
-            prevImage();
             break;
           case '+':
           case '=':
@@ -407,14 +383,13 @@ export default function OtrosServiciosPage() {
                 <div className="grid lg:grid-cols-2 gap-0">
                   {/* Imagen con overlay mejorado */}
                   <div 
-                    className="relative h-80 lg:h-full cursor-pointer group"
+                    className="relative h-80 lg:h-full cursor-pointer group bg-gray-100"
                     onClick={() => openImageModal(index)}
                   >
-                    <Image
+                    <img
                       src={service.image}
                       alt={service.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110 w-full h-full"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -498,10 +473,10 @@ export default function OtrosServiciosPage() {
                     {/* Botones de acción */}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button asChild size="lg" className="flex-1">
-                        <Link href="/contacto">
+                        <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                           Solicitar Presupuesto
                           <ArrowRight size={16} className="ml-2" />
-                        </Link>
+                        </a>
                       </Button>
                       <Button asChild variant="outline" size="lg">
                         <Link href={`tel:+5491167058156`}>
@@ -557,14 +532,14 @@ export default function OtrosServiciosPage() {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Button asChild size="lg" className="text-lg px-8 py-6">
-                  <Link href="/contacto">
+                  <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                     Solicitar Presupuesto
                     <ArrowRight size={20} className="ml-2" />
-                  </Link>
+                  </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6">
-                  <Link href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura">
-                    WhatsApp
+                  <Link href="/contacto">
+                    Contacto
                   </Link>
                 </Button>
               </div>
@@ -654,28 +629,7 @@ export default function OtrosServiciosPage() {
             <X size={24} />
           </button>
 
-          {/* Navegación */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              prevImage();
-            }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[60] bg-black/70 backdrop-blur-sm rounded-full p-4 hover:bg-black/90"
-            title="Previous (←)"
-          >
-            <ChevronLeft size={24} />
-          </button>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              nextImage();
-            }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[60] bg-black/70 backdrop-blur-sm rounded-full p-4 hover:bg-black/90"
-            title="Next (→)"
-          >
-            <ChevronRight size={24} />
-          </button>
 
           {/* Contenedor de imagen */}
           <div className="relative max-w-[95vw] max-h-[95vh] mt-16 z-10">
@@ -686,29 +640,27 @@ export default function OtrosServiciosPage() {
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
             >
-              <Image
+              <img
                 src={otrosServicios[selectedImageIndex].image}
                 alt={otrosServicios[selectedImageIndex].title}
-                width={1200}
-                height={800}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg transition-transform duration-300 ease-out"
                 style={{
                   transform: `scale(${zoom}) rotate(${rotation}deg) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
                   transformOrigin: 'center center',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden',
+                  perspective: '1000px',
+                  imageRendering: 'crisp-edges',
                 }}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               />
             </div>
           </div>
 
-          {/* Indicador de imagen */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm rounded-full px-6 py-3 text-white text-sm z-[60]">
-            {selectedImageIndex + 1} de {otrosServicios.length} - {otrosServicios[selectedImageIndex].title}
-          </div>
+
 
           {/* Atajos de teclado */}
           <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-4 py-3 text-white text-xs opacity-0 hover:opacity-100 transition-opacity z-[60]">
-            <div>← → Navegar</div>
             <div>+ - Zoom</div>
             <div>R Rotar</div>
             <div>0 Reset</div>

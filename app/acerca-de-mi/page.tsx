@@ -14,44 +14,44 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar/navbar";
 import ScrollToTop from "@/components/scroll-to-top";
 
-// Imágenes del carrusel (reemplaza con las fotos reales de Pablo)
+// Imágenes del carrusel (Pablo trabajando)
 const carouselImages = [
   {
-    src: "/pablo-trabajando-1.jpeg",
-    alt: "Pablo Venerus trabajando en campo",
-    title: "Trabajando en campo con Estación Total"
+    src: "/acerca-de-mi/pablo-trabajando-1.jpeg",
+    alt: "Pablo trabajando en agrimensura - Estados Parcelarios",
+    title: "Estados Parcelarios"
   },
   {
-    src: "/pablo-trabajando-2.jpeg",
-    alt: "Pablo Venerus con GPS Geodésico",
-    title: "Utilizando GPS Geodésico (GNSS)"
+    src: "/acerca-de-mi/pablo-trabajando-2.jpg",
+    alt: "Pablo trabajando en agrimensura - Planos de Mensura",
+    title: "Planos de Mensura"
   },
   {
-    src: "/pablo-trabajando-3.jpeg",
-    alt: "Pablo Venerus en oficina",
-    title: "Procesando datos con software especializado"
+    src: "/acerca-de-mi/pablo-trabajando-3.jpg",
+    alt: "Pablo trabajando en agrimensura - Subdivisiones",
+    title: "Subdivisiones"
   },
   {
-    src: "/pablo-trabajando-4.jpeg",
-    alt: "Pablo Venerus con clientes",
-    title: "Asesorando a clientes"
+    src: "/acerca-de-mi/pablo-trabajando-4.jpeg",
+    alt: "Pablo trabajando en agrimensura - Declaraciones Juradas",
+    title: "Declaraciones Juradas"
   },
   {
-    src: "/pablo-trabajando-5.jpeg",
-    alt: "Pablo Venerus en terreno",
-    title: "Realizando mediciones precisas"
+    src: "/acerca-de-mi/pablo-trabajando-5.jpeg",
+    alt: "Pablo trabajando en agrimensura - Urbanizaciones",
+    title: "Urbanizaciones"
   },
   {
-    src: "/pablo-trabajando-6.jpeg",
-    alt: "Pablo Venerus en trabajo de campo",
-    title: "Trabajos de agrimensura profesional"
+    src: "/acerca-de-mi/pablo-trabajando-6.jpeg",
+    alt: "Pablo trabajando en agrimensura - Amojonamientos",
+    title: "Amojonamientos"
   }
 ];
 
@@ -134,13 +134,12 @@ export default function AcercaDeMiPage() {
 
         {/* Carrusel de imágenes */}
         <div className="max-w-7xl mx-auto px-6 py-12">
-                     <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+                     <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-2xl bg-gray-100">
              {/* Imagen actual */}
-             <Image
+             <img
                src={carouselImages[currentImageIndex].src}
                alt={carouselImages[currentImageIndex].alt}
-               fill
-               className="object-contain transition-all duration-500"
+               className="object-contain transition-all duration-500 w-full h-full"
              />
             
             {/* Overlay con título */}
@@ -316,9 +315,9 @@ export default function AcercaDeMiPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="text-lg px-8 py-6">
-                <Link href="/servicios">
+                <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                   SOLICITAR PRESUPUESTO
-                </Link>
+                </a>
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6">
                 <Link href="/servicios">

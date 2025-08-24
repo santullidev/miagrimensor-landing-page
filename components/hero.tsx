@@ -2,43 +2,43 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, DraftingCompass, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, DraftingCompass } from "lucide-react";
 
-import { HexagonBackground } from "./animate-ui/backgrounds/hexagon";
+
+import { HeroBackground } from "./animate-ui/backgrounds/hero-background";
 import { useState, useEffect } from "react";
 
-// Imágenes del carrusel del hero
+// Imágenes del carrusel del hero (Pablo trabajando)
 const heroImages = [
   {
-    src: "/pablo-trabajando-1.jpeg",
-    alt: "Pablo Venerus trabajando en campo con Estación Total",
-    title: "Trabajando en campo con Estación Total"
+    src: "/hero/pablo-trabajando-1.jpeg",
+    alt: "Pablo trabajando en agrimensura - Estados Parcelarios",
+    title: "Estados Parcelarios"
   },
   {
-    src: "/pablo-trabajando-2.jpeg",
-    alt: "Pablo Venerus con GPS Geodésico",
-    title: "Utilizando GPS Geodésico (GNSS)"
+    src: "/hero/pablo-trabajando-2.jpg",
+    alt: "Pablo trabajando en agrimensura - Planos de Mensura",
+    title: "Planos de Mensura"
   },
   {
-    src: "/pablo-trabajando-3.jpeg",
-    alt: "Pablo Venerus en oficina procesando datos",
-    title: "Procesando datos con software especializado"
+    src: "/hero/pablo-trabajando-3.jpg",
+    alt: "Pablo trabajando en agrimensura - Subdivisiones",
+    title: "Subdivisiones"
   },
   {
-    src: "/pablo-trabajando-4.jpeg",
-    alt: "Pablo Venerus asesorando a clientes",
-    title: "Asesorando a clientes"
+    src: "/hero/pablo-trabajando-4.jpeg",
+    alt: "Pablo trabajando en agrimensura - Declaraciones Juradas",
+    title: "Declaraciones Juradas"
   },
   {
-    src: "/pablo-trabajando-5.jpeg",
-    alt: "Pablo Venerus realizando mediciones precisas",
-    title: "Realizando mediciones precisas"
+    src: "/hero/pablo-trabajando-5.jpeg",
+    alt: "Pablo trabajando en agrimensura - Urbanizaciones",
+    title: "Urbanizaciones"
   },
   {
-    src: "/pablo-trabajando-6.jpeg",
-    alt: "Pablo Venerus en trabajo de campo",
-    title: "Trabajos de agrimensura profesional"
+    src: "/hero/pablo-trabajando-6.jpeg",
+    alt: "Pablo trabajando en agrimensura - Amojonamientos",
+    title: "Amojonamientos"
   }
 ];
 
@@ -54,40 +54,34 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-  };
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
-  };
 
   return (
-    <div className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden">
-      {/* Background con animación */}
-      <HexagonBackground className="absolute inset-0 w-full h-full" />
+    <div className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden pt-16 lg:pt-8">
+      {/* Background con imagen y overlay */}
+      <HeroBackground className="absolute inset-0 w-full h-full" />
       
       {/* Gradiente de difuminado en la parte inferior */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
       
       {/* Contenido principal */}
-      <div className="relative z-20 w-full flex items-center justify-center h-full">
-        <div className="max-w-7xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-0">
+      <div className="relative z-20 w-full flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <div className="max-w-7xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-8 xl:py-12">
           <div className="max-w-xl">
-            <Badge className="rounded-full py-1 border-none">
+            <Badge className="rounded-full py-1 border-none bg-white/90 text-slate-900 hover:bg-white shadow-lg backdrop-blur-sm">
               Agrimensor Pablo Venerus
             </Badge>
-            <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight">
+            <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight text-white">
               Servicios integrales de agrimensura y topografía
             </h1>
-            <p className="mt-6 max-w-[60ch] xs:text-lg">
+            <p className="mt-6 max-w-[60ch] xs:text-lg text-slate-200">
               Estados parcelarios, mensura y planos para escriturar con rapidez y respaldo.
               Desde principios del año 2010,  ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes. 
             </p>
             <div className="mt-12 flex flex-col sm:flex-row items-center gap-4">
               <Button
                 size="lg"
-                className="w-full sm:w-auto rounded-full text-base"
+                className="w-full sm:w-auto rounded-full text-base bg-green-500 hover:bg-green-600 text-white shadow-lg"
                 asChild
               >
                 <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
@@ -97,7 +91,7 @@ const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto rounded-full text-base shadow-none"
+                className="w-full sm:w-auto rounded-full text-base shadow-none bg-white/90 hover:bg-white border-gray-300"
                 asChild
               >
                 <a href="#features">
@@ -108,41 +102,25 @@ const Hero = () => {
           </div>
           
           {/* Carrusel de imágenes */}
-          <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square overflow-hidden">
+          <div className="relative lg:max-w-lg xl:max-w-xl w-full bg-gray-100 rounded-xl aspect-[3/4] overflow-hidden">
             {/* Imagen actual */}
-            <Image
+            <img
               src={heroImages[currentImageIndex].src}
-              fill
               alt={heroImages[currentImageIndex].alt}
-              className="object-cover rounded-xl transition-opacity duration-500"
+              className="object-cover object-top rounded-xl transition-opacity duration-500 w-full h-full"
             />
             
+
+            
             {/* Overlay con título */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 z-10">
               <p className="text-white text-sm font-medium">
                 {heroImages[currentImageIndex].title}
               </p>
             </div>
             
-            {/* Controles del carrusel */}
-            <button
-              onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors duration-200"
-              aria-label="Imagen anterior"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            
-            <button
-              onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors duration-200"
-              aria-label="Siguiente imagen"
-            >
-              <ChevronRight size={20} />
-            </button>
-            
             {/* Indicadores */}
-            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-2">
               {heroImages.map((_, index) => (
                 <button
                   key={index}

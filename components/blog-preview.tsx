@@ -11,7 +11,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { getFeaturedPosts } from "@/lib/blog-data";
 
 export default function BlogPreview() {
@@ -51,11 +51,10 @@ export default function BlogPreview() {
               {/* Imagen destacada */}
               <div className="relative h-48 overflow-hidden">
                 {post.featuredImage ? (
-                  <Image
+                  <img
                     src={post.featuredImage}
                     alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 ) : (
                   <>

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -147,10 +146,39 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-        </ThemeProvider>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  
+                  if (theme === 'dark' || (!theme && systemPrefersDark)) {
+                    document.documentElement.classList.add('dark');
+                    if (document.body) {
+                      document.body.style.colorScheme = 'dark';
+                    }
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    if (document.body) {
+                      document.body.style.colorScheme = 'light';
+                    }
+                  }
+                  
+                  // Prevenir parpadeo
+                  document.documentElement.style.visibility = 'visible';
+                } catch (e) {
+                  console.warn('Error applying theme:', e);
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className={`${inter.className} antialiased bg-background text-foreground transition-colors duration-200`}>
+        {children}
       </body>
     </html>
   );

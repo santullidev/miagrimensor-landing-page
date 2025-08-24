@@ -16,55 +16,59 @@ export const NavMenu = (props: NavigationMenuProps) => {
 
   return (
     <NavigationMenu {...props}>
-      <NavigationMenuList className="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
+             <NavigationMenuList className="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:space-y-1">
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/">Inicio</Link>
+                         <Link href="/" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
+              Inicio
+            </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/acerca-de-mi">Acerca de mí</Link>
+                         <Link href="/acerca-de-mi" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
+              Acerca de mí
+            </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href={isHome ? "#features" : "/servicios"}>
+                         <Link href="/servicios" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
               Servicios
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/otros-servicios">
+                         <Link href="/otros-servicios" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
               Otros Servicios
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href={isHome ? "#faq" : "/#faq"}>
+                         <Link href="/#faq" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
               Preguntas Frecuentes
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href={isHome ? "#testimonials" : "/#testimonials"}>
+                         <Link href="/#testimonials" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
               Testimonios
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/blog">
+                         <Link href="/blog" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
               Blog
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/contacto">
+                         <Link href="/contacto" className="block py-1.5 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium">
               Contacto
             </Link>
           </NavigationMenuLink>

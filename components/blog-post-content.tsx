@@ -13,7 +13,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { type BlogPost } from "@/lib/blog-data";
 
 interface BlogPostContentProps {
@@ -182,11 +182,10 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
           {/* Imagen destacada */}
           {post.featuredImage && (
             <div className="relative w-full h-64 sm:h-80 lg:h-96 mb-6 sm:mb-8 rounded-xl overflow-hidden">
-              <Image
+              <img
                 src={post.featuredImage}
                 alt={post.title}
-                fill
-                className="object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           )}
@@ -210,11 +209,10 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
                     {/* Imagen destacada */}
                     <div className="relative h-24 sm:h-32 overflow-hidden">
                       {relatedPost.featuredImage ? (
-                        <Image
+                        <img
                           src={relatedPost.featuredImage}
                           alt={relatedPost.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
                         <>
@@ -282,11 +280,11 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
             Ofrecemos consultas sin cargo y presupuestos en el día para todos nuestros servicios de agrimensura y topografía.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link href="/contacto">
+            <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="w-full sm:w-auto h-10 sm:h-12 px-4 sm:px-6 text-sm sm:text-base">
                 Solicitar presupuesto
               </Button>
-            </Link>
+            </a>
             <Link href="/servicios">
               <Button variant="outline" size="lg" className="w-full sm:w-auto h-10 sm:h-12 px-4 sm:px-6 text-sm sm:text-base">
                 Ver servicios

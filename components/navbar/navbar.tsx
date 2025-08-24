@@ -16,11 +16,12 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <Button 
-            className="hidden xs:inline-flex"
+            className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm"
+            size="sm"
             asChild
           >
             <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
-              Whatsapp
+              WhatsApp
             </a>
           </Button>
 

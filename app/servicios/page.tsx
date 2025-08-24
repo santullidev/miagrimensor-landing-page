@@ -3,7 +3,7 @@
 import { Card } from "@/components/ui/card";
 import {
   BookCheck,
-  ChartPie,
+  BarChart3,
   FolderSync,
   Goal,
   Users,
@@ -16,6 +16,7 @@ import {
   ZoomOut,
   RotateCcw,
 } from "lucide-react";
+import ImageWithFallback from "@/components/ui/image-with-fallback";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -36,7 +37,7 @@ const services = [
       "Cumplimiento de normativas provinciales",
       "Asesoramiento legal en el proceso"
     ],
-    image: "/estados-parcelarios.jpg",
+    image: "/servicios/estados-parcelarios-1.jpg",
   },
   {
     icon: BookCheck,
@@ -50,10 +51,10 @@ const services = [
       "Plano catastral oficial",
       "Certificación profesional"
     ],
-    image: "/planos-mensura.jpg",
+    image: "/servicios/planos-mensura.jpg",
   },
   {
-    icon: ChartPie,
+    icon: BarChart3,
     title: "Subdivisiones urbanas y rurales",
     description:
       "El agrimensor realiza el plano de Subdivisiones que genera y determina derechos sobre un edificio con multiples viviendas, locales y cocheras que han sido adquiridos por distintos propietarios en forma separada pero que tienen ciertos derechos y obligaciones en común.",
@@ -64,7 +65,7 @@ const services = [
       "Asesoramiento en propiedad horizontal",
       "Gestión ante organismos oficiales"
     ],
-    image: "/subdivisiones.jpg",
+    image: "/servicios/subdivisiones.jpg",
   },
   {
     icon: Users,
@@ -78,7 +79,7 @@ const services = [
       "Gestión ante organismos recaudadores",
       "Optimización de cargas impositivas"
     ],
-    image: "/declaraciones-juradas.jpg",
+    image: "/servicios/declaraciones-juradas-1.jpg",
   },
   {
     icon: FolderSync,
@@ -92,7 +93,7 @@ const services = [
       "Normativas urbanísticas",
       "Gestión ambiental"
     ],
-    image: "/urbanizaciones.jpg",
+    image: "/servicios/urbanizaciones.jpg",
   },
   {
     icon: Zap,
@@ -106,7 +107,7 @@ const services = [
       "Acta de amojonamiento",
       "Certificación de límites"
     ],
-    image: "/amojonamientos.jpg",
+    image: "/servicios/amojonamientos.jpg",
   },
 ];
 
@@ -132,23 +133,7 @@ export default function ServiciosPage() {
     setPosition({ x: 0, y: 0 });
   };
 
-  const nextImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % services.length);
-      setZoom(1);
-      setRotation(0);
-      setPosition({ x: 0, y: 0 });
-    }
-  };
 
-  const prevImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex(selectedImageIndex === 0 ? services.length - 1 : selectedImageIndex - 1);
-      setZoom(1);
-      setRotation(0);
-      setPosition({ x: 0, y: 0 });
-    }
-  };
 
   const handleZoomIn = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -200,12 +185,7 @@ export default function ServiciosPage() {
           case 'Escape':
             closeImageModal();
             break;
-          case 'ArrowRight':
-            nextImage();
-            break;
-          case 'ArrowLeft':
-            prevImage();
-            break;
+
           case '+':
           case '=':
             e.preventDefault();
@@ -266,14 +246,13 @@ export default function ServiciosPage() {
                 <div className="grid md:grid-cols-2 gap-0">
                   {/* Imagen */}
                   <div 
-                    className="relative h-64 md:h-full cursor-pointer group"
+                    className="relative h-64 md:h-full cursor-pointer group bg-gray-100"
                     onClick={() => openImageModal(index)}
                   >
-                    <Image
+                    <img
                       src={service.image}
                       alt={service.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105 w-full h-full"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
@@ -369,61 +348,42 @@ export default function ServiciosPage() {
             <X size={24} />
           </button>
 
-          {/* Navegación - Z-index alto */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              prevImage();
-            }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-3 hover:bg-black/70"
-            title="Previous (←)"
-          >
-            <ChevronLeft size={24} />
-          </button>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              nextImage();
-            }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-3 hover:bg-black/70"
-            title="Next (→)"
-          >
-            <ChevronRight size={24} />
-          </button>
 
           {/* Contenedor de imagen - Z-index más bajo */}
           <div className="relative max-w-[95vw] max-h-[95vh] mt-16 z-10">
             <div 
               className="relative w-full h-full cursor-grab active:cursor-grabbing"
+              style={{
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
+              }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
             >
-              <Image
-                src={services[selectedImageIndex].image}
-                alt={services[selectedImageIndex].title}
-                width={1200}
-                height={800}
-                className="max-w-full max-h-[80vh] object-contain rounded-lg transition-transform duration-300 ease-out"
-                style={{
-                  transform: `scale(${zoom}) rotate(${rotation}deg) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
-                  transformOrigin: 'center center',
-                }}
-                onClick={(e) => e.stopPropagation()}
-              />
+                             <img
+                 src={services[selectedImageIndex].image}
+                 alt={services[selectedImageIndex].title}
+                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                 style={{
+                   transform: `scale(${zoom}) rotate(${rotation}deg) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
+                   transformOrigin: 'center center',
+                   willChange: 'transform',
+                   backfaceVisibility: 'hidden',
+                   perspective: '1000px',
+                   imageRendering: 'crisp-edges',
+                 }}
+                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
+               />
             </div>
           </div>
 
-          {/* Indicador de imagen - Z-index alto */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm z-[60]">
-            {selectedImageIndex + 1} de {services.length} - {services[selectedImageIndex].title}
-          </div>
+
 
           {/* Atajos de teclado - Z-index alto */}
           <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2 text-white text-xs opacity-0 hover:opacity-100 transition-opacity z-[60]">
-            <div>← → Navegar</div>
             <div>+ - Zoom</div>
             <div>R Rotar</div>
             <div>0 Reset</div>

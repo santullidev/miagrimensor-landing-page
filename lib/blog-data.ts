@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
     title: "Todo sobre el Estado Parcelario en la Ciudad Autónoma de Buenos Aires",
     slug: "todo-sobre-el-estado-parcelario-en-la-ciudad-autonoma-de-buenos-aires",
     excerpt: "El estado parcelario en la Ciudad Autónoma de Buenos Aires, todo lo que tenés que saber y entender.",
-    featuredImage: "/post-blog-1.jpeg",
+    featuredImage: "/blog/post-blog-1.jpeg",
     content: `
 # Todo sobre el Estado Parcelario en la Ciudad Autónoma de Buenos Aires
 
@@ -143,7 +143,7 @@ El certificado incluye toda la información esencial y complementaria del inmueb
     title: "Todo sobre el Estado Parcelario en la Provincia de Buenos Aires",
     slug: "todo-sobre-el-estado-parcelario-en-la-provincia-de-buenos-aires",
     excerpt: "Guía completa sobre el Estado Parcelario en la Provincia de Buenos Aires, requisitos y procedimientos.",
-    featuredImage: "/post-blog-4.jpeg",
+    featuredImage: "/blog/post-blog-4.jpeg",
     content: `
 # Todo sobre el Estado Parcelario en la Provincia de Buenos Aires
 
@@ -260,7 +260,7 @@ Ofrecemos consultas sin cargo y presupuestos en el día para todos los servicios
     title: "Algunos de mis trabajos realizados",
     slug: "algunos-de-mis-trabajos-realizados",
     excerpt: "Estados Parcelarios en Provincia de Buenos Aires, Estados Parcelarios en CABA, Mensura Rural, Subdivisión de un PH, entre otros.",
-    featuredImage: "/post-blog-2.jpeg",
+    featuredImage: "/blog/post-blog-2.jpeg",
     content: `
 # Algunos de mis trabajos realizados
 
@@ -360,7 +360,7 @@ Ofrecemos servicios en CABA y en una amplia zona del Gran Buenos Aires, que incl
     title: "Explorando el Mundo de la Agrimensura: Lo que Necesitas Saber",
     slug: "explorando-el-mundo-de-la-agrimensura",
     excerpt: "Bienvenidos a MI BLOG donde exploramos temas relevantes y de interés general sobre la agrimensura y su impacto en el mundo inmobiliario.",
-    featuredImage: "/post-blog-3.jpeg",
+    featuredImage: "/blog/post-blog-3.jpeg",
     content: `
 # Explorando el Mundo de la Agrimensura: Lo que Necesitas Saber
 

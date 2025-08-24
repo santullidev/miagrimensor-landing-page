@@ -17,7 +17,7 @@ import {
   ChevronRight,
   CheckCircle,
 } from "lucide-react";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ui/image-with-fallback";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Footer from "@/components/footer";
@@ -175,7 +175,7 @@ export default function ContactoPage() {
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
             {/* Imagen actual */}
-            <Image
+            <ImageWithFallback
               src={carouselImages[currentImageIndex].src}
               alt={carouselImages[currentImageIndex].alt}
               fill

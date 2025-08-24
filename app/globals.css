@@ -1,88 +1,6 @@
-@import 'tailwindcss';
-
-@plugin 'tailwindcss-animate';
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  --breakpoint-xs: 375px;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: hsl(0 0% 100%);
@@ -109,8 +27,9 @@
   --chart-3: hsl(197 37% 24%);
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
-  --radius: 0.5rem
+  --radius: 0.5rem;
 }
+
 .dark {
   --background: hsl(0 0% 3.9%);
   --foreground: hsl(0 0% 98%);
@@ -135,20 +54,147 @@
   --chart-2: hsl(160 60% 45%);
   --chart-3: hsl(30 80% 55%);
   --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%)
+  --chart-5: hsl(340 75% 55%);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+  
   html {
     @apply scroll-smooth;
   }
+  
   body {
     @apply bg-background text-foreground;
   }
+  
   button {
     @apply cursor-pointer;
   }
+  
+  /* Transiciones suaves para modo oscuro */
+  * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  
+  /* Estilos específicos para modo oscuro */
+  .dark {
+    color-scheme: dark;
+  }
+  
+  /* Estilos para el botón de tema */
+  .theme-toggle {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .theme-toggle:hover {
+    @apply scale-105;
+  }
+  
+  /* Mejorar legibilidad de texto en modo oscuro */
+  .dark p {
+    @apply text-foreground/90;
+  }
+  
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-foreground;
+  }
+  
+  /* Asegurar que todos los elementos usen las variables CSS */
+  .dark .bg-white {
+    @apply bg-card;
+  }
+  
+  .dark .text-gray-900 {
+    @apply text-foreground;
+  }
+  
+  .dark .text-gray-700 {
+    @apply text-foreground/80;
+  }
+  
+  .dark .text-gray-600 {
+    @apply text-muted-foreground;
+  }
+  
+  .dark .text-gray-500 {
+    @apply text-muted-foreground/80;
+  }
+  
+  .dark .bg-gray-50 {
+    @apply bg-muted;
+  }
+  
+  .dark .bg-gray-100 {
+    @apply bg-muted/80;
+  }
+  
+  .dark .bg-gray-200 {
+    @apply bg-muted/60;
+  }
+  
+  .dark .border-gray-200 {
+    @apply border-border;
+  }
+  
+  .dark .border-gray-300 {
+    @apply border-border/80;
+  }
+  
+  /* Mejorar componentes específicos */
+  .dark .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, hsl(var(--muted)), hsl(var(--muted)/50));
+  }
+  
+  .dark .bg-gradient-to-r {
+    background: linear-gradient(to right, hsl(var(--muted)/20), hsl(var(--muted)/10));
+  }
+  
+  .dark .bg-gradient-to-t {
+    background: linear-gradient(to top, hsl(var(--muted)/30), transparent);
+  }
+  
+  /* Mejorar sombras en modo oscuro */
+  .dark .shadow-lg {
+    box-shadow: 0 10px 15px -3px hsl(var(--foreground)/10), 0 4px 6px -2px hsl(var(--foreground)/5);
+  }
+  
+  .dark .shadow-xl {
+    box-shadow: 0 20px 25px -5px hsl(var(--foreground)/10), 0 10px 10px -5px hsl(var(--foreground)/5);
+  }
+  
+  .dark .shadow-2xl {
+    box-shadow: 0 25px 50px -12px hsl(var(--foreground)/15);
+  }
+}
+
+/* Animaciones para accordions */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

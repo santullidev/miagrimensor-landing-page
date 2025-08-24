@@ -13,7 +13,7 @@ import {
   ArrowRight,
   BookOpen,
 } from "lucide-react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { blogPosts, categories, tags, type BlogPost } from "@/lib/blog-data";
@@ -210,12 +210,11 @@ export default function BlogPage() {
                     {/* Imagen destacada */}
                     <div className="relative h-48 sm:h-56 overflow-hidden">
                       {post.featuredImage ? (
-                        <Image
-                          src={post.featuredImage}
-                          alt={post.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
+                                          <img
+                    src={post.featuredImage}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                       ) : (
                         <>
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5" />
@@ -293,11 +292,11 @@ export default function BlogPage() {
               Ofrecemos consultas sin cargo y presupuestos en el día para todos nuestros servicios de agrimensura y topografía.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contacto">
+              <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="w-full sm:w-auto h-12 px-6">
                   Solicitar presupuesto
                 </Button>
-              </Link>
+              </a>
               <Link href="/servicios">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto h-12 px-6">
                   Ver servicios

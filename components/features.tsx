@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   BookCheck,
-  ChartPie,
+  BarChart3,
   FolderSync,
   Goal,
   Users,
@@ -16,6 +16,7 @@ import {
   RotateCcw,
   ArrowRight,
 } from "lucide-react";
+import ImageWithFallback from "@/components/ui/image-with-fallback";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -26,42 +27,42 @@ const features = [
     title: "Estados Parcelarios",
     description:
       "El Estado Parcelario - también conocido como cédula catastral - es la tarea que realiza un Agrimensor al momento de una venta o hipoteca de un inmueble. Como establece la Ley 10.707 esta tarea o trámite es obligatorio en la Provincia de Buenos Aires.",
-    image: "/estados-parcelarios.jpg", // Cambia por tu imagen
+    image: "/servicios/estados-parcelarios-1.jpg",
   },
   {
     icon: BookCheck,
     title: "Planos de Mensura",
     description:
       "Este plano es la medición, ubicación y documentación de un inmueble y sus límites conforme a las causas jurídicas que lo originan, es decir, la aplicación del título de propiedad al terreno propiamente dicho. La mensura es la generadora de las parcelas catastrales.",
-    image: "/planos-mensura.jpg", // Cambia por tu imagen
+    image: "/servicios/planos-mensura.jpg",
   },
   {
-    icon: ChartPie,
+    icon: BarChart3,
     title: "Subdivisiones urbanas y rurales",
     description:
       "El agrimensor realiza el plano de Subdivisiones que genera y determina derechos sobre un edificio con multiples viviendas, locales y cocheras que han sido adquiridos por distintos propietarios en forma separada pero que tienen ciertos derechos y obligaciones en común. ",
-    image: "/subdivisiones.jpg", // Cambia por tu imagen
+    image: "/servicios/subdivisiones.jpg",
   },
   {
     icon: Users,
     title: "Declaraciones Juradas (revalúos)",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/declaraciones-juradas.jpg", // Cambia por tu imagen
+    image: "/servicios/declaraciones-juradas-1.jpg",
   },
   {
     icon: FolderSync,
     title: "Urbanizaciones – Loteos",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/urbanizaciones.jpg", // Cambia por tu imagen
+    image: "/servicios/urbanizaciones.jpg",
   },
   {
     icon: Zap,
     title: "Amojonamientos",
     description:
       "Loremipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    image: "/amojonamientos.jpg", // Cambia por tu imagen
+    image: "/servicios/amojonamientos.jpg",
   },
 ];
 
@@ -87,23 +88,7 @@ const Features = () => {
     setPosition({ x: 0, y: 0 });
   };
 
-  const nextImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % features.length);
-      setZoom(1);
-      setRotation(0);
-      setPosition({ x: 0, y: 0 });
-    }
-  };
 
-  const prevImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex(selectedImageIndex === 0 ? features.length - 1 : selectedImageIndex - 1);
-      setZoom(1);
-      setRotation(0);
-      setPosition({ x: 0, y: 0 });
-    }
-  };
 
   const handleZoomIn = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -155,12 +140,7 @@ const Features = () => {
           case 'Escape':
             closeImageModal();
             break;
-          case 'ArrowRight':
-            nextImage();
-            break;
-          case 'ArrowLeft':
-            prevImage();
-            break;
+
           case '+':
           case '=':
             e.preventDefault();
@@ -228,14 +208,13 @@ const Features = () => {
               </CardHeader>
               <CardContent className="mt-auto px-0 pb-0">
                 <div 
-                  className="relative h-52 ml-6 rounded-tl-xl overflow-hidden cursor-pointer"
+                  className="relative h-52 ml-6 rounded-tl-xl overflow-hidden cursor-pointer bg-gray-100"
                   onClick={() => openImageModal(index)}
                 >
-                  <Image
+                  <img
                     src={feature.image}
                     alt={feature.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 w-full h-full"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
@@ -303,61 +282,42 @@ const Features = () => {
             <X size={24} />
           </button>
 
-          {/* Navegación - Z-index alto */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              prevImage();
-            }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-3 hover:bg-black/70"
-            title="Previous (←)"
-          >
-            <ChevronLeft size={24} />
-          </button>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              nextImage();
-            }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-3 hover:bg-black/70"
-            title="Next (→)"
-          >
-            <ChevronRight size={24} />
-          </button>
 
           {/* Contenedor de imagen - Z-index más bajo */}
           <div className="relative max-w-[95vw] max-h-[95vh] mt-16 z-10">
             <div 
               className="relative w-full h-full cursor-grab active:cursor-grabbing"
+              style={{
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
+              }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
             >
-              <Image
-                src={features[selectedImageIndex].image}
-                alt={features[selectedImageIndex].title}
-                width={1200}
-                height={800}
-                className="max-w-full max-h-[80vh] object-contain rounded-lg transition-transform duration-300 ease-out"
-                style={{
-                  transform: `scale(${zoom}) rotate(${rotation}deg) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
-                  transformOrigin: 'center center',
-                }}
-                onClick={(e) => e.stopPropagation()}
-              />
+                             <img
+                 src={features[selectedImageIndex].image}
+                 alt={features[selectedImageIndex].title}
+                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                 style={{
+                   transform: `scale(${zoom}) rotate(${rotation}deg) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
+                   transformOrigin: 'center center',
+                   willChange: 'transform',
+                   backfaceVisibility: 'hidden',
+                   perspective: '1000px',
+                   imageRendering: 'crisp-edges',
+                 }}
+                 onClick={(e: React.MouseEvent) => e.stopPropagation()}
+               />
             </div>
           </div>
 
-          {/* Indicador de imagen - Z-index alto */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm z-[60]">
-            {selectedImageIndex + 1} de {features.length} - {features[selectedImageIndex].title}
-          </div>
+
 
           {/* Atajos de teclado - Z-index alto */}
           <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2 text-white text-xs opacity-0 hover:opacity-100 transition-opacity z-[60]">
-            <div>← → Navegar</div>
             <div>+ - Zoom</div>
             <div>R Rotar</div>
             <div>0 Reset</div>

@@ -17,12 +17,21 @@ export default function CTASection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button asChild size="lg" className="text-lg px-8 py-6">
-              <Link href="/servicios">
+            <Button 
+              asChild 
+              size="lg" 
+              className="text-lg px-8 py-6 bg-black hover:bg-gray-800 text-white shadow-lg"
+            >
+              <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                 SOLICITAR PRESUPUESTO
-              </Link>
+              </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6">
+            <Button 
+              asChild 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-6 bg-white/90 hover:bg-white border-gray-300 shadow-sm"
+            >
               <Link href="/servicios">
                 VER SERVICIOS
               </Link>

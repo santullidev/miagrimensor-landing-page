@@ -77,7 +77,7 @@ const footerSections = [
     links: [
       {
         title: "Solicitar Presupuesto",
-        href: "/contacto",
+        href: "https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura",
       },
       {
         title: "Consultas",
@@ -119,17 +119,17 @@ const contactInfo = [
 const Footer = () => {
   return (
     <footer className="mt-12 xs:mt-20 dark bg-background border-t">
-      <div className="max-w-7xl mx-auto py-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-10 px-6">
+             <div className="max-w-7xl mx-auto py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-8 px-6">
         <div className="col-span-full xl:col-span-2">
           {/* Logo */}
           <Logo_2/>
 
-          <p className="mt-4 text-muted-foreground">
+                     <p className="mt-3 text-muted-foreground">
             Estados parcelarios, mensura y planos para escriturar con rapidez y respaldo. Desde principios del año 2010, ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes.
           </p>
 
-          {/* Información de contacto */}
-          <div className="mt-6 space-y-3">
+                     {/* Información de contacto */}
+           <div className="mt-4 space-y-2">
             {contactInfo.map((info, index) => (
               <div key={index} className="flex items-center gap-3">
                 <info.icon className="text-primary" size={16} />
@@ -147,7 +147,7 @@ const Footer = () => {
         {footerSections.map(({ title, links }) => (
           <div key={title} className="xl:justify-self-end">
             <h6 className="font-semibold text-foreground">{title}</h6>
-            <ul className="mt-6 space-y-4">
+                         <ul className="mt-4 space-y-3">
               {links.map(({ title, href }) => (
                 <li key={title}>
                   <Link
@@ -163,15 +163,25 @@ const Footer = () => {
         ))}
       </div>
       <Separator />
-      <div className="max-w-7xl mx-auto py-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-5 px-6">
+             <div className="max-w-7xl mx-auto py-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-4 px-6">
         {/* Copyright */}
-        <span className="text-muted-foreground text-center xs:text-start text-sm">
-          &copy; {new Date().getFullYear()}{" "}
-          <Link href="/" className="hover:text-foreground transition-colors">
-            Miagrimensor
-          </Link>
-          . Todos los derechos reservados.
-        </span>
+        <div className="text-muted-foreground text-center xs:text-start text-sm">
+          <span>
+            &copy; {new Date().getFullYear()}{" "}
+            <Link href="/" className="hover:text-foreground transition-colors">
+              Miagrimensor
+            </Link>
+            . Todos los derechos reservados. | Echo con 🕶️ por{" "}
+            <Link 
+              href="https://makebly.io" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors font-medium"
+            >
+              Makebly.io
+            </Link>
+          </span>
+        </div>
 
         {/* Redes sociales - Solo LinkedIn */}
         <div className="flex items-center gap-5 text-muted-foreground">
