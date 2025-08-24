@@ -2,75 +2,199 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-@layer base {
-  :root {
-
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem
-  }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
-  }
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 3.9%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 3.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 3.9%);
+  --primary: hsl(0 0% 9%);
+  --primary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(0 0% 96.1%);
+  --secondary-foreground: hsl(0 0% 9%);
+  --muted: hsl(0 0% 96.1%);
+  --muted-foreground: hsl(0 0% 45.1%);
+  --accent: hsl(0 0% 96.1%);
+  --accent-foreground: hsl(0 0% 9%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 89.8%);
+  --input: hsl(0 0% 89.8%);
+  --ring: hsl(0 0% 3.9%);
+  --chart-1: hsl(12 76% 61%);
+  --chart-2: hsl(173 58% 39%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(43 74% 66%);
+  --chart-5: hsl(27 87% 67%);
+  --radius: 0.5rem;
 }
 
-
+.dark {
+  --background: hsl(0 0% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(0 0% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(0 0% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(0 0% 9%);
+  --secondary: hsl(0 0% 14.9%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted: hsl(0 0% 14.9%);
+  --muted-foreground: hsl(0 0% 63.9%);
+  --accent: hsl(0 0% 14.9%);
+  --accent-foreground: hsl(0 0% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(0 0% 83.1%);
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(280 65% 60%);
+  --chart-5: hsl(340 75% 55%);
+}
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+  
   html {
     @apply scroll-smooth;
   }
+  
   body {
     @apply bg-background text-foreground;
   }
+  
+  button {
+    @apply cursor-pointer;
+  }
+  
+  /* Transiciones suaves para modo oscuro */
+  * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  
+  /* Estilos específicos para modo oscuro */
+  .dark {
+    color-scheme: dark;
+  }
+  
+  /* Estilos para el botón de tema */
+  .theme-toggle {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .theme-toggle:hover {
+    @apply scale-105;
+  }
+  
+  /* Mejorar legibilidad de texto en modo oscuro */
+  .dark p {
+    @apply text-foreground/90;
+  }
+  
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-foreground;
+  }
+  
+  /* Asegurar que todos los elementos usen las variables CSS */
+  .dark .bg-white {
+    @apply bg-card;
+  }
+  
+  .dark .text-gray-900 {
+    @apply text-foreground;
+  }
+  
+  .dark .text-gray-700 {
+    @apply text-foreground/80;
+  }
+  
+  .dark .text-gray-600 {
+    @apply text-muted-foreground;
+  }
+  
+  .dark .text-gray-500 {
+    @apply text-muted-foreground/80;
+  }
+  
+  .dark .bg-gray-50 {
+    @apply bg-muted;
+  }
+  
+  .dark .bg-gray-100 {
+    @apply bg-muted/80;
+  }
+  
+  .dark .bg-gray-200 {
+    @apply bg-muted/60;
+  }
+  
+  .dark .border-gray-200 {
+    @apply border-border;
+  }
+  
+  .dark .border-gray-300 {
+    @apply border-border/80;
+  }
+  
+  /* Mejorar componentes específicos */
+  .dark .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, hsl(var(--muted)), hsl(var(--muted)/50));
+  }
+  
+  .dark .bg-gradient-to-r {
+    background: linear-gradient(to right, hsl(var(--muted)/20), hsl(var(--muted)/10));
+  }
+  
+  .dark .bg-gradient-to-t {
+    background: linear-gradient(to top, hsl(var(--muted)/30), transparent);
+  }
+  
+  /* Mejorar sombras en modo oscuro */
+  .dark .shadow-lg {
+    box-shadow: 0 10px 15px -3px hsl(var(--foreground)/10), 0 4px 6px -2px hsl(var(--foreground)/5);
+  }
+  
+  .dark .shadow-xl {
+    box-shadow: 0 20px 25px -5px hsl(var(--foreground)/10), 0 10px 10px -5px hsl(var(--foreground)/5);
+  }
+  
+  .dark .shadow-2xl {
+    box-shadow: 0 25px 50px -12px hsl(var(--foreground)/15);
+  }
+}
+
+/* Animaciones para accordions */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

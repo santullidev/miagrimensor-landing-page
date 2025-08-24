@@ -5,76 +5,104 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { PlusIcon } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 
 const faq = [
   {
-    question: "What is your return policy?",
+    question: "¿En dónde trabajo?",
     answer:
-      "You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
+      "Ofrezco servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de Avellaneda, Lanús, Lomas de Zamora, Vicente López, San Fernando, San Isidro, Tigre, La Matanza, San Martín e Ituzaingó.",
   },
   {
-    question: "How do I track my order?",
+    question: "¿Qué tipos de trabajo realizo?",
     answer:
-      "Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
+      "Ejerciendo Agrimensura en todos sus aspectos, a saber: Topografía, Geodesia, Fotogrametría, Agrimensura legal, etc. Para mayor información acerca de las tareas que brindo a realizar en ejercicio profesional diríjase a la sección SERVICIOS, o bien, contáctactame a través de WhatsApp.",
   },
   {
-    question: "Do you ship internationally?",
+    question: "¿Cuándo se realiza un estado parcelario o cédula catastral (Ley Provincial de Catastro | Ley 10.707)?",
     answer:
-      "Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
+      "Se realiza previo a toda transmisión o modificación en la titularidad del dominio, siempre y cuando dicho estado parcelario no se encuentre vigente.",
   },
   {
-    question: "What payment methods do you accept?",
+    question: "¿Cuál es la vigencia de un estado parcelario?",
     answer:
-      "We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
+      "• En parcelas urbanas baldías: 2 años (Art 15 Ley 10.707)\n" +
+      "• En parcelas urbanas edificadas: 3 años (Disp. 6117/2015)\n" +
+      "• En parcelas rurales: 3 años (Disp. 6117/2015)\n" +
+      "• En sub parcelas PH, ubicadas en planta baja o planta superior que contengan superficie descubierta (terraza), también son 3 años por la Disp. 6117/2015.\n\n" +
+      "Otra de las novedades que trajo la Disposición 6117/2015 es que las sub parcelas de PH, ubicadas en planta 1er piso o superiores como así también en subsuelo y cuyo plano origen sea anterior al año 1994, deberán constituir el estado parcelario correspondiente.\n\n" +
+      "Como siempre, las sub parcelas, cocheras o bauleras que no contengan superficie descubierta, están exceptuadas de constituir el Estado Parcelario por la resolución 22/2012.",
   },
   {
-    question: "What if I receive a damaged item?",
+    question: "¿Cuánto tiempo tarda un trabajo de agrimensura?",
     answer:
-      "Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
+      "Los tiempos varían según el tipo de trabajo. Los estados parcelarios suelen completarse en 24-48 horas, mientras que trabajos más complejos como subdivisiones o urbanizaciones pueden tomar entre 1-2 semanas. Siempre te proporciono un cronograma detallado al inicio del proyecto.",
   },
   {
-    question: "How can I contact customer support?",
+    question: "¿Qué documentación necesito para solicitar un servicio?",
     answer:
-      "You can reach our support team via email at support@example.com or through the live chat on our website. We're available 24/7 to assist you.",
+      "Para la mayoría de los trabajos necesitarás: título de propiedad, plano de mensura vigente, y documentación municipal actualizada. Para casos específicos, te asesoro sobre la documentación adicional requerida según el tipo de trabajo a realizar.",
   },
 ];
 
 const FAQ = () => {
   return (
-    <div id="faq" className="w-full max-w-screen-xl mx-auto py-8 xs:py-16 px-6">
-      <h2 className="md:text-center text-3xl xs:text-4xl md:text-5xl !leading-[1.15] font-bold tracking-tighter">
-        Frequently Asked Questions
-      </h2>
-      <p className="mt-1.5 md:text-center xs:text-lg text-muted-foreground">
-        Quick answers to common questions about our products and services.
-      </p>
+    <div
+      id="faq"
+      className="w-full max-w-7xl mx-auto py-12 xs:py-20 px-6"
+    >
+      <div className="text-center mb-12">
+        <h2 className="text-3xl xs:text-4xl md:text-5xl leading-[1.15] font-bold tracking-tight mb-4">
+          Preguntas Frecuentes
+        </h2>
+        <p className="xs:text-lg text-muted-foreground max-w-2xl mx-auto">
+          Resuelve tus dudas más comunes sobre los servicios de agrimensura
+        </p>
+      </div>
 
-      <div className="min-h-[550px] md:min-h-[320px] xl:min-h-[300px]">
+      <div className="max-w-4xl mx-auto">
         <Accordion
           type="single"
           collapsible
-          className="mt-8 space-y-4 md:columns-2 gap-4"
+          className="space-y-3"
         >
           {faq.map(({ question, answer }, index) => (
             <AccordionItem
               key={question}
               value={`question-${index}`}
-              className="bg-accent py-1 px-4 rounded-xl border-none !mt-0 !mb-4 break-inside-avoid"
+              className="group"
             >
               <AccordionPrimitive.Header className="flex">
                 <AccordionPrimitive.Trigger
                   className={cn(
-                    "flex flex-1 items-center justify-between py-4 font-semibold tracking-tight transition-all hover:underline [&[data-state=open]>svg]:rotate-45",
-                    "text-start text-lg"
+                    "flex flex-1 items-center justify-between w-full p-6 text-left",
+                    "bg-background border border-border rounded-xl",
+                    "hover:bg-accent/50 transition-all duration-300 ease-out",
+                    "group-data-[state=open]:bg-accent group-data-[state=open]:border-primary/20",
+                    "group-data-[state=open]:shadow-lg",
+                    "font-semibold text-base md:text-lg leading-relaxed"
                   )}
                 >
-                  {question}
-                  <PlusIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
+                  <span className="pr-4">{question}</span>
+                  <ChevronDownIcon 
+                    className={cn(
+                      "h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out",
+                      "group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary"
+                    )} 
+                  />
                 </AccordionPrimitive.Trigger>
               </AccordionPrimitive.Header>
-              <AccordionContent className="text-[15px]">
-                {answer}
+              <AccordionContent 
+                className={cn(
+                  "overflow-hidden transition-all duration-500 ease-out",
+                  "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                )}
+              >
+                <div className="px-6 pb-6 pt-2">
+                  <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {answer}
+                  </div>
+                </div>
               </AccordionContent>
             </AccordionItem>
           ))}

@@ -1,0 +1,74 @@
+"use client"
+
+import Image from "next/image";
+import { useState, useEffect } from "react";
+
+export const Logo_2 = () => {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    
+    // Obtener tema del localStorage o preferencia del sistema
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark";
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+    setTheme(initialTheme);
+    
+    // Escuchar cambios en el tema
+    const handleStorageChange = () => {
+      const newTheme = localStorage.getItem("theme") as "light" | "dark";
+      if (newTheme) {
+        setTheme(newTheme);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    
+    // Escuchar cambios en el DOM para detectar cambios de tema
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setTheme(isDark ? "dark" : "light");
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Determinar qué logo usar basado en el tema
+  const logoSrc = theme === "dark" ? "/logo_miagrimensor_2.svg" : "/logo_miagrimensor.svg";
+
+  // Evitar hidratación incorrecta
+  if (!mounted) {
+    return (
+      <Image
+        src="/logo_miagrimensor.svg"
+        alt="Logo Mi Agrimensor"
+        width={124}
+        height={32}
+        priority
+        style={{ height: 'auto' }}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={logoSrc}
+      alt="Logo Mi Agrimensor"
+      width={124}
+      height={32}
+      priority
+      style={{ height: 'auto' }}
+    />
+  );
+};

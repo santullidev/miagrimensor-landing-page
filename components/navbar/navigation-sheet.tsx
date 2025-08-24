@@ -21,15 +21,27 @@ export const NavigationSheet = () => {
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent>
-        <Logo />
-        <NavMenu orientation="vertical" className="mt-12" />
+      <SheetContent className="bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700">
+        <div className="flex flex-col h-full">
+          <div className="flex-shrink-0">
+            <Logo />
+          </div>
+          
+                     <div className="flex-1 mt-6">
+             <NavMenu orientation="vertical" className="space-y-1" />
+           </div>
 
-        <div className="mt-8 space-y-4">
-          <Button variant="outline" className="w-full sm:hidden">
-            Sign In
-          </Button>
-          <Button className="w-full xs:hidden">Get Started</Button>
+          <div className="flex-shrink-0 mt-6 pt-4 border-t border-slate-200 dark:border-slate-700">
+            <Button 
+              className="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm"
+              size="sm"
+              asChild
+            >
+              <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
+            </Button>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
