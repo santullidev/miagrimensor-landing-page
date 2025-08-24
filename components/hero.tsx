@@ -85,17 +85,17 @@ const Hero = () => {
                 asChild
               >
                 <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
-                  Hablemos en Whatsapp <ArrowUpRight className="h-5! w-5!" />
+                  Hablemos en Whatsapp <ArrowUpRight className="h-5 w-5 ml-2" />
                 </a>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto rounded-full text-base shadow-none bg-white/90 hover:bg-white border-gray-300"
+                className="w-full sm:w-auto rounded-full text-base shadow-none bg-white/90 hover:bg-white dark:bg-slate-800/90 dark:hover:bg-slate-800 dark:text-white dark:border-slate-600 border-gray-300"
                 asChild
               >
-                <a href="#features">
-                  <DraftingCompass className="h-5! w-5!" /> Mis Servicios
+                <a href="/servicios">
+                  <DraftingCompass className="h-5 w-5 mr-2" /> Mis Servicios
                 </a>
               </Button>
             </div>

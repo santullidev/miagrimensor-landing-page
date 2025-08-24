@@ -18,11 +18,11 @@ const Navbar = () => {
         <div className="flex items-center gap-1 sm:gap-2 md:gap-3 flex-shrink-0">
           <ThemeToggle />
           <Button 
-            className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2"
+            className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 cursor-pointer"
             size="sm"
             asChild
           >
-            <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
+            <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
               WhatsApp
             </a>
           </Button>

@@ -33,11 +33,11 @@ export const NavigationSheet = () => {
 
           <div className="flex-shrink-0 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 px-4 pb-4">
             <Button 
-              className="w-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-sm text-sm"
+              className="w-full bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-sm cursor-pointer"
               size="sm"
               asChild
             >
-              <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
+              <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                 WhatsApp
               </a>
             </Button>
