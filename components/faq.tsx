@@ -75,35 +75,20 @@ const FAQ = () => {
               <AccordionPrimitive.Header className="flex">
                 <AccordionPrimitive.Trigger
                   className={cn(
-                    "flex flex-1 items-center justify-between w-full p-2 sm:p-3 md:p-6 text-left",
+                    "flex flex-1 items-start justify-between w-full p-3 sm:p-4 md:p-6 text-left",
                     "bg-background border border-border rounded-xl",
                     "hover:bg-accent/50 transition-all duration-300 ease-out",
                     "group-data-[state=open]:bg-accent group-data-[state=open]:border-primary/20",
                     "group-data-[state=open]:shadow-lg",
                     "font-semibold text-sm sm:text-base md:text-lg leading-tight sm:leading-relaxed"
                   )}
-                  style={{
-                    wordWrap: 'break-word',
-                    overflowWrap: 'break-word',
-                    hyphens: 'auto',
-                    maxWidth: '100%'
-                  }}
                 >
-                  <span 
-                    className="pr-1 sm:pr-2 md:pr-4 break-words min-w-0 flex-1 text-left faq-question"
-                    style={{
-                      wordWrap: 'break-word',
-                      overflowWrap: 'break-word',
-                      hyphens: 'auto',
-                      maxWidth: '100%',
-                      display: 'block'
-                    }}
-                  >
+                  <span className="pr-2 sm:pr-4 break-words min-w-0 flex-1 text-left leading-relaxed">
                     {question}
                   </span>
                   <ChevronDownIcon 
                     className={cn(
-                      "h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-1 sm:ml-2",
+                      "h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2 sm:ml-3 mt-0.5",
                       "group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary"
                     )} 
                   />

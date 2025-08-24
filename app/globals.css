@@ -142,6 +142,7 @@
     hyphens: auto;
     max-width: 100%;
     display: block;
+    line-height: 1.4;
   }
   
   /* Asegurar que el texto del FAQ no se corte */
@@ -157,17 +158,30 @@
     [data-radix-accordion-trigger] {
       padding: 0.75rem !important;
       font-size: 0.875rem !important;
-      line-height: 1.25rem !important;
+      line-height: 1.4 !important;
+      align-items: flex-start !important;
     }
     
     [data-radix-accordion-trigger] span {
       padding-right: 0.5rem !important;
+      line-height: 1.4 !important;
+      white-space: normal !important;
     }
     
     [data-radix-accordion-trigger] svg {
       width: 1rem !important;
       height: 1rem !important;
-      margin-left: 0.25rem !important;
+      margin-left: 0.5rem !important;
+      margin-top: 0.125rem !important;
+      flex-shrink: 0 !important;
+    }
+  }
+  
+  /* Ajustes para desktop con texto largo */
+  @media (min-width: 641px) {
+    [data-radix-accordion-trigger] span {
+      line-height: 1.5 !important;
+      white-space: normal !important;
     }
   }
   
