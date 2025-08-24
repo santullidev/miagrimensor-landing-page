@@ -115,10 +115,10 @@ const Features07Page = () => {
         </div>
         
         <div className="text-center">
-          <Button asChild size="lg" className="text-lg px-6 py-4 max-w-xs sm:max-w-sm md:max-w-md">
-            <Link href="/otros-servicios">
-              Ver Todos los Servicios Especializados
-              <ArrowRight size={20} className="ml-2" />
+          <Button asChild size="lg" className="text-sm sm:text-base md:text-lg px-3 sm:px-4 md:px-6 py-3 sm:py-4 w-full max-w-xs sm:max-w-sm md:max-w-md">
+            <Link href="/otros-servicios" className="flex items-center justify-center gap-2">
+              <span className="whitespace-normal">Ver Todos los Servicios Especializados</span>
+              <ArrowRight size={16} className="sm:w-5 sm:h-5 flex-shrink-0" />
             </Link>
           </Button>
         </div>
