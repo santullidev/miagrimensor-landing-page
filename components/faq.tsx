@@ -49,13 +49,13 @@ const FAQ = () => {
   return (
     <div
       id="faq"
-      className="w-full max-w-7xl mx-auto py-12 xs:py-20 px-6"
+      className="w-full max-w-7xl mx-auto py-12 xs:py-20 px-4 sm:px-6"
     >
       <div className="text-center mb-12">
-        <h2 className="text-3xl xs:text-4xl md:text-5xl leading-[1.15] font-bold tracking-tight mb-4">
+        <h2 className="text-3xl xs:text-4xl md:text-5xl leading-[1.15] font-bold tracking-tight mb-4 break-words">
           Preguntas Frecuentes
         </h2>
-        <p className="xs:text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="xs:text-lg text-muted-foreground max-w-2xl mx-auto break-words">
           Resuelve tus dudas más comunes sobre los servicios de agrimensura
         </p>
       </div>
@@ -75,18 +75,18 @@ const FAQ = () => {
               <AccordionPrimitive.Header className="flex">
                 <AccordionPrimitive.Trigger
                   className={cn(
-                    "flex flex-1 items-center justify-between w-full p-6 text-left",
+                    "flex flex-1 items-center justify-between w-full p-4 sm:p-6 text-left",
                     "bg-background border border-border rounded-xl",
                     "hover:bg-accent/50 transition-all duration-300 ease-out",
                     "group-data-[state=open]:bg-accent group-data-[state=open]:border-primary/20",
                     "group-data-[state=open]:shadow-lg",
-                    "font-semibold text-base md:text-lg leading-relaxed"
+                    "font-semibold text-sm sm:text-base md:text-lg leading-relaxed"
                   )}
                 >
-                  <span className="pr-4">{question}</span>
+                  <span className="pr-4 break-words min-w-0 flex-1">{question}</span>
                   <ChevronDownIcon 
                     className={cn(
-                      "h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out",
+                      "h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2",
                       "group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary"
                     )} 
                   />
@@ -98,8 +98,8 @@ const FAQ = () => {
                   "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                 )}
               >
-                <div className="px-6 pb-6 pt-2">
-                  <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-2">
+                  <div className="text-muted-foreground leading-relaxed whitespace-pre-line break-words">
                     {answer}
                   </div>
                 </div>

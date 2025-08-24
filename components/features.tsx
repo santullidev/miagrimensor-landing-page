@@ -171,10 +171,10 @@ const Features = () => {
     <>
       <div
         id="features"
-        className="max-w-7xl mx-auto w-full py-12 xs:py-20 px-6"
+        className="max-w-7xl mx-auto w-full py-12 xs:py-20 px-4 sm:px-6"
       >
         <div className="text-center mb-12">
-          <h2 className="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight mb-4">
+          <h2 className="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight mb-4 break-words">
             SERVICIOS DE AGRIMENSURA<br />
             Servicios principales
           </h2>
@@ -187,18 +187,18 @@ const Features = () => {
           </Link>
         </div>
         
-        <div className="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+        <div className="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-10 gap-y-8 sm:gap-y-12">
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="flex flex-col border rounded-xl overflow-hidden shadow-none hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+              className="flex flex-col border rounded-xl overflow-hidden shadow-none hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group mx-2 sm:mx-0"
             >
-              <CardHeader className="cursor-pointer" onClick={() => window.location.href = '/servicios'}>
+              <CardHeader className="cursor-pointer p-4 sm:p-6" onClick={() => window.location.href = '/servicios'}>
                 <feature.icon className="text-primary" />
-                <h4 className="mt-3! text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                <h4 className="mt-3! text-xl font-bold tracking-tight group-hover:text-primary transition-colors break-words">
                   {feature.title}
                 </h4>
-                <p className="mt-1 text-muted-foreground text-sm xs:text-[17px] group-hover:text-foreground/80 transition-colors">
+                <p className="mt-1 text-muted-foreground text-sm xs:text-[17px] group-hover:text-foreground/80 transition-colors break-words">
                   {feature.description}
                 </p>
                 <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity mt-2">
@@ -208,7 +208,7 @@ const Features = () => {
               </CardHeader>
               <CardContent className="mt-auto px-0 pb-0">
                 <div 
-                  className="relative h-52 ml-6 rounded-tl-xl overflow-hidden cursor-pointer bg-gray-100"
+                  className="relative h-52 ml-4 sm:ml-6 rounded-tl-xl overflow-hidden cursor-pointer bg-gray-100"
                   onClick={() => openImageModal(index)}
                 >
                   <img
