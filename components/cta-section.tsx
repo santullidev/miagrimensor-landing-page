@@ -30,7 +30,7 @@ export default function CTASection() {
               asChild 
               variant="outline" 
               size="lg" 
-              className="text-lg px-8 py-6 bg-white/90 hover:bg-white border-gray-300 shadow-sm"
+              className="text-lg px-8 py-6 bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white border-gray-300 dark:border-slate-600 shadow-sm"
             >
               <Link href="/servicios">
                 VER SERVICIOS

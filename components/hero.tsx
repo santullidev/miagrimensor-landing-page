@@ -65,7 +65,7 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
       
       {/* Contenido principal */}
-      <div className="relative z-20 w-full flex items-center justify-center min-h-[calc(100vh-4rem)]">
+      <div className="relative z-50 w-full flex items-center justify-center min-h-[calc(100vh-4rem)]">
         <div className="max-w-7xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-4 sm:px-6 py-12 lg:py-8 xl:py-12 overflow-hidden">
           <div className="max-w-xl w-full">
             <Badge className="rounded-full py-1 border-none bg-white/90 text-slate-900 hover:bg-white shadow-lg backdrop-blur-sm">

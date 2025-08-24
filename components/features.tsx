@@ -112,24 +112,43 @@ const Features = () => {
     setPosition({ x: 0, y: 0 });
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     if (zoom > 1) {
       setIsDragging(true);
-      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      setDragStart({ x: clientX - position.x, y: clientY - position.y });
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (isDragging && zoom > 1) {
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
       setPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y,
+        x: clientX - dragStart.x,
+        y: clientY - dragStart.y,
       });
     }
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleMouseDown(e);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleMouseMove(e);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleMouseUp();
   };
 
   // Navegación con teclado
@@ -191,17 +210,18 @@ const Features = () => {
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="flex flex-col border rounded-xl overflow-hidden shadow-none hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group mx-2 sm:mx-0"
+              className="flex flex-col border rounded-xl overflow-hidden shadow-none hover:shadow-lg focus:shadow-lg focus-within:shadow-lg transition-all duration-300 group p-1"
+              tabIndex={0}
             >
               <CardHeader className="cursor-pointer p-4 sm:p-6" onClick={() => window.location.href = '/servicios'}>
                 <feature.icon className="text-primary" />
-                <h4 className="mt-3! text-xl font-bold tracking-tight group-hover:text-primary transition-colors break-words">
+                <h4 className="mt-3! text-xl font-bold tracking-tight group-hover:text-primary group-focus:text-primary transition-colors break-words">
                   {feature.title}
                 </h4>
-                <p className="mt-1 text-muted-foreground text-sm xs:text-[17px] group-hover:text-foreground/80 transition-colors break-words">
+                <p className="mt-1 text-muted-foreground text-sm xs:text-[17px] group-hover:text-foreground/80 group-focus:text-foreground/80 transition-colors break-words">
                   {feature.description}
                 </p>
-                <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity mt-2">
+                <div className="flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity mt-2">
                   <span className="text-sm font-medium">Ver más detalles</span>
                   <ArrowRight size={14} />
                 </div>
@@ -214,10 +234,10 @@ const Features = () => {
                   <img
                     src={feature.image}
                     alt={feature.title}
-                    className="object-cover transition-transform duration-300 group-hover:scale-105 w-full h-full"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105 w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 group-focus:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
                       <ZoomIn size={24} className="text-gray-700" />
                     </div>
                   </div>
@@ -231,55 +251,55 @@ const Features = () => {
       {/* Modal mejorado para imagen grande */}
       {selectedImageIndex !== null && (
         <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300"
           onClick={closeImageModal}
         >
           {/* Controles superiores - Z-index alto para estar siempre arriba */}
           <div 
-            className="absolute top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white z-[60]"
+            className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 sm:gap-4 bg-black/50 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white z-[60] max-w-[90vw] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleZoomOut}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Zoom Out (-)"
             >
-              <ZoomOut size={20} />
+              <ZoomOut size={16} className="sm:w-5 sm:h-5" />
             </button>
-            <span className="text-sm font-medium min-w-[60px] text-center">
+            <span className="text-xs sm:text-sm font-medium min-w-[40px] sm:min-w-[60px] text-center">
               {Math.round(zoom * 100)}%
             </span>
             <button
               onClick={handleZoomIn}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Zoom In (+)"
             >
-              <ZoomIn size={20} />
+              <ZoomIn size={16} className="sm:w-5 sm:h-5" />
             </button>
-            <div className="w-px h-6 bg-white/30 mx-2"></div>
+            <div className="w-px h-4 sm:h-6 bg-white/30 mx-1 sm:mx-2"></div>
             <button
               onClick={handleRotate}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Rotate (R)"
             >
-              <RotateCcw size={20} />
+              <RotateCcw size={16} className="sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={handleReset}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Reset (0)"
             >
-              <span className="text-sm font-bold">⟲</span>
+              <span className="text-xs sm:text-sm font-bold">⟲</span>
             </button>
           </div>
 
           {/* Botón cerrar - Z-index alto */}
           <button
             onClick={closeImageModal}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-2"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-2"
             title="Close (ESC)"
           >
-            <X size={24} />
+            <X size={20} className="sm:w-6 sm:h-6" />
           </button>
 
 
@@ -287,15 +307,21 @@ const Features = () => {
           {/* Contenedor de imagen - Z-index más bajo */}
           <div className="relative max-w-[95vw] max-h-[95vh] mt-16 z-10">
             <div 
-              className="relative w-full h-full cursor-grab active:cursor-grabbing"
+              className="relative w-full h-full cursor-grab active:cursor-grabbing touch-none"
               style={{
                 willChange: 'transform',
                 backfaceVisibility: 'hidden',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                WebkitTouchCallout: 'none',
               }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
                              <img
                  src={features[selectedImageIndex].image}
