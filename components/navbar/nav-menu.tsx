@@ -20,15 +20,15 @@ export const NavMenu = (props: NavigationMenuProps) => {
         
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/servicios" className="block py-1.5 px-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium text-sm">
-              Servicios
+            <Link href="/acerca-de-mi" className="block py-1.5 px-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium text-sm">
+              Acerca de mí
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link href="/otros-servicios" className="block py-1.5 px-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium text-sm">
-              Otros Servicios
+            <Link href="/servicios" className="block py-1.5 px-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-slate-100 font-medium text-sm">
+              Servicios
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
