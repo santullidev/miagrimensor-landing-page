@@ -83,12 +83,12 @@ const FAQ = () => {
                     "font-semibold text-sm sm:text-base md:text-lg leading-tight sm:leading-relaxed"
                   )}
                 >
-                  <span className="pr-2 sm:pr-4 break-words min-w-0 flex-1 text-left leading-relaxed">
+                  <span className="pr-2 sm:pr-4 break-words min-w-0 flex-1 text-left leading-relaxed whitespace-normal hyphens-auto overflow-wrap-anywhere">
                     {question}
                   </span>
                   <ChevronDownIcon 
                     className={cn(
-                      "h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2 sm:ml-3 mt-0.5",
+                      "h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2 sm:ml-3 mt-0.5 flex-shrink-0",
                       "group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary"
                     )} 
                   />
