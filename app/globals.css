@@ -128,6 +128,49 @@
     overflow-x: hidden;
   }
   
+  /* Estilos específicos para FAQ y acordeón */
+  [data-radix-accordion-trigger] {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+  }
+  
+  [data-radix-accordion-trigger] span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* Asegurar que el texto del FAQ no se corte */
+  .faq-question {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+  }
+  
+  /* Ajustes específicos para mobile */
+  @media (max-width: 640px) {
+    [data-radix-accordion-trigger] {
+      padding: 0.75rem !important;
+      font-size: 0.875rem !important;
+      line-height: 1.25rem !important;
+    }
+    
+    [data-radix-accordion-trigger] span {
+      padding-right: 0.5rem !important;
+    }
+    
+    [data-radix-accordion-trigger] svg {
+      width: 1rem !important;
+      height: 1rem !important;
+      margin-left: 0.25rem !important;
+    }
+  }
+  
   /* Transiciones suaves para modo oscuro */
   * {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
