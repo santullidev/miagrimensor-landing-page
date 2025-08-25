@@ -88,7 +88,7 @@ const Testimonial06 = () => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-center py-12 px-6 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div id="testimonials" className="min-h-screen w-full flex justify-center items-center py-12 px-6 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       <div className="w-full">
         <h2 className="mb-14 text-5xl md:text-6xl font-bold text-center tracking-tight">
           Lo que dicen mis clientes

@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -9,10 +11,17 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Menu } from "lucide-react";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
+import { useState } from "react";
 
 export const NavigationSheet = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <VisuallyHidden>
         <SheetTitle>Navigation Drawer</SheetTitle>
       </VisuallyHidden>
@@ -28,7 +37,7 @@ export const NavigationSheet = () => {
           </div>
           
           <div className="flex-1 mt-4 px-4">
-            <NavMenu orientation="vertical" className="space-y-1" />
+            <NavMenu orientation="vertical" className="space-y-1" onLinkClick={handleLinkClick} />
           </div>
 
           <div className="flex-shrink-0 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 px-4 pb-4">
@@ -37,7 +46,13 @@ export const NavigationSheet = () => {
               size="sm"
               asChild
             >
-              <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+              <a 
+                href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="cursor-pointer"
+                onClick={handleLinkClick}
+              >
                 WhatsApp
               </a>
             </Button>
