@@ -341,3 +341,30 @@
 .animate-accordion-up {
   animation: accordion-up 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Logo fixes for mobile devices */
+.logo-container img {
+  object-fit: contain;
+  object-position: left center;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Specific fixes for Samsung S20FE and similar devices */
+@media (max-width: 412px) {
+  .logo-container img {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 375px) {
+  .logo-container img {
+    max-width: 70px;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo-container img {
+    max-width: 65px;
+  }
+}

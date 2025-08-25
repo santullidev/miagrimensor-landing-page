@@ -60,7 +60,7 @@ export const Logo = () => {
         width={285}
         height={66}
         priority
-        className="w-24 sm:w-28 md:w-32 h-auto min-w-0"
+        className="w-20 sm:w-24 md:w-28 lg:w-32 h-auto min-w-0 max-w-full"
         style={{ height: 'auto' }}
       />
     );
@@ -74,7 +74,7 @@ export const Logo = () => {
         width={285}
         height={66}
         priority
-        className="w-24 sm:w-28 md:w-32 h-auto min-w-0"
+        className="w-20 sm:w-24 md:w-28 lg:w-32 h-auto min-w-0 max-w-full"
         style={{ height: 'auto' }}
       />
     );
@@ -88,7 +88,7 @@ export const Logo = () => {
         width={285}
         height={66}
         priority
-        className="w-24 sm:w-28 md:w-32 h-auto min-w-0"
+        className="w-20 sm:w-24 md:w-28 lg:w-32 h-auto min-w-0 max-w-full"
         style={{ height: 'auto' }}
       />
     </Link>

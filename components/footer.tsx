@@ -122,7 +122,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-8 px-4 sm:px-6 w-full overflow-hidden">
         <div className="col-span-full xl:col-span-2 overflow-hidden">
           {/* Logo */}
-          <div className="flex-shrink-0 mb-4 overflow-hidden">
+          <div className="flex-shrink-0 mb-4 overflow-hidden logo-container">
             <Logo_2/>
           </div>
 
