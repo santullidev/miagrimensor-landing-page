@@ -53,8 +53,8 @@ export const Logo_2 = () => {
       <Image
         src="/logo_miagrimensor.svg"
         alt="Logo Mi Agrimensor"
-        width={124}
-        height={32}
+        width={285}
+        height={66}
         priority
         className="w-24 sm:w-28 md:w-32 h-auto min-w-0"
         style={{ height: 'auto' }}
@@ -66,8 +66,8 @@ export const Logo_2 = () => {
     <Image
       src={logoSrc}
       alt="Logo Mi Agrimensor"
-      width={124}
-      height={32}
+      width={285}
+      height={66}
       priority
       className="w-24 sm:w-28 md:w-32 h-auto min-w-0"
       style={{ height: 'auto' }}
