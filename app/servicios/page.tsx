@@ -157,24 +157,43 @@ export default function ServiciosPage() {
     setPosition({ x: 0, y: 0 });
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     if (zoom > 1) {
       setIsDragging(true);
-      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      setDragStart({ x: clientX - position.x, y: clientY - position.y });
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (isDragging && zoom > 1) {
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
       setPosition({
-        x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y,
+        x: clientX - dragStart.x,
+        y: clientY - dragStart.y,
       });
     }
   };
 
   const handleMouseUp = () => {
     setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleMouseDown(e);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleMouseMove(e);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleMouseUp();
   };
 
   // Navegación con teclado
@@ -297,55 +316,55 @@ export default function ServiciosPage() {
       {/* Modal mejorado para imagen grande */}
       {selectedImageIndex !== null && (
         <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300"
           onClick={closeImageModal}
         >
           {/* Controles superiores - Z-index alto para estar siempre arriba */}
           <div 
-            className="absolute top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white z-[60]"
+            className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 sm:gap-4 bg-black/50 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 text-white z-[60] max-w-[90vw] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleZoomOut}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Zoom Out (-)"
             >
-              <ZoomOut size={20} />
+              <ZoomOut size={16} className="sm:w-5 sm:h-5" />
             </button>
-            <span className="text-sm font-medium min-w-[60px] text-center">
+            <span className="text-xs sm:text-sm font-medium min-w-[40px] sm:min-w-[60px] text-center">
               {Math.round(zoom * 100)}%
             </span>
             <button
               onClick={handleZoomIn}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Zoom In (+)"
             >
-              <ZoomIn size={20} />
+              <ZoomIn size={16} className="sm:w-5 sm:h-5" />
             </button>
-            <div className="w-px h-6 bg-white/30 mx-2"></div>
+            <div className="w-px h-4 sm:h-6 bg-white/30 mx-1 sm:mx-2"></div>
             <button
               onClick={handleRotate}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Rotate (R)"
             >
-              <RotateCcw size={20} />
+              <RotateCcw size={16} className="sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={handleReset}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Reset (0)"
             >
-              <span className="text-sm font-bold">⟲</span>
+              <span className="text-xs sm:text-sm font-bold">⟲</span>
             </button>
           </div>
 
           {/* Botón cerrar - Z-index alto */}
           <button
             onClick={closeImageModal}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-2"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors z-[60] bg-black/50 backdrop-blur-sm rounded-full p-2"
             title="Close (ESC)"
           >
-            <X size={24} />
+            <X size={20} className="sm:w-6 sm:h-6" />
           </button>
 
 
@@ -353,15 +372,21 @@ export default function ServiciosPage() {
           {/* Contenedor de imagen - Z-index más bajo */}
           <div className="relative max-w-[95vw] max-h-[95vh] mt-16 z-10">
             <div 
-              className="relative w-full h-full cursor-grab active:cursor-grabbing"
+              className="relative w-full h-full cursor-grab active:cursor-grabbing touch-none"
               style={{
                 willChange: 'transform',
                 backfaceVisibility: 'hidden',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                WebkitTouchCallout: 'none',
               }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
                              <img
                  src={services[selectedImageIndex].image}

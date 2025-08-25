@@ -306,44 +306,44 @@ export default function OtrosServiciosPage() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
           
-          <div className="relative max-w-7xl mx-auto px-6 py-16">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
             <Link 
               href="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6 group"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4 sm:mb-6 group"
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-              Volver al inicio
+              <span className="text-sm sm:text-base">Volver al inicio</span>
             </Link>
             
             <div className="text-center max-w-4xl mx-auto">
-              <Badge className="rounded-full py-2 px-6 border-none mb-6 bg-primary/20 text-primary">
+              <Badge className="rounded-full py-1.5 sm:py-2 px-4 sm:px-6 border-none mb-3 sm:mb-4 bg-primary/20 text-primary text-xs sm:text-sm">
                 Servicios Especializados
               </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-3 sm:mb-4 text-foreground break-words">
                 Otros Servicios
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-4 sm:mb-6 leading-relaxed break-words">
                 Servicios especializados de agrimensura y topografía para necesidades específicas. 
                 Tecnología de vanguardia y experiencia profesional a tu disposición.
               </p>
               
               {/* Estadísticas */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-6 sm:mt-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">6+</div>
-                  <div className="text-sm text-muted-foreground">Servicios Especializados</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">6+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">Servicios Especializados</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
-                  <div className="text-sm text-muted-foreground">Años de Experiencia</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">15+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">Años de Experiencia</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">500+</div>
-                  <div className="text-sm text-muted-foreground">Proyectos Completados</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">500+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">Proyectos Completados</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                  <div className="text-sm text-muted-foreground">Satisfacción Cliente</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">100%</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">Satisfacción Cliente</div>
                 </div>
               </div>
             </div>
@@ -352,12 +352,12 @@ export default function OtrosServiciosPage() {
 
         {/* Filtros */}
         <div className="bg-muted/30 border-b">
-          <div className="max-w-7xl mx-auto px-6 py-8">
-            <div className="flex flex-wrap gap-4 justify-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+            <div className="flex flex-wrap gap-2 sm:gap-4 justify-center">
               <Button
                 variant={selectedCategory === "" ? "default" : "outline"}
                 onClick={() => setSelectedCategory("")}
-                className="rounded-full"
+                className="rounded-full text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
               >
                 Todos los Servicios
               </Button>
@@ -366,7 +366,7 @@ export default function OtrosServiciosPage() {
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category)}
-                  className="rounded-full"
+                  className="rounded-full text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
                 >
                   {category}
                 </Button>
@@ -376,14 +376,14 @@ export default function OtrosServiciosPage() {
         </div>
 
         {/* Servicios */}
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid gap-8 sm:gap-12">
             {filteredServices.map((service, index) => (
               <Card key={service.id} className="overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl">
                 <div className="grid lg:grid-cols-2 gap-0">
                   {/* Imagen con overlay mejorado */}
                   <div 
-                    className="relative h-80 lg:h-full cursor-pointer group bg-gray-100"
+                    className="relative h-64 sm:h-80 lg:h-full cursor-pointer group bg-gray-100"
                     onClick={() => openImageModal(index)}
                   >
                     <img
@@ -393,94 +393,97 @@ export default function OtrosServiciosPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white/90 rounded-full p-4 backdrop-blur-sm">
-                        <ZoomIn size={32} className="text-gray-700" />
+                      <div className="bg-white/90 rounded-full p-3 sm:p-4 backdrop-blur-sm">
+                        <ZoomIn size={24} className="sm:w-8 sm:h-8 text-gray-700" />
                       </div>
                     </div>
                     
                     {/* Badge de categoría */}
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-primary/90 text-white border-none">
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                      <Badge className="bg-primary/90 text-white border-none text-xs sm:text-sm px-2 sm:px-3 py-1">
                         {service.category}
                       </Badge>
                     </div>
                   </div>
                   
                   {/* Contenido mejorado */}
-                  <div className="p-8 lg:p-12">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="bg-primary/10 p-3 rounded-xl">
-                        <service.icon className="text-primary" size={32} />
+                  <div className="p-4 sm:p-6 lg:p-8 xl:p-12">
+                    <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                      <div className="bg-primary/10 p-2 sm:p-3 rounded-xl flex-shrink-0">
+                        <service.icon className="text-primary w-6 h-6 sm:w-8 sm:h-8" />
                       </div>
-                      <div className="flex-1">
-                        <h2 className="text-3xl font-bold mb-2">{service.title}</h2>
-                        <p className="text-lg text-primary font-medium mb-4">{service.subtitle}</p>
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 break-words">{service.title}</h2>
+                        <p className="text-sm sm:text-base lg:text-lg text-primary font-medium mb-2 sm:mb-4 break-words">{service.subtitle}</p>
                       </div>
                     </div>
                     
-                    <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
+                    <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed break-words">
                       {service.description}
                     </p>
                     
                     {/* Características principales */}
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="space-y-4">
-                        <h4 className="font-semibold text-lg flex items-center gap-2">
-                          <CheckCircle className="text-primary" size={20} />
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                      <div className="space-y-3 sm:space-y-4">
+                        <h4 className="font-semibold text-base sm:text-lg flex items-center gap-2">
+                          <CheckCircle className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                           Características
                         </h4>
-                        <ul className="space-y-2">
+                        <ul className="space-y-1.5 sm:space-y-2">
                           {service.features.slice(0, 3).map((feature, idx) => (
-                            <li key={idx} className="flex items-center gap-2 text-sm">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                              {feature}
+                            <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm">
+                              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
+                              <span className="break-words">{feature}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                       
-                      <div className="space-y-4">
-                        <h4 className="font-semibold text-lg flex items-center gap-2">
-                          <Award className="text-primary" size={20} />
+                      <div className="space-y-3 sm:space-y-4">
+                        <h4 className="font-semibold text-base sm:text-lg flex items-center gap-2">
+                          <Award className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
                           Información
                         </h4>
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-2 text-sm">
-                            <Clock size={16} className="text-muted-foreground" />
-                            <span className="font-medium">Duración:</span> {service.duration}
+                        <div className="space-y-2 sm:space-y-3">
+                          <div className="flex items-center gap-2 text-xs sm:text-sm">
+                            <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
+                            <span className="font-medium">Duración:</span> 
+                            <span className="break-words">{service.duration}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <Target size={16} className="text-muted-foreground" />
-                            <span className="font-medium">Complejidad:</span> {service.complexity}
+                          <div className="flex items-center gap-2 text-xs sm:text-sm">
+                            <Target className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
+                            <span className="font-medium">Complejidad:</span> 
+                            <span className="break-words">{service.complexity}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-sm">
-                            <TrendingUp size={16} className="text-muted-foreground" />
-                            <span className="font-medium">Precio:</span> {service.price}
+                          <div className="flex items-center gap-2 text-xs sm:text-sm">
+                            <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground flex-shrink-0" />
+                            <span className="font-medium">Precio:</span> 
+                            <span className="break-words">{service.price}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                     
                     {/* Highlights */}
-                    <div className="flex flex-wrap gap-2 mb-8">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
                       {service.highlights.map((highlight, idx) => (
-                        <Badge key={idx} variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                        <Badge key={idx} variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-xs px-2 py-1">
                           {highlight}
                         </Badge>
                       ))}
                     </div>
                     
                     {/* Botones de acción */}
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Button asChild size="lg" className="flex-1">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                      <Button asChild size="lg" className="flex-1 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
                         <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                           Solicitar Presupuesto
-                          <ArrowRight size={16} className="ml-2" />
+                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                         </a>
                       </Button>
-                      <Button asChild variant="outline" size="lg">
+                      <Button asChild variant="outline" size="lg" className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
                         <Link href={`tel:+5491167058156`}>
-                          <Phone size={16} className="mr-2" />
+                          <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                           Llamar
                         </Link>
                       </Button>
@@ -494,24 +497,24 @@ export default function OtrosServiciosPage() {
 
         {/* Testimonios */}
         <div className="bg-muted/30 border-t border-b">
-          <div className="max-w-7xl mx-auto px-6 py-16">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Lo que dicen nuestros clientes</h2>
-              <p className="text-xl text-muted-foreground">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 break-words">Lo que dicen nuestros clientes</h2>
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground break-words">
                 Experiencias reales de clientes satisfechos con nuestros servicios especializados
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
               {testimonials.map((testimonial, index) => (
-                <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                  <div className="flex items-center gap-2 mb-4">
+                <Card key={index} className="p-4 sm:p-6 hover:shadow-lg transition-shadow">
+                  <div className="flex items-center gap-2 mb-3 sm:mb-4">
                     {renderStars(testimonial.rating)}
                   </div>
-                  <p className="text-muted-foreground mb-4 italic">&ldquo;{testimonial.text}&rdquo;</p>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 italic break-words">&ldquo;{testimonial.text}&rdquo;</p>
                   <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.service}</p>
+                    <p className="font-semibold text-sm sm:text-base break-words">{testimonial.name}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground break-words">{testimonial.service}</p>
                   </div>
                 </Card>
               ))}
@@ -521,23 +524,23 @@ export default function OtrosServiciosPage() {
 
         {/* CTA Section mejorado */}
         <div className="bg-gradient-to-r from-primary/10 to-primary/5">
-          <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 break-words">
                 ¿Necesitas un servicio especializado?
               </h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto break-words">
                 Consultas sin cargo y presupuestos personalizados. Nuestro equipo est&aacute; listo para ayudarte con cualquier proyecto de agrimensura.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Button asChild size="lg" className="text-lg px-8 py-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
+                <Button asChild size="lg" className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-6">
                   <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                     Solicitar Presupuesto
-                    <ArrowRight size={20} className="ml-2" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Button asChild variant="outline" size="lg" className="text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-3 sm:py-6">
                   <Link href="/contacto">
                     Contacto
                   </Link>
@@ -545,26 +548,26 @@ export default function OtrosServiciosPage() {
               </div>
 
               {/* Información de contacto */}
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
                 <div className="flex items-center justify-center gap-3">
-                  <Phone className="text-primary" size={24} />
+                  <Phone className="text-primary w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                   <div className="text-left">
-                    <p className="font-medium">+54 9 11 6705-8156</p>
-                    <p className="text-sm text-muted-foreground">Llamadas y WhatsApp</p>
+                    <p className="font-medium text-sm sm:text-base break-words">+54 9 11 6705-8156</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground break-words">Llamadas y WhatsApp</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-3">
-                  <Mail className="text-primary" size={24} />
+                  <Mail className="text-primary w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                   <div className="text-left">
-                    <p className="font-medium">contacto@miagrimensor.com</p>
-                    <p className="text-sm text-muted-foreground">Consultas y presupuestos</p>
+                    <p className="font-medium text-sm sm:text-base break-words">contacto@miagrimensor.com</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground break-words">Consultas y presupuestos</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-3">
-                  <MapPin className="text-primary" size={24} />
+                  <MapPin className="text-primary w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                   <div className="text-left">
-                    <p className="font-medium">Avellaneda, Buenos Aires</p>
-                    <p className="text-sm text-muted-foreground">Zona de cobertura GBA</p>
+                    <p className="font-medium text-sm sm:text-base break-words">Avellaneda, Buenos Aires</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground break-words">Zona de cobertura GBA</p>
                   </div>
                 </div>
               </div>
@@ -578,55 +581,55 @@ export default function OtrosServiciosPage() {
       {/* Modal mejorado para imagen grande */}
       {selectedImageIndex !== null && (
         <div 
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-in fade-in duration-300"
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300"
           onClick={closeImageModal}
         >
           {/* Controles superiores */}
           <div 
-            className="absolute top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black/70 backdrop-blur-sm rounded-full px-6 py-3 text-white z-[60]"
+            className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 sm:gap-4 bg-black/70 backdrop-blur-sm rounded-full px-3 sm:px-6 py-2 sm:py-3 text-white z-[60] max-w-[90vw] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleZoomOut}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Zoom Out (-)"
             >
-              <ZoomOut size={20} />
+              <ZoomOut size={16} className="sm:w-5 sm:h-5" />
             </button>
-            <span className="text-sm font-medium min-w-[60px] text-center">
+            <span className="text-xs sm:text-sm font-medium min-w-[40px] sm:min-w-[60px] text-center">
               {Math.round(zoom * 100)}%
             </span>
             <button
               onClick={handleZoomIn}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Zoom In (+)"
             >
-              <ZoomIn size={20} />
+              <ZoomIn size={16} className="sm:w-5 sm:h-5" />
             </button>
-            <div className="w-px h-6 bg-white/30 mx-2"></div>
+            <div className="w-px h-4 sm:h-6 bg-white/30 mx-1 sm:mx-2"></div>
             <button
               onClick={handleRotate}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Rotate (R)"
             >
-              <RotateCcw size={20} />
+              <RotateCcw size={16} className="sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={handleReset}
-              className="p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="p-1.5 sm:p-2 hover:bg-white/20 rounded-full transition-colors"
               title="Reset (0)"
             >
-              <span className="text-sm font-bold">⟲</span>
+              <span className="text-xs sm:text-sm font-bold">⟲</span>
             </button>
           </div>
 
           {/* Botón cerrar */}
           <button
             onClick={closeImageModal}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[60] bg-black/70 backdrop-blur-sm rounded-full p-3"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors z-[60] bg-black/70 backdrop-blur-sm rounded-full p-2"
             title="Close (ESC)"
           >
-            <X size={24} />
+            <X size={20} className="sm:w-6 sm:h-6" />
           </button>
 
 
@@ -634,7 +637,14 @@ export default function OtrosServiciosPage() {
           {/* Contenedor de imagen */}
           <div className="relative max-w-[95vw] max-h-[95vh] mt-16 z-10">
             <div 
-              className="relative w-full h-full cursor-grab active:cursor-grabbing"
+              className="relative w-full h-full cursor-grab active:cursor-grabbing touch-none"
+              style={{
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+                WebkitTouchCallout: 'none',
+              }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -660,7 +670,7 @@ export default function OtrosServiciosPage() {
 
 
           {/* Atajos de teclado */}
-          <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-4 py-3 text-white text-xs opacity-0 hover:opacity-100 transition-opacity z-[60]">
+          <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white text-xs opacity-0 hover:opacity-100 transition-opacity z-[60]">
             <div>+ - Zoom</div>
             <div>R Rotar</div>
             <div>0 Reset</div>

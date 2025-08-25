@@ -314,12 +314,21 @@ export default function AcercaDeMiPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="text-lg px-8 py-6">
+              <Button 
+                asChild 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-black dark:bg-white hover:bg-gray-900 dark:hover:bg-gray-100 text-white dark:text-white border-2 border-black dark:border-white shadow-2xl font-bold"
+              >
                 <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                   SOLICITAR PRESUPUESTO
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6">
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8 py-6 bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white border-gray-300 dark:border-slate-600 shadow-sm"
+              >
                 <Link href="/servicios">
                   VER SERVICIOS
                 </Link>

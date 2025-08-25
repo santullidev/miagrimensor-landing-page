@@ -20,7 +20,7 @@ export default function CTASection() {
             <Button 
               asChild 
               size="lg" 
-              className="text-lg px-8 py-6 bg-black hover:bg-gray-800 text-white shadow-lg"
+              className="text-lg px-8 py-6 bg-black dark:bg-white hover:bg-gray-900 dark:hover:bg-gray-100 text-white dark:text-white border-2 border-black dark:border-white shadow-2xl font-bold"
             >
               <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                 SOLICITAR PRESUPUESTO
