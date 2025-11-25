@@ -36,7 +36,7 @@ const faq = [
   {
     question: "¿Cuánto tiempo tarda un trabajo de agrimensura?",
     answer:
-      "Los tiempos varían según el tipo de trabajo. Los estados parcelarios suelen completarse en 24-48 horas, mientras que trabajos más complejos como subdivisiones o urbanizaciones pueden tomar entre 1-2 semanas. Siempre te proporciono un cronograma detallado al inicio del proyecto.",
+      "Los tiempos varían según el tipo de trabajo. Los estados parcelarios suelen completarse en 24-48 horas, mientras que trabajos más complejos como subdivisiones o relevamientos topográficos pueden tomar entre 1-2 semanas. Siempre te proporciono un cronograma detallado al inicio del proyecto.",
   },
   {
     question: "¿Qué documentación necesito para solicitar un servicio?",
@@ -76,9 +76,9 @@ const FAQ = () => {
                 <AccordionPrimitive.Trigger
                   className={cn(
                     "flex flex-1 items-start justify-between w-full p-3 sm:p-4 md:p-6 text-left",
-                    "bg-background border border-border rounded-xl",
-                    "hover:bg-accent/50 transition-all duration-300 ease-out",
-                    "group-data-[state=open]:bg-accent group-data-[state=open]:border-primary/20",
+                    "bg-background border border-green/20 rounded-xl",
+                    "hover:bg-green/5 transition-all duration-300 ease-out",
+                    "group-data-[state=open]:bg-green/10 group-data-[state=open]:border-green/30",
                     "group-data-[state=open]:shadow-lg",
                     "font-semibold text-sm sm:text-base md:text-lg leading-tight sm:leading-relaxed"
                   )}
@@ -88,8 +88,8 @@ const FAQ = () => {
                   </span>
                   <ChevronDownIcon 
                     className={cn(
-                      "h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2 sm:ml-3 mt-0.5 flex-shrink-0",
-                      "group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary"
+                      "h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2 sm:ml-3 mt-0.5",
+                      "group-data-[state=open]:rotate-180 group-data-[state=open]:text-green-600"
                     )} 
                   />
                 </AccordionPrimitive.Trigger>

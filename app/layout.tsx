@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import StructuredData from "@/components/structured-data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -8,7 +9,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Agrimensor Pablo Venerus - Excelencia en Agrimensura | Avellaneda, Buenos Aires",
+  metadataBase: new URL("https://miagrimensor.com"),
+  title: {
+    default: "Agrimensor Pablo Venerus - Excelencia en Agrimensura | Avellaneda, Buenos Aires",
+    template: "%s | Agrimensor Pablo Venerus"
+  },
   description:
     "Agrimensor Pablo Venerus en Avellaneda. Servicios de agrimensura, topografía e ingeniería con más de 14 años de experiencia. Estados parcelarios, mensuras, amojonamientos y más. Zona de cobertura: CABA y Gran Buenos Aires.",
   keywords: [
@@ -31,7 +36,17 @@ export const metadata: Metadata = {
     "Relevamientos Topográficos",
     "GPS Geodésico",
     "Estación Total",
+    "Estado Parcelario Provincia Buenos Aires",
+    "Estado Parcelario CABA",
+    "Declaraciones Juradas",
+    "Subdivisiones PH",
   ],
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
   openGraph: {
     type: "website",
     siteName: "Agrimensor Pablo Venerus",
@@ -85,41 +100,19 @@ export const metadata: Metadata = {
     "DC.language": "es-AR",
     "DC.coverage": "Avellaneda, Buenos Aires, Argentina",
     "DC.rights": "Copyright 2024 Pablo Venerus",
+    "apple-mobile-web-app-title": "Miagrimensor",
   },
-  icons: [
-    {
-      rel: "icon",
-      url: "/favicon.ico",
-    },
-    {
-      rel: "apple-touch-icon",
-      url: "/apple-touch-icon.png",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      url: "/favicon-32x32.png",
-      sizes: "32x32",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      url: "/favicon-16x16.png",
-      sizes: "16x16",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      url: "/android-chrome-192x192.png",
-      sizes: "192x192",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      url: "/android-chrome-512x512.png",
-      sizes: "512x512",
-    },
-  ],
+  icons: {
+    icon: [
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   robots: {
     index: true,
     follow: true,
@@ -133,9 +126,16 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "tu-codigo-de-verificacion-google",
-    yandex: "tu-codigo-de-verificacion-yandex",
-    yahoo: "tu-codigo-de-verificacion-yahoo",
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || undefined,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
+    yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION || undefined,
+  },
+  formatDetection: {
+    telephone: true,
+    date: false,
+    address: false,
+    email: false,
+    url: false,
   },
 };
 
@@ -178,6 +178,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased bg-background text-foreground transition-colors duration-200`}>
+        <StructuredData type="ProfessionalService" />
         {children}
       </body>
     </html>

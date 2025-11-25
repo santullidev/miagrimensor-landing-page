@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Servicios de Agrimensura - Pablo Venerus | Estados Parcelarios, Mensuras y Más",
-  description: "Servicios profesionales de agrimensura: Estados Parcelarios, Planos de Mensura, Subdivisiones, Declaraciones Juradas, Urbanizaciones y Amojonamientos. Zona de cobertura: CABA y Gran Buenos Aires.",
+  description: "Servicios profesionales de agrimensura: Estados Parcelarios, Planos de Mensura, Declaraciones Juradas, Relevamientos Topográficos y Amojonamientos. Zona de cobertura: CABA y Gran Buenos Aires.",
   keywords: [
     "Estados Parcelarios",
     "Planos de Mensura",
-    "Subdivisiones urbanas y rurales",
     "Declaraciones Juradas",
-    "Urbanizaciones",
-    "Loteos",
+    "Relevamientos Topográficos",
     "Amojonamientos",
     "Agrimensura",
     "Topografía",
@@ -21,7 +19,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Servicios de Agrimensura - Pablo Venerus",
-    description: "Estados Parcelarios, Planos de Mensura, Subdivisiones y más servicios de agrimensura profesional en Avellaneda, Buenos Aires.",
+    description: "Estados Parcelarios, Planos de Mensura y más servicios de agrimensura profesional en Avellaneda, Buenos Aires.",
     url: "https://miagrimensor.com/servicios",
     siteName: "Agrimensor Pablo Venerus",
     images: [
@@ -38,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Servicios de Agrimensura - Pablo Venerus",
-    description: "Estados Parcelarios, Planos de Mensura, Subdivisiones y más servicios de agrimensura profesional.",
+    description: "Estados Parcelarios, Planos de Mensura y más servicios de agrimensura profesional.",
     images: ["/og-image.png"],
   },
   alternates: {

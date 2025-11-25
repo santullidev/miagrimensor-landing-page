@@ -88,15 +88,15 @@ export default function BlogPage() {
               </Link>
             </div>
             
-            <div className="text-center">
-              <Badge className="rounded-full py-2 px-4 border-none mb-6 sm:mb-8 text-sm">
+            <div className="text-center max-w-4xl mx-auto">
+              <Badge className="rounded-full py-2 px-4 border-none mb-6 sm:mb-8 text-sm bg-green text-white font-semibold shadow-soft">
                 Blog de Agrimensura
               </Badge>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight">
-                Explorando el Mundo de la Agrimensura
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight text-foreground">
+                Explorando el Mundo de la Agrimensura:<br className="hidden sm:block" /> Lo que Necesitas Saber
               </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
-                Información clara y accesible sobre agrimensura, topografía y su impacto en el mundo inmobiliario.
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0 leading-relaxed">
+                Bienvenido a mi blog, donde comparto mi experiencia de más de 15 años en agrimensura y topografía. Aquí encontrarás información clara y accesible sobre estados parcelarios, relevamientos topográficos y cómo estos conceptos afectan directamente tus decisiones inmobiliarias y proyectos de desarrollo.
               </p>
             </div>
           </div>

@@ -147,105 +147,178 @@ El certificado incluye toda la información esencial y complementaria del inmueb
     content: `
 # Todo sobre el Estado Parcelario en la Provincia de Buenos Aires
 
-## Marco Legal Provincial
+Qué - Cómo - Cuándo - Por qué - Dónde Provincia de Buenos Aires
 
-La Provincia de Buenos Aires cuenta con su propia normativa para el Estado Parcelario, que difiere en algunos aspectos de la Ciudad Autónoma de Buenos Aires.
+## ¿Qué es el Estado Parcelario según la Ley 10.707/94?
 
-### Ley Provincial de Catastro
+Que - Como - Cuando - Porque - Donde
 
-La Provincia de Buenos Aires regula el catastro a través de su propia legislación, estableciendo los requisitos específicos para la constitución y verificación del estado parcelario.
+La Ley 10.707 de Catastro Territorial de la Provincia de Buenos Aires establece el marco legal para el registro, valuación y administración de los inmuebles en la provincia.
 
-## Diferencias con CABA
+### Definición legal (Art. 4 y 5)
 
-### 1. Plazos de Verificación
-Los plazos para la verificación del estado parcelario pueden variar según el municipio y el tipo de inmueble.
 
-### 2. Documentación Requerida
-Cada municipio puede establecer requisitos específicos de documentación adicional.
+- **Parcela**: Porción de tierra continua, delimitada por una poligonal cerrada, perteneciente a uno o más titulares (propietarios o poseedores).
 
-### 3. Procedimientos Administrativos
-Los trámites y procedimientos pueden diferir entre los distintos municipios de la provincia.
+- **Estado Parcelario**: Documentación que acredita su existencia y características esenciales mediante un **plano registrado** en el organismo catastral.
 
-## Requisitos Generales
+### Elementos del Estado Parcelario:
 
-### Documentación Básica
-- Plano de mensura actualizado
-- Certificado de dominio
-- Constancia de libre deuda municipal
-- Certificado catastral
+  **Deben constar obligatoriamente en el registro:**
 
-### Elementos del Estado Parcelario Provincial
+✔ Ubicación georreferenciada (coordenadas).  
+✔ Límites legales (según títulos de propiedad o posesión).  
+✔ Medidas exactas (superficie, ángulos, linderos).
 
-#### Esenciales:
-1. **Nomenclatura catastral municipal**
-2. **Ubicación georreferenciada**
-3. **Límites y medidas**
-4. **Mejoras y características constructivas**
-5. **Partida inmobiliaria provincial**
+**También incluyen:**
 
-#### Complementarios:
-1. **Inscripción en el Registro de la Propiedad**
-2. **Valuación fiscal municipal**
-3. **Zonificación local**
-4. **Permisos municipales**
-5. **Linderos y referencias**
+✔ Valuación fiscal (valor impositivo).  
+✔ Linderos (colindancias con otras parcelas).
 
-## Municipios de Cobertura
+## ¿Cómo se constituye?
 
-Ofrecemos servicios en los siguientes partidos de la Provincia de Buenos Aires:
+**1. Relevamiento técnico:**
 
-- **Avellaneda**
-- **Lanús**
-- **Lomas de Zamora**
-- **Vicente López**
-- **San Fernando**
-- **San Isidro**
-- **Tigre**
-- **La Matanza**
-- **San Martín**
-- **Ituzaingó**
+- Realizado por un agrimensor matriculado.
+- Se genera un plano georreferenciado, con: Límites (muros, mojones, cercos, accidentes naturales), superficie, linderos, y las mejoras existentes.
+- Se informan datos del relevamiento realizado (medidas, superficie y linderos)
+- Se informan edificaciones existentes en el inmueble, y se las contrasta con los antecedentes registrados en Arba.
+- Se informan datos dominiales, (medidas, superficie, linderos, inscripciones vigentes, titulares).
 
-## Procedimientos Específicos
+**2. Registro en el Catastro:**
 
-### Constitución del Estado Parcelario
-1. **Relevamiento topográfico** con Estación Total
-2. **Procesamiento de datos** con software especializado
-3. **Elaboración del plano** de mensura
-4. **Presentación ante el organismo** catastral correspondiente
-5. **Seguimiento del trámite** hasta su aprobación
+- El plano y el informe técnico se inscriben en El Catastro de la Pcia. de Bs As (Arba).
+- Luego el estado parcelario quedará conformado por una **cédula catastral** (documento único de identificación del inmueble) y por un resumen valuatorio.
 
-### Verificación de Subsistencia
-- **Relevamiento de campo** para verificar el estado actual
-- **Comparación con documentación** existente
-- **Actualización de datos** si corresponde
-- **Emisión del certificado** de verificación
+## Importancia del Estado Parcelario
 
-## Ventajas del Estado Parcelario Provincial
+- **Base para transacciones:** Sin él, no se pueden vender, dividir o gravar inmuebles (Art. 50).
+- **Seguridad jurídica:** Evita superposiciones de dominio o límites imprecisos.
+- **Tributación:** Determina el valor fiscal para el pago de impuestos (Arts. 53–84).
 
-### 1. Seguridad Jurídica
-Garantiza la correcta identificación y descripción del inmueble.
+### Artículo 50
 
-### 2. Agilización de Trámites
-Facilita los procedimientos administrativos y registrales.
+Declárase obligatorio para los escribanos de Registros Públicos y para cualquier otro funcionario que autorice actos de transmisión, constitución, declaración o modificación de derechos reales sobre inmuebles ubicados en el territorio de la Provincia y sometidos a su jurisdicción, lo siguiente:
 
-### 3. Prevención de Conflictos
-Evita problemas de límites y medidas en futuras operaciones.
+a) Requerir a la Agencia de Recaudación de la Provincia de Buenos Aires, antes del otorgamiento del acto, el certificado catastral correspondiente al inmueble, especificando la inscripción de su dominio vigente y la nomenclatura catastral o preexistente, así como los números de las partidas que le correspondan en los padrones del impuesto inmobiliario o en los establecidos por leyes especiales que correspondieren;
 
-### 4. Valor Agregado
-Aumenta el valor y la confiabilidad del inmueble en el mercado.
+b) Transcribir en los instrumentos públicos el contenido de dicho certificado catastral, haciendo constar, la nomenclatura catastral, las observaciones, restricciones o aclaraciones que constaren y la descripción del inmueble según las constancias del mismo.
 
-## Consultas y Asesoramiento
+Certificado Catastral VS Estado Parcelario
 
-Ofrecemos consultas sin cargo y presupuestos en el día para todos los servicios relacionados con el Estado Parcelario en la Provincia de Buenos Aires.
+1. **📐 El Estado Parcelario (Arts. 4-8 Ley 10.707):**
 
-### Contacto
-- **Teléfono**: +54 9 11 6705-8156
-- **Email**: contacto@miagrimensor.com
-- **Zona de cobertura**: CABA y Gran Buenos Aires
+- Lo crea el agrimensor mediante un relevamiento técnico (mensura).
+
+- Incluye plano georreferenciado, medidas exactas y linderos.
+
+- Es un requisito PREVIO para obtener el certificado.
+
+
+2. **📄 El Certificado Catastral (Arts. 49-52):**
+
+- Lo emite EXCLUSIVAMENTE la Dirección de Catastro.
+
+- Sintetiza la información registrada en sus bases de datos.
+
+- Certifica que el Estado Parcelario está aprobado y vigente.
+
+**Flujo del proceso:**
+
+[FLUJO_PROCESO]
+Agrimensor → Realiza mensura → Catastro aprueba y registra → Emite certificado
+[/FLUJO_PROCESO]
+
+¿Por qué la confusión?
+
+- El certificado NO lo emite el agrimensor, pero DEPENDE de su trabajo.
+- Sin mensura válida (hecha por agrimensor matriculado), Catastro no puede emitir el certificado.
+
+**Ejemplo real:**
+
+Un agrimensor mide el terreno y presenta:
+
+- Plano técnico.
+- Informe de mensura.
+- Declaración jurada.
+
+Catastro revisa, aprueba y recién entonces expide el certificado que usará el escribano para tu venta.
+
+## Vigencia del Estado Parcelario
+
+Según el Art. 15 de la Ley 10.707/94:
+
+a) Doce (12) años para inmuebles ubicados en la planta sub-rural o rural.  
+b) Seis (6) años para inmuebles ubicados en la planta sub-urbana o planta urbana que se encuentren edificados.  
+c) Dos (2) años para inmuebles ubicados en la planta sub-urbana o planta urbana, que se encuentren baldíos.  
+d) Seis (6) años para las unidades funcionales de los edificios afectados al régimen de Propiedad Horizontal, ubicados en Planta Baja y doce (12) años para Unidades Funcionales contenidas en las restantes Plantas, si las hubiere.
+
+**Otras situaciones por la que se expide el Certificado Catastral**
+
+- **Legajo Parcelario**: Permite registrar nuevas parcelas originadas por un Plano de Mensura o por uno de Propiedad Horizontal.
+- **PH Decreto 947**: Permite registrar las modificaciones realizadas sobre el estado constructivo y/o actualizar superficie edificada de una Unidad Funcional o Complementaria.
+- **PH Artículo 6to** (en los términos del artículo 6º, del Decreto 2.489/63): Permite habilitar la Emisión del Certificado Catastral por la unidad funcional o unidad complementaria (a construir o en construcción), posibilitando la transferencia de los derechos reales del Inmueble, mediante una disposición emitida por el Organismo de Control.
+
+## ¿Qué es el Estado Parcelario según la Ley 10.707/94?
+
+El Estado Parcelario es el conjunto de datos técnicos y jurídicos que definen y caracterizan una parcela (inmueble individualizado) dentro del Catastro Territorial de la Provincia de Buenos Aires.
+
+Declárase obligatorio para los escribanos de Registros Públicos y para cualquier otro funcionario que autorice actos de transmisión, constitución, declaración o modificación de **derechos reales sobre inmuebles** ubicados en el territorio de la Provincia y sometidos a su jurisdicción, lo siguiente:
+
+a) Requerir a la Agencia de Recaudación de la Provincia de Buenos Aires, antes del otorgamiento del acto, el certificado catastral correspondiente al inmueble, especificando la inscripción de su dominio vigente y la nomenclatura catastral o preexistente, así como los números de las partidas que le correspondan en los padrones del impuesto inmobiliario o en los establecidos por leyes especiales que correspondieran;
+
+b) Transcribir en los instrumentos públicos el contenido de dicho certificado catastral, haciendo constar, la nomenclatura catastral, las observaciones, restricciones o aclaraciones que constaren y la descripción del inmueble según las constancias del mismo.
+
+## Certificado Catastral VS Estado Parcelario
+
+**1. 📐 El Estado Parcelario (Arts. 4-8 Ley 10.707):**
+
+- Lo crea el agrimensor mediante un relevamiento técnico (mensura).
+- Incluye plano georreferenciado, medidas exactas y linderos.
+- Es un requisito PREVIO para obtener el certificado.
+
+**1. 📄 El Certificado Catastral (Arts. 49-52):**
+
+- Lo emite EXCLUSIVAMENTE la Dirección de Catastro.
+- Sintetiza la información registrada en sus bases de datos.
+- Certifica que el Estado Parcelario está aprobado y vigente.
+
+### ¿Por qué la confusión?
+
+- El certificado NO lo emite el agrimensor, pero DEPENDE de su trabajo.
+- Sin mensura válida (hecha por agrimensor matriculado), Catastro no puede emitir el certificado.
+
+## ¿A que llaman renovación?
+
+**Subsistencia de Estado Parcelario (Formulario B):** Permite verificar la continuidad de la situación relevada en el Estado Parcelario. Superadas las vigencias de éste último, su subsistencia se prolonga de acuerdo al tiempo estipulado para cada una de las características catastrales de la parcela.
+
+**Artículo 8vo - Actualización de Valuación Fiscal (Formulario C):** Es el trámite mediante el cual se verifica el estado de hecho del inmueble, para los casos en que el Estado Parcelario se encuentre vigente, con fecha de registración posterior a 36 meses, con el objeto de posibilitar la emisión del Certificado Catastral. Se confecciona durante la vigencia del Estado Parcelario. Vencido los plazos del Estado Parcelario también se vence el Artículo 8vo.
+
+### Dispo 6117/15 - Modificada por Dispo 1258/16 ARBA
+
+En parcelas urbanas edificadas: 3 años (Disp. 6117/2015).  
+En parcelas rurales: 3 años (Disp. 6117/2015)  
+En sub parcelas PH, ubicadas en planta baja o planta superior que contengan superficie descubierta (terraza), también son 3 años por la Disp. 6117/2015.
+
+Otra de las novedades que trajo la Disposición 6117/2015 es que las sub parcelas de PH, ubicadas en planta 1er piso o superiores como así también en subsuelo y cuyo plano origen sea anterior al año 1994, deberán constituir el estado parcelario correspondiente.
+
+### Resolución Normativa 22/12 ARBA - (Excepciones)
+
+**Artículo 1º:** Exceptuar de la obligación de verificar la subsistencia del estado parcelario, prevista en el artículo 15 de la Ley 10.707 y modificatorias, como requisito previo a la expedición del certificado catastral, a las subparcelas sometidas al régimen de Propiedad Horizontal instituido por la Ley 13.512, cuando las mismas sean unidades funcionales y/o complementarias construidas, ubicadas en planta primer piso y siguientes en altura o en planta subsuelo. Esta excepción no alcanzará a las subparcelas ubicadas total o parcialmente en planta baja ni a las subparcelas que contengan polígonos con superficie descubierta, cualquiera sea la planta en que se encuentren.
+
+**Artículo 2º:** Exceptuar de las obligaciones de constituir estado parcelario y verificar su subsistencia, previstas en los artículos 12 y 15 de la Ley 10.707 y modificatorias, así como de actualizar la valuación fiscal, deber establecido por el artículo 8° de la Disposición 2.010/94 de la ex Dirección Provincial de Catastro Territorial, como requisito previo a la expedición del certificado catastral, en relación a las unidades funcionales y/o complementarias destinadas a cocheras, bauleras o destinos similares, cuyas superficies, según plano de propiedad horizontal, correspondan al rubro cubierto o semicubierto.
+
+A efectos de verificar la procedencia de la excepción, en los casos de cocheras, podrá acompañarse constancia municipal, instrumento notarial u otro elemento que permita su debida individualización y destino. Asimismo, podrá agregarse certificación del escribano autorizante en la cual conste que ha tenido a la vista el Reglamento de Copropiedad y Administración del cual surge el destino cochera de la unidad funcional o unidad complementaria objeto de la operación, con la correspondiente individualización del inmueble.
+
+### Provincia de Buenos Aires
+
+"Artículo 8º: Transcurridos treinta y seis (36) meses desde la constitución o verificación de la subsistencia del estado parcelario, deberá procederse a la actualización de la valuación fiscal de las accesiones introducidas en las parcelas, sin cuyo requisito no se expedirá el certificado catastral. No corresponderá la actualización de la valuación fiscal de subparcelas sometidas al régimen de Propiedad Horizontal, cuando las mismas sean unidades funcionales y/o complementarias construidas, ubicadas en planta primer piso y siguientes en altura o en planta subsuelo. Esta excepción no alcanza a las subparcelas ubicadas total o parcialmente en planta baja ni a las subparcelas que contenga polígonos con superficies descubiertas, cualquiera sea la planta en que se encuentren".
+
+**Dispo 6117/15 - Modificada por Dispo 1258/16 ARBA**
     `,
     author: "Pablo Venerus",
-    publishedAt: "2025-01-06",
-    readTime: "4 min read",
+    publishedAt: "2025-05-22",
+    readTime: "6 min read",
     category: "Estado Parcelario",
     tags: ["Provincia de Buenos Aires", "Estado Parcelario", "Catastro", "Mensura", "Gran Buenos Aires"],
     featured: true,
@@ -266,82 +339,49 @@ Ofrecemos consultas sin cargo y presupuestos en el día para todos los servicios
 
 Estados Parcelarios en Provincia de Buenos Aires, Estados Parcelarios en CABA, Mensura Rural, Subdivisión de un PH, entre otros.
 
-## Galería de Trabajos
+## Modelo de Invasión De Linderos
 
-### 1. Modelo de Invasión De Linderos
-Trabajo especializado en la determinación y documentación de invasiones de linderos, fundamental para resolver conflictos de límites entre propiedades.
+![Modelo de Invasión De Linderos](/blog/algunos-de-mis-trabajos-realizados/Modelo de Invasión De Linderos.jpg)
 
-### 2. Ejemplo Mensura Rural
-Mensuras completas en zonas rurales, incluyendo relevamiento topográfico, determinación de límites y elaboración de planos catastrales.
+## Ejemplo Mensura Rural
 
-### 3. Modelo de Relevamiento Topográfico
-Relevamientos topográficos detallados utilizando Estación Total y GPS Geodésico para máxima precisión en la medición.
+![Ejemplo Mensura Rural](/blog/algunos-de-mis-trabajos-realizados/Ejemplo Mensura Rural.jpg)
 
-### 4. Modelo de Deslinde y Amojonamiento
-Servicios de deslinde y amojonamiento para establecer claramente los límites entre propiedades contiguas.
+## Modelo de Relevamiento Topografico
 
-### 5. Ejemplo Subdivisión En PH
-Subdivisiones en Propiedad Horizontal, incluyendo la división de unidades funcionales y actualización de planos.
+![Modelo de Relevamiento Topografico](/blog/algunos-de-mis-trabajos-realizados/Modelo de Relevamiento Topografico.jpg)
 
-### 6. Modelo de Estado Parcelario Provincia de Buenos Aires
-Constitución y verificación de Estados Parcelarios en diversos municipios de la Provincia de Buenos Aires.
+## Modelo de Deslinde y Amojonamiento
 
-### 7. Modelo de Estado Parcelario CABA
-Estados Parcelarios en la Ciudad Autónoma de Buenos Aires, cumpliendo con la Ley de Catastro N° 6437.
+![Modelo de Deslinde y Amojonamiento](/blog/algunos-de-mis-trabajos-realizados/Modelo de Deslinde y Amojonamiento.jpg)
 
-### 8. RESUMEN VALUATORIO
-Elaboración de resúmenes valuatorios para diversos tipos de inmuebles y finalidades.
+## Ejemplo Subdivision En PH
 
-### 9. Modelo de Relevamiento con Altimetría
-Relevamientos topográficos que incluyen información altimétrica para proyectos que requieren datos de elevación.
+![Ejemplo Subdivision En PH](/blog/algunos-de-mis-trabajos-realizados/Ejemplo Subdivision En PH.jpg)
 
-## Tecnología Utilizada
+## Modelo de Estado Parcelario Provincia de Buenos Aires
 
-### Estación Total
-Instrumento electrónico que mide ángulos y distancias con gran precisión. Es fundamental para trabajos de topografía y agrimensura.
+![Modelo de Estado Parcelario Provincia de Buenos Aires 1](/blog/algunos-de-mis-trabajos-realizados/estados-parcelarios-1.jpg)
 
-### GPS Geodésico (GNSS)
-Permite obtener coordenadas precisas a través de satélites, ideal para relevamientos extensos y trabajos catastrales.
+![Modelo de Estado Parcelario Provincia de Buenos Aires 2](/blog/algunos-de-mis-trabajos-realizados/estados-parcelarios-2.jpg)
 
-### Software de Topografía y CAD
-Programas como AutoCAD Civil 3D, TopoCal se utilizan para procesar datos, elaborar planos y analizar terrenos.
+## Modelo de Estado Parcelario CABA
 
-## Experiencia y Especialización
+![Modelo de Estado Parcelario CABA 1](/blog/algunos-de-mis-trabajos-realizados/Certificado-pacelario-1.avif)
 
-Con más de catorce años de experiencia en el sector, ofrecemos servicios especializados en:
+![Modelo de Estado Parcelario CABA 2](/blog/algunos-de-mis-trabajos-realizados/Certificado-pacelario-2.avif)
 
-- **Estados Parcelarios** (CABA y Provincia de Buenos Aires)
-- **Mensuras Rurales**
-- **Subdivisiones en PH**
-- **Relevamientos Topográficos**
-- **Deslindes y Amojonamientos**
-- **Resúmenes Valuatorios**
+![Modelo de Estado Parcelario CABA 3](/blog/algunos-de-mis-trabajos-realizados/Certificado-pacelario-3.avif)
 
-## Zona de Cobertura
+## RESUMEN VALUATORIO
 
-Ofrecemos servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de:
+![RESUMEN VALUATORIO 1](/blog/algunos-de-mis-trabajos-realizados/declaraciones-juradas-1.jpg)
 
-- **Avellaneda**
-- **Lanús**
-- **Lomas de Zamora**
-- **Vicente López**
-- **San Fernando**
-- **San Isidro**
-- **Tigre**
-- **La Matanza**
-- **San Martín**
-- **Ituzaingó**
+![RESUMEN VALUATORIO 2](/blog/algunos-de-mis-trabajos-realizados/declaraciones-juradas-2.jpg)
 
-## Consultas y Presupuestos
+## Modelo de Relevamiento con Altimetria
 
-- **Consultas sin cargo**
-- **Presupuestos en el día**
-- **Atención personalizada**
-- **Seguimiento completo** de cada trabajo
-
-### Contacto
-- **Teléfono**: +54 9 11 6705-8156
-- **Email**: contacto@miagrimensor.com
+![Modelo de Relevamiento con Altimetria](/blog/algunos-de-mis-trabajos-realizados/Modelo de Relevamiento con Altimetria.jpg)
     `,
     author: "Pablo Venerus",
     publishedAt: "2025-01-06",

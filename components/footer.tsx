@@ -4,6 +4,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
 import { Logo_2 } from "./navbar/logo_2";
@@ -15,19 +16,13 @@ const footerSections = [
       {
         title: "Estados Parcelarios",
         href: "/servicios",
+        description: "Certificación catastral obligatoria",
       },
       {
         title: "Planos de Mensura",
         href: "/servicios",
+        description: "Medición y documentación oficial",
       },
-      {
-        title: "Subdivisiones",
-        href: "/servicios",
-      },
-      {
-        title: "Relevamientos Topográficos",
-        href: "/servicios",
-      }
     ],
   },
   {
@@ -36,19 +31,18 @@ const footerSections = [
       {
         title: "Acerca de mí",
         href: "/acerca-de-mi",
+        description: "Conoce al agrimensor",
       },
       {
         title: "Zona de Cobertura",
-        href: "/acerca-de-mi",
+        href: "/#cobertura",
+        description: "CABA y Gran Buenos Aires",
       },
       {
-        title: "Tecnología Utilizada",
-        href: "/acerca-de-mi",
+        title: "Preguntas Frecuentes",
+        href: "/#faq",
+        description: "Resuelve tus dudas",
       },
-      {
-        title: "Experiencia",
-        href: "/acerca-de-mi",
-      }
     ],
   },
   {
@@ -57,19 +51,23 @@ const footerSections = [
       {
         title: "Estado Parcelario CABA",
         href: "/blog/todo-sobre-el-estado-parcelario-en-la-ciudad-autonoma-de-buenos-aires",
+        description: "Guía completa para CABA",
       },
       {
         title: "Estado Parcelario Provincia",
         href: "/blog/todo-sobre-el-estado-parcelario-en-la-provincia-de-buenos-aires",
+        description: "Información para Provincia",
       },
       {
         title: "Trabajos Realizados",
         href: "/blog/algunos-de-mis-trabajos-realizados",
+        description: "Portafolio de proyectos",
       },
       {
         title: "Introducción a la Agrimensura",
         href: "/blog/explorando-el-mundo-de-la-agrimensura",
-      }
+        description: "Conoce la profesión",
+      },
     ],
   },
   {
@@ -77,22 +75,16 @@ const footerSections = [
     links: [
       {
         title: "Solicitar Presupuesto",
-        href: "https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura",
-      },
-      {
-        title: "Consultas",
-        href: "/contacto",
+        href: "/#formulario",
+        description: "Completa el formulario de contacto",
       },
       {
         title: "WhatsApp",
         href: "https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura",
+        description: "Chat directo",
       },
-      {
-        title: "Llamar",
-        href: "tel:+5491167058156",
-      }
     ],
-  }
+  },
 ];
 
 const contactInfo = [
@@ -100,101 +92,157 @@ const contactInfo = [
     icon: Phone,
     title: "Teléfono",
     value: "+54 9 11 6705-8156",
-    href: "tel:+5491167058156"
+    href: "tel:+5491167058156",
+    ariaLabel: "Llamar a Pablo Venerus",
   },
   {
     icon: Mail,
     title: "Email",
     value: "contacto@miagrimensor.com",
-    href: "mailto:contacto@miagrimensor.com"
+    href: "mailto:contacto@miagrimensor.com",
+    ariaLabel: "Enviar email a contacto",
   },
   {
     icon: MapPin,
     title: "Ubicación",
     value: "Avellaneda, Buenos Aires",
-    href: "#"
-  }
+    href: "/#cobertura",
+    ariaLabel: "Ver zona de cobertura",
+  },
 ];
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="mt-12 xs:mt-20 dark bg-background border-t w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-x-8 gap-y-8 px-4 sm:px-6 w-full overflow-hidden">
-        <div className="col-span-full xl:col-span-2 overflow-hidden">
-          {/* Logo */}
-          <div className="flex-shrink-0 mb-4 overflow-hidden logo-container">
-            <Logo_2/>
-          </div>
+    <footer 
+      className="mt-12 xs:mt-20 bg-green-light/20 border-t border-green/10 w-full"
+      role="contentinfo"
+      itemScope
+      itemType="https://schema.org/WPFooter"
+    >
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto py-6 lg:py-8 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-5">
+          {/* Brand Section - Very compact */}
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2 space-y-2.5">
+            {/* Logo */}
+            <div className="flex-shrink-0 logo-container mb-2">
+              <Logo_2 />
+            </div>
 
-          <p className="mt-3 text-muted-foreground break-words">
-            Estados parcelarios, mensura y planos para escriturar con rapidez y respaldo. Desde principios del año 2010, ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes.
-          </p>
+            {/* Description - Compact */}
+            <p className="text-sm leading-relaxed text-muted-foreground max-w-md">
+              Servicios profesionales de agrimensura y topografía en CABA y Gran Buenos Aires. 
+              Estados parcelarios, mensura y planos para escriturar.
+            </p>
 
-          {/* Información de contacto */}
-          <div className="mt-4 space-y-2">
-            {contactInfo.map((info, index) => (
-              <div key={index} className="flex items-center gap-3 overflow-hidden">
-                <info.icon className="text-primary flex-shrink-0" size={16} />
-                <Link 
-                  href={info.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors break-words"
-                >
-                  {info.value}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {footerSections.map(({ title, links }) => (
-          <div key={title} className="xl:justify-self-end">
-            <h6 className="font-semibold text-foreground">{title}</h6>
-                         <ul className="mt-4 space-y-3">
-              {links.map(({ title, href }) => (
-                <li key={title}>
-                  <Link
-                    href={href}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+            {/* Contact Information - Compact inline */}
+            <address className="not-italic space-y-1" itemScope itemType="https://schema.org/LocalBusiness">
+              <meta itemProp="name" content="Pablo Venerus - Agrimensor" />
+              <meta itemProp="address" content="Avellaneda, Buenos Aires, Argentina" />
+              
+              {contactInfo.map((info, index) => (
+                <div key={index} className="flex items-center gap-2 group">
+                  <info.icon 
+                    className="text-green-600 group-hover:text-green-700 transition-colors duration-200 flex-shrink-0" 
+                    size={13} 
+                    aria-hidden="true"
+                  />
+                  <Link 
+                    href={info.href}
+                    className="text-sm text-muted-foreground hover:text-green-600 transition-colors duration-200 break-words"
+                    aria-label={info.ariaLabel}
+                    itemProp={info.title === "Teléfono" ? "telephone" : info.title === "Email" ? "email" : undefined}
                   >
-                    {title}
+                    {info.value}
                   </Link>
-                </li>
+                </div>
               ))}
-            </ul>
+            </address>
+
+            {/* Social Media - Compact */}
+            <div className="flex items-center gap-2 pt-0.5">
+              <span className="text-sm text-muted-foreground">Síguenos:</span>
+              <Link 
+                href="https://www.linkedin.com/company/miagrimensor" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-modern bg-green/10 hover:bg-green/20 text-green-600 hover:text-green-700 transition-all duration-200"
+                aria-label="Visitar perfil de LinkedIn de Miagrimensor"
+              >
+                <LinkedinIcon className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-        ))}
+
+          {/* Footer Sections - Compact grid */}
+          {footerSections.map(({ title, links }) => (
+            <nav key={title} className="space-y-2" aria-labelledby={`footer-${title.toLowerCase()}`}>
+              <h3 
+                id={`footer-${title.toLowerCase()}`}
+                className="font-headline font-semibold text-foreground text-sm mb-2 border-b border-green/30 pb-1.5"
+              >
+                {title}
+              </h3>
+              <ul className="space-y-1.5" role="list">
+                {links.map(({ title: linkTitle, href, description }) => (
+                  <li key={linkTitle}>
+                    <Link
+                      href={href}
+                      className="group flex items-center gap-1.5 text-sm text-muted-foreground hover:text-green-600 transition-colors duration-200 leading-relaxed"
+                      aria-label={description ? `${linkTitle}: ${description}` : linkTitle}
+                    >
+                      <ArrowRight 
+                        size={12} 
+                        className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0 text-green-600" 
+                        aria-hidden="true"
+                      />
+                      <span className="group-hover:underline">{linkTitle}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
       </div>
-      <Separator />
-             <div className="max-w-7xl mx-auto py-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-x-2 gap-y-4 px-6">
-        {/* Copyright */}
-        <div className="text-muted-foreground text-center xs:text-start text-sm">
-          <span>
-            &copy; {new Date().getFullYear()}{" "}
-            <Link href="/" className="hover:text-foreground transition-colors">
-              Miagrimensor
-            </Link>
-            . Todos los derechos reservados. | Echo con 🕶️ por{" "}
+
+      {/* Bottom Bar - Compact */}
+      <Separator className="border-green/10" />
+      <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
+          {/* Copyright - Compact */}
+          <div className="text-center sm:text-left space-y-1">
+            <p>
+              &copy; {currentYear}{" "}
+              <Link 
+                href="/" 
+                className="font-medium text-foreground hover:text-green-600 transition-colors duration-200"
+                aria-label="Ir a página de inicio"
+              >
+                Miagrimensor
+              </Link>
+              . Todos los derechos reservados.
+            </p>
+            <p className="text-xs">
+              Agrimensor Pablo Venerus - Matrícula profesional habilitada en Provincia de Buenos Aires
+            </p>
+          </div>
+
+          {/* Developer Credit - Compact */}
+          <div>
+            Desarrollado por{" "}
             <Link 
               href="https://makebly.io" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors font-medium"
+              className="font-medium hover:text-green-600 transition-colors duration-200"
+              aria-label="Visitar Makebly.io"
             >
               Makebly.io
             </Link>
-          </span>
-        </div>
-
-        {/* Redes sociales - Solo LinkedIn */}
-        <div className="flex items-center gap-5 text-muted-foreground">
-          <Link 
-            href="https://www.linkedin.com/company/miagrimensor" 
-            target="_blank"
-            className="hover:text-foreground transition-colors"
-            aria-label="LinkedIn"
-          >
-            <LinkedinIcon className="h-5 w-5" />
-          </Link>
+          </div>
         </div>
       </div>
     </footer>

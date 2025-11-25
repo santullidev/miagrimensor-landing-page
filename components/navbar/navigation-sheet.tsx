@@ -26,13 +26,13 @@ export const NavigationSheet = () => {
         <SheetTitle>Navigation Drawer</SheetTitle>
       </VisuallyHidden>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Menu />
+        <Button variant="outline" size="icon" className="border-green-300 hover:bg-green/10 hover:border-green text-foreground">
+          <Menu className="text-foreground" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700 w-[280px] sm:w-[320px]">
+      <SheetContent className="bg-gradient-to-b from-green/70 via-green/75 to-green/70 border-l-2 border-green/40 w-[280px] sm:w-[320px] shadow-soft-xl backdrop-blur-md [&>button]:text-foreground [&>button]:hover:bg-white/20 [&>button]:hover:text-foreground [&>button]:border-white/30 [&>button]:rounded-modern">
         <div className="flex flex-col h-full">
-          <div className="flex-shrink-0 p-4">
+          <div className="flex-shrink-0 p-4 border-b-2 border-green-300/60">
             <Logo />
           </div>
           
@@ -40,9 +40,9 @@ export const NavigationSheet = () => {
             <NavMenu orientation="vertical" className="space-y-1" onLinkClick={handleLinkClick} />
           </div>
 
-          <div className="flex-shrink-0 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 px-4 pb-4">
+          <div className="flex-shrink-0 mt-4 pt-4 border-t-2 border-green-300/50 px-4 pb-4">
             <Button 
-              className="w-full bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-sm cursor-pointer"
+              className="w-full bg-foreground hover:bg-foreground/90 text-green-50 border-2 border-green-400 shadow-soft-lg hover:shadow-soft-xl text-sm cursor-pointer transition-all duration-300 font-medium"
               size="sm"
               asChild
             >

@@ -6,11 +6,25 @@ import { useEffect, useState } from 'react';
 
 type HeroBackgroundProps = React.ComponentProps<'div'> & {
   children?: React.ReactNode;
+  currentImageIndex?: number;
+  backgroundImages?: string[];
 };
+
+// Imágenes de fondo del hero para el carrusel
+const defaultBackgroundImages = [
+  '/hero/pablo-trabajando-1.jpeg',
+  '/hero/pablo-trabajando-2.jpg',
+  '/hero/pablo-trabajando-3.jpg',
+  '/hero/pablo-trabajando-4.jpeg',
+  '/hero/pablo-trabajando-5.jpeg',
+  '/hero/pablo-trabajando-6.jpeg'
+];
 
 function HeroBackground({
   className,
   children,
+  currentImageIndex = 0,
+  backgroundImages = defaultBackgroundImages,
   ...props
 }: HeroBackgroundProps) {
   const [isClient, setIsClient] = useState(false);
@@ -43,6 +57,8 @@ function HeroBackground({
     { top: '15%', left: '95%', delay: '1.9s', duration: '3.2s' },
   ];
 
+  const currentImage = backgroundImages[currentImageIndex] || backgroundImages[0];
+
   return (
     <div
       className={cn(
@@ -51,13 +67,18 @@ function HeroBackground({
       )}
       {...props}
     >
-      {/* Imagen de fondo */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{
-          backgroundImage: `url('/hero-background.jpeg')`,
-        }}
-      />
+      {/* Imágenes de fondo del carrusel */}
+      {backgroundImages.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transition-opacity duration-1000 ${
+            index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            backgroundImage: `url('${image}')`,
+          }}
+        />
+      ))}
       
       {/* Fallback gradient en caso de que no se cargue la imagen */}
       {/* <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-10" /> */}

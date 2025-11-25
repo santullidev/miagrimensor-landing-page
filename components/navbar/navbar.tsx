@@ -2,11 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
-import ThemeToggle from "../theme-toggle";
 
 const Navbar = () => {
   return (
-    <nav className="h-16 bg-background border-b border-accent">
+    <nav className="h-16 bg-gradient-to-r from-green/60 via-green/70 to-green/60 backdrop-blur-md border-b-2 border-green/40 sticky top-0 z-50 shadow-soft-lg">
       <div className="h-full flex items-center justify-between max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
         {/* Logo */}
         <div className="flex-shrink-0 min-w-0 flex-1 md:flex-none logo-container">
@@ -20,9 +19,8 @@ const Navbar = () => {
 
         {/* Botones de la derecha */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <ThemeToggle />
           <Button 
-            className="inline-flex bg-green-500 hover:bg-green-600 text-white border-none shadow-sm text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 cursor-pointer"
+            className="inline-flex bg-green hover:bg-green-100 text-white border border-green-300 shadow-soft hover:shadow-soft-lg rounded-modern text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 min-h-[36px] cursor-pointer transition-all duration-250 font-medium focus:ring-2 focus:ring-green-50"
             size="sm"
             asChild
           >

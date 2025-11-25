@@ -1,23 +1,29 @@
 "use client"
 
-import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   BookCheck,
-  BarChart3,
-  FolderSync,
+  Navigation,
   Goal,
   Users,
   Zap,
   ArrowLeft,
   X,
-  ChevronLeft,
-  ChevronRight,
   ZoomIn,
   ZoomOut,
   RotateCcw,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Target,
+  Award,
+  Calculator,
+  Home,
+  Phone,
+  BookOpen,
 } from "lucide-react";
-import ImageWithFallback from "@/components/ui/image-with-fallback";
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Footer from "@/components/footer";
@@ -26,25 +32,55 @@ import ScrollToTop from "@/components/scroll-to-top";
 
 const services = [
   {
+    id: 1,
     icon: Goal,
-    title: "Estados Parcelarios",
+    title: "Estado Parcelario en la Provincia de Buenos Aires",
+    subtitle: "Certificación catastral obligatoria - Ley 10.707",
     description:
-      "El Estado Parcelario - también conocido como cédula catastral - es la tarea que realiza un Agrimensor al momento de una venta o hipoteca de un inmueble. Como establece la Ley 10.707 esta tarea o trámite es obligatorio en la Provincia de Buenos Aires.",
-    details: [
-      "Certificación de medidas y límites del inmueble",
-      "Verificación de documentación catastral",
-      "Informe técnico para escrituración",
-      "Cumplimiento de normativas provinciales",
+      "El Estado Parcelario en la Provincia de Buenos Aires es obligatorio según la Ley 10.707/94 al momento de una venta, hipoteca o cualquier acto de transmisión de derechos reales. Realizamos la certificación oficial de medidas y límites del inmueble, verificación de documentación catastral ante ARBA e informe técnico completo para escrituración. Nuestro servicio incluye el relevamiento técnico, generación del plano georreferenciado, registro en el Catastro y obtención de la cédula catastral correspondiente.",
+    features: [
+      "Certificación de medidas y límites del inmueble conforme a Ley 10.707",
+      "Verificación de documentación catastral ante ARBA",
+      "Relevamiento técnico y plano georreferenciado",
+      "Constitución y verificación de Estado Parcelario",
+      "Obtención de cédula catastral y resumen valuatorio",
       "Asesoramiento legal en el proceso"
     ],
     image: "/servicios/estados-parcelarios-1.jpg",
+    category: "Catastral",
+    duration: "24-48 horas",
+    complexity: "Baja",
+    highlights: ["Obligatorio", "Rápido", "Oficial"]
   },
   {
-    icon: BookCheck,
-    title: "Planos de Mensura",
+    id: 9,
+    icon: Goal,
+    title: "Estado Parcelario en Ciudad de Buenos Aires (CABA)",
+    subtitle: "Certificación catastral obligatoria - Ley 6437",
     description:
-      "Este plano es la medición, ubicación y documentación de un inmueble y sus límites conforme a las causas jurídicas que lo originan, es decir, la aplicación del título de propiedad al terreno propiamente dicho. La mensura es la generadora de las parcelas catastrales.",
-    details: [
+      "El Estado Parcelario en la Ciudad Autónoma de Buenos Aires es obligatorio según la Ley de Catastro N° 6437 para actos de constitución, modificación y transmisión de derechos reales. Realizamos la certificación oficial cumpliendo con todos los elementos esenciales: nomenclatura catastral, ubicación georreferenciada, límites del inmueble, medidas, restricciones, tipificación de mejoras y partida inmobiliaria. Nuestro servicio incluye la constitución mediante acto de mensura registrado y la verificación de subsistencia según los plazos establecidos.",
+    features: [
+      "Certificación conforme a Ley de Catastro N° 6437",
+      "Constitución mediante acto de mensura registrado",
+      "Elementos esenciales y complementarios del Estado Parcelario",
+      "Verificación de subsistencia según plazos vigentes",
+      "Certificado del Estado Parcelario otorgado por el Organismo Catastral",
+      "Asesoramiento en normativas específicas de CABA"
+    ],
+    image: "/servicios/certifParcCaba_Página_1.jpg",
+    category: "Catastral",
+    duration: "3-5 días",
+    complexity: "Media",
+    highlights: ["Obligatorio", "Oficial", "CABA"]
+  },
+  {
+    id: 2,
+    icon: BookCheck,
+    title: "Planos de Mensura para División, Unificación, Anexión o Usucapión",
+    subtitle: "Medición y documentación oficial",
+    description:
+      "Este plano es la medición, ubicación y documentación de un inmueble y sus límites conforme a las causas jurídicas que lo originan, es decir, la aplicación del título de propiedad al terreno propiamente dicho. La mensura es la generadora de las parcelas catastrales y constituye la base legal para la identificación precisa de los límites y superficie de cada propiedad.",
+    features: [
       "Medición precisa de terrenos",
       "Delimitación de linderos",
       "Documentación técnica completa",
@@ -52,62 +88,136 @@ const services = [
       "Certificación profesional"
     ],
     image: "/servicios/planos-mensura.jpg",
+    category: "Catastral",
+    duration: "3-7 días",
+    complexity: "Media",
+    highlights: ["Preciso", "Oficial", "Completo"]
   },
   {
-    icon: BarChart3,
-    title: "Subdivisiones urbanas y rurales",
-    description:
-      "El agrimensor realiza el plano de Subdivisiones que genera y determina derechos sobre un edificio con multiples viviendas, locales y cocheras que han sido adquiridos por distintos propietarios en forma separada pero que tienen ciertos derechos y obligaciones en común.",
-    details: [
-      "División de propiedades horizontales",
-      "Reglamento de copropiedad",
-      "Plano de subdivisión oficial",
-      "Asesoramiento en propiedad horizontal",
-      "Gestión ante organismos oficiales"
-    ],
-    image: "/servicios/subdivisiones.jpg",
-  },
-  {
+    id: 3,
     icon: Users,
     title: "Declaraciones Juradas (revalúos)",
+    subtitle: "Actualización de valores catastrales",
     description:
-      "Servicio especializado en la actualización de valores catastrales y declaraciones juradas para inmuebles, asegurando el cumplimiento de las normativas fiscales vigentes.",
-    details: [
-      "Actualización de valores catastrales",
-      "Declaraciones juradas de bienes",
+      "Servicio especializado en la elaboración de Declaraciones Juradas de Revalúo para la actualización periódica de valores catastrales de inmuebles ante ARBA. A través de un análisis detallado y preciso, determinamos el valor actualizado considerando ubicación, dimensiones, uso del suelo y mejoras realizadas. Estas declaraciones son fundamentales para trámites fiscales, actualizaciones catastrales y procesos legales relacionados con la propiedad.",
+    features: [
+      "Elaboración de Declaraciones Juradas de Revalúo",
+      "Actualización de valores catastrales ante ARBA",
+      "Análisis detallado de ubicación, dimensiones y mejoras",
+      "Cumplimiento de normativas fiscales vigentes",
       "Asesoramiento fiscal inmobiliario",
-      "Gestión ante organismos recaudadores",
-      "Optimización de cargas impositivas"
+      "Gestión ante organismos recaudadores"
     ],
     image: "/servicios/declaraciones-juradas-1.jpg",
+    category: "Fiscal",
+    duration: "2-5 días",
+    complexity: "Media",
+    highlights: ["Oficial", "Actualizado", "Fiscal"]
   },
   {
-    icon: FolderSync,
-    title: "Urbanizaciones – Loteos",
+    id: 4,
+    icon: Navigation,
+    title: "Relevamientos topográficos",
+    subtitle: "Mediciones precisas para proyectos",
     description:
-      "Desarrollo integral de proyectos urbanísticos y loteos, desde la planificación inicial hasta la aprobación final, cumpliendo con todas las normativas urbanísticas y ambientales.",
-    details: [
-      "Planificación urbanística completa",
-      "Aprobación de loteos",
-      "Infraestructura y servicios",
-      "Normativas urbanísticas",
-      "Gestión ambiental"
+      "Realizamos relevamientos planialtimétricos detallados para obras civiles, infraestructura y estudios de terreno, proporcionando mediciones precisas sobre la forma, dimensiones y características del terreno. Utilizamos equipos avanzados como estaciones totales y sistemas GPS/GNSS de alta precisión para garantizar la exactitud de la información recopilada. Estos relevamientos son fundamentales para la planificación y ejecución de proyectos de construcción.",
+    features: [
+      "Relevamientos planialtimétricos detallados",
+      "Mediciones precisas de forma, dimensiones y características",
+      "Equipos avanzados: estaciones totales y GPS/GNSS",
+      "Aplicación en obras civiles e infraestructura",
+      "Estudios técnicos para planificación de proyectos",
+      "Cumplimiento con normativas profesionales vigentes"
     ],
-    image: "/servicios/urbanizaciones.jpg",
+    image: "/servicios/EjemploRelevamientoTopografico.jpg",
+    category: "Topografía",
+    duration: "2-5 días",
+    complexity: "Media",
+    highlights: ["Preciso", "Tecnología GNSS", "Completo"]
   },
   {
+    id: 5,
     icon: Zap,
     title: "Amojonamientos",
+    subtitle: "Delimitación física de límites",
     description:
-      "Servicio de delimitación física de terrenos mediante la colocación de mojones y marcación de límites, esencial para resolver conflictos de linderos y establecer claramente la propiedad.",
-    details: [
-      "Colocación de mojones oficiales",
-      "Delimitación de linderos",
-      "Resolución de conflictos de límites",
-      "Acta de amojonamiento",
-      "Certificación de límites"
+      "Delimitación física y precisa de los límites de una propiedad mediante la colocación de mojones o hitos en sus vértices, estableciendo de manera permanente los linderos del terreno. Este procedimiento es esencial para prevenir disputas de linderos, facilitar la construcción de cercas o muros perimetrales, y asegurar el respeto de las dimensiones legales del inmueble. Realizado con equipos de alta precisión topográfica y conforme a normativas legales.",
+    features: [
+      "Colocación de mojones oficiales en vértices del terreno",
+      "Delimitación física precisa de límites y linderos",
+      "Prevención y resolución de conflictos de límites",
+      "Equipos de alta precisión topográfica",
+      "Acta de amojonamiento conforme a normativas legales",
+      "Certificación de límites para seguridad jurídica"
     ],
     image: "/servicios/amojonamientos.jpg",
+    category: "Topografía",
+    duration: "1-3 días",
+    complexity: "Media",
+    highlights: ["Preciso", "Oficial", "Seguridad jurídica"]
+  },
+  {
+    id: 8,
+    icon: Home,
+    title: "Subdivisiones en PH",
+    subtitle: "División y modificación de unidades en Propiedad Horizontal",
+    description:
+      "Servicio especializado en la división y modificación de unidades funcionales dentro del régimen de Propiedad Horizontal. Realizamos planos técnicos precisos para subdividir unidades existentes, unificar espacios, crear nuevas unidades funcionales o complementarias, y actualizar la documentación catastral y registral correspondiente. Este servicio es fundamental para adaptar los espacios a nuevas necesidades, maximizar el aprovechamiento de los inmuebles y cumplir con todas las normativas legales y reglamentos de copropiedad vigentes.",
+    features: [
+      "Planos técnicos para subdivisión de unidades funcionales",
+      "Unificación de unidades existentes",
+      "Creación de nuevas unidades funcionales o complementarias",
+      "Actualización de documentación catastral y registral",
+      "Cumplimiento con reglamentos de copropiedad",
+      "Asesoramiento técnico y legal en el proceso"
+    ],
+    image: "/servicios/subdivisiones.jpg",
+    category: "Catastral",
+    duration: "5-10 días",
+    complexity: "Alta",
+    highlights: ["Preciso", "Oficial", "Completo"]
+  },
+  {
+    id: 6,
+    icon: Calculator,
+    title: "Cálculos de Superficie",
+    subtitle: "Determinación precisa de áreas",
+    description:
+      "Cálculos especializados de superficies para terrenos irregulares, propiedades complejas y proyectos que requieren máxima precisión en la determinación de áreas. Realizamos cálculos detallados considerando todas las irregularidades del terreno, utilizando métodos topográficos avanzados y software especializado para garantizar la exactitud en la medición de áreas cubiertas, semicubiertas y descubiertas.",
+    features: [
+      "Cálculo de superficies para terrenos irregulares",
+      "Análisis detallado de áreas cubiertas y descubiertas",
+      "Certificación profesional de superficies",
+      "Informe técnico detallado con metodología empleada",
+      "Asesoramiento técnico en mediciones de área",
+      "Aplicación en proyectos de construcción y división"
+    ],
+    image: "/otros-servicos-page/otros-servicios-page-5.png",
+    category: "Cálculos",
+    duration: "1-2 días",
+    complexity: "Media",
+    highlights: ["Preciso", "Certificado", "Rápido"]
+  },
+  {
+    id: 7,
+    icon: Home,
+    title: "Certificados de Dominio",
+    subtitle: "Verificación legal de la propiedad",
+    description:
+      "Certificación oficial que acredita la titularidad dominial de un inmueble, incluyendo la verificación de gravámenes, embargos y restricciones de dominio. Este documento es fundamental para transacciones inmobiliarias, ya que proporciona información detallada sobre el estado jurídico del inmueble, permitiendo verificar que no existan impedimentos legales para su transferencia o transacción.",
+    features: [
+      "Verificación de titularidad dominial",
+      "Análisis completo de gravámenes y embargos",
+      "Certificado oficial ante registro de la propiedad",
+      "Informe detallado del estado jurídico",
+      "Asesoramiento legal en el proceso",
+      "Actualización de información catastral"
+    ],
+    image: "/otros-servicos-page/otros-servicios-page-2.jpg",
+    category: "Legal",
+    duration: "1-3 días",
+    complexity: "Baja",
+    highlights: ["Oficial", "Rápido", "Confiable"]
   },
 ];
 
@@ -237,70 +347,183 @@ export default function ServiciosPage() {
       <Navbar />
       
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <div className="bg-gradient-to-b from-primary/10 to-background border-b">
-          <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Header con diseño mejorado */}
+        <div className="relative bg-gradient-to-br from-primary/20 via-primary/10 to-background border-b overflow-hidden">
+          {/* Elementos decorativos de fondo */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
             <Link 
               href="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4 sm:mb-6 group"
             >
-              <ArrowLeft size={16} />
-              Volver al inicio
+              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+              <span className="text-sm sm:text-base">Volver al inicio</span>
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Servicios de Agrimensura
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl">
-              Servicios profesionales integrales de agrimensura para particulares, empresas e instituciones. 
-              Más de 15 años de experiencia en la Provincia de Buenos Aires.
-            </p>
+            
+            <div className="text-center max-w-4xl mx-auto">
+              <Badge className="rounded-full py-1.5 sm:py-2 px-4 sm:px-6 border-none mb-3 sm:mb-4 bg-green text-white font-semibold text-xs sm:text-sm shadow-soft">
+                Servicios Profesionales
+              </Badge>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-3 sm:mb-4 text-foreground break-words">
+                Servicios de Agrimensura
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-4 sm:mb-6 leading-relaxed break-words max-w-4xl mx-auto">
+                Ofrezco soluciones precisas y eficientes en agrimensura, topografía e ingeniería para cada cliente. En cada trabajo aplico precisión, tecnología y conocimiento para garantizar resultados óptimos. Desde mensuras hasta relevamientos avanzados, brindo soluciones confiables para el desarrollo y la gestión de inmuebles y territorios. Con más de 15 años de experiencia en la Provincia de Buenos Aires.
+              </p>
+              
+              {/* Estadísticas */}
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8 max-w-md mx-auto">
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-green mb-1 sm:mb-2">15+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">Años de Experiencia</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl font-bold text-green mb-1 sm:mb-2">2000+</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground break-words">Proyectos Completados</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Servicios */}
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid gap-8">
+        {/* Servicios con diseño mejorado */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid gap-8 sm:gap-12">
             {services.map((service, index) => (
-              <Card key={index} className="overflow-hidden">
-                <div className="grid md:grid-cols-2 gap-0">
-                  {/* Imagen */}
+              <Card key={service.id} className="overflow-hidden border-2 hover:border-green/50 transition-all duration-300 hover:shadow-soft-lg">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  {/* Imagen con overlay mejorado */}
                   <div 
-                    className="relative h-64 md:h-full cursor-pointer group bg-gray-100"
+                    className="relative h-64 sm:h-80 lg:h-full cursor-pointer group bg-gray-100 overflow-hidden"
                     onClick={() => openImageModal(index)}
                   >
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="object-cover transition-transform duration-300 group-hover:scale-105 w-full h-full"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110 w-full h-full"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
-                        <ZoomIn size={24} className="text-gray-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-white/90 rounded-full p-3 sm:p-4 backdrop-blur-sm">
+                        <ZoomIn size={24} className="sm:w-8 sm:h-8 text-gray-700" />
                       </div>
+                    </div>
+                    
+                    {/* Badge de categoría */}
+                    <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                      <Badge className="bg-green/90 text-white border-none text-xs sm:text-sm px-2 sm:px-3 py-1">
+                        {service.category}
+                      </Badge>
                     </div>
                   </div>
                   
-                  {/* Contenido */}
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <service.icon className="text-primary" size={24} />
-                      <h2 className="text-2xl font-bold">{service.title}</h2>
+                  {/* Contenido mejorado */}
+                  <div className="p-4 sm:p-6 lg:p-8 xl:p-12">
+                    <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                      <div className="bg-green/10 p-2 sm:p-3 rounded-modern flex-shrink-0">
+                        <service.icon className="text-green w-6 h-6 sm:w-8 sm:h-8" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-headline font-bold mb-1 sm:mb-2 break-words">{service.title}</h2>
+                        <p className="text-sm sm:text-base lg:text-lg text-green font-medium mb-2 sm:mb-4 break-words">{service.subtitle}</p>
+                      </div>
                     </div>
                     
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                    <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed break-words">
                       {service.description}
                     </p>
                     
-                    <div className="space-y-3">
-                      <h3 className="font-semibold text-lg">Incluye:</h3>
-                      <ul className="space-y-2">
-                        {service.details.map((detail, detailIndex) => (
-                          <li key={detailIndex} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Características principales */}
+                    <div className="mb-6 sm:mb-8">
+                      <div className="space-y-3 sm:space-y-4">
+                        <h4 className="font-semibold text-base sm:text-lg flex items-center gap-2">
+                          <CheckCircle className="text-green w-4 h-4 sm:w-5 sm:h-5" />
+                          Características
+                        </h4>
+                        <ul className="space-y-1.5 sm:space-y-2">
+                          {service.features.slice(0, 3).map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm">
+                              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
+                              <span className="break-words">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    {/* Card de blog para Estado Parcelario Provincia de Buenos Aires */}
+                    {service.id === 1 && (
+                      <Link href="/blog/todo-sobre-el-estado-parcelario-en-la-provincia-de-buenos-aires" className="block mb-6 sm:mb-8">
+                        <Card className="border-green/30 bg-gradient-to-br from-green/5 to-green-light/10 hover:from-green/10 hover:to-green-light/20 transition-all duration-250 hover:shadow-soft hover:border-green/50 cursor-pointer">
+                          <CardContent className="p-4 sm:p-5">
+                            <div className="flex items-center gap-3 sm:gap-4">
+                              <div className="flex-shrink-0 p-2 sm:p-3 bg-green/10 rounded-modern border border-green/20">
+                                <BookOpen className="text-green w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="font-semibold text-sm sm:text-base text-foreground mb-1">
+                                  Lee nuestro blog sobre Estado Parcelario
+                                </h4>
+                                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                                  Información completa sobre el Estado Parcelario en la Provincia de Buenos Aires
+                                </p>
+                              </div>
+                              <ArrowRight className="text-green w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" strokeWidth={2} />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    )}
+                    
+                    {/* Card de blog para Estado Parcelario CABA */}
+                    {service.id === 9 && (
+                      <Link href="/blog/todo-sobre-el-estado-parcelario-en-la-ciudad-autonoma-de-buenos-aires" className="block mb-6 sm:mb-8">
+                        <Card className="border-green/30 bg-gradient-to-br from-green/5 to-green-light/10 hover:from-green/10 hover:to-green-light/20 transition-all duration-250 hover:shadow-soft hover:border-green/50 cursor-pointer">
+                          <CardContent className="p-4 sm:p-5">
+                            <div className="flex items-center gap-3 sm:gap-4">
+                              <div className="flex-shrink-0 p-2 sm:p-3 bg-green/10 rounded-modern border border-green/20">
+                                <BookOpen className="text-green w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="font-semibold text-sm sm:text-base text-foreground mb-1">
+                                  Lee nuestro blog sobre Estado Parcelario
+                                </h4>
+                                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                                  Información completa sobre el Estado Parcelario en la Ciudad Autónoma de Buenos Aires
+                                </p>
+                              </div>
+                              <ArrowRight className="text-green w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" strokeWidth={2} />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    )}
+                    
+                    {/* Highlights */}
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+                      {service.highlights.map((highlight, idx) => (
+                        <Badge key={idx} variant="secondary" className="bg-green/10 text-green border-green/20 text-xs px-2 py-1">
+                          {highlight}
+                        </Badge>
+                      ))}
+                    </div>
+                    
+                    {/* Botones de acción */}
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                      <Button asChild size="lg" className="flex-1 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 bg-green hover:bg-green-300 text-white">
+                        <Link href="/contacto">
+                          Solicitar Presupuesto
+                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" size="lg" className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 border-green/30 hover:border-green text-green">
+                        <Link href={`tel:+5491167058156`}>
+                          <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                          Llamar
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>
