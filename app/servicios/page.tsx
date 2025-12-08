@@ -192,7 +192,7 @@ const services = [
       "Asesoramiento técnico en mediciones de área",
       "Aplicación en proyectos de construcción y división"
     ],
-    image: "/otros-servicos-page/otros-servicios-page-5.png",
+    image: "/servicios/calculos-de-superficie.avif",
     category: "Cálculos",
     duration: "1-2 días",
     complexity: "Media",
@@ -213,7 +213,7 @@ const services = [
       "Asesoramiento legal en el proceso",
       "Actualización de información catastral"
     ],
-    image: "/otros-servicos-page/otros-servicios-page-2.jpg",
+    image: "/servicios/amojonamientos.jpg",
     category: "Legal",
     duration: "1-3 días",
     complexity: "Baja",

@@ -56,6 +56,38 @@ export default function StructuredData({ type = "ProfessionalService", data }: S
         name: "Lomas de Zamora",
       },
       {
+        "@type": "City",
+        name: "Vicente López",
+      },
+      {
+        "@type": "City",
+        name: "San Isidro",
+      },
+      {
+        "@type": "City",
+        name: "Tigre",
+      },
+      {
+        "@type": "City",
+        name: "San Martín",
+      },
+      {
+        "@type": "City",
+        name: "Ituzaingó",
+      },
+      {
+        "@type": "City",
+        name: "Quilmes",
+      },
+      {
+        "@type": "City",
+        name: "Berazategui",
+      },
+      {
+        "@type": "City",
+        name: "Morón",
+      },
+      {
         "@type": "AdministrativeArea",
         name: "Gran Buenos Aires",
       },
@@ -97,15 +129,42 @@ export default function StructuredData({ type = "ProfessionalService", data }: S
             description: "Levantamientos topográficos precisos con GPS geodésico y estación total.",
           },
         },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Amojonamientos",
+            description: "Delimitación y marcación precisa de linderos de propiedades.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Subdivisiones en PH",
+            description: "Subdivisiones y fraccionamientos en Propiedad Horizontal.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Declaraciones Juradas",
+            description: "Declaraciones juradas catastrales y documentación legal.",
+          },
+        },
       ],
     },
+    sameAs: [
+      "https://www.linkedin.com/company/miagrimensor",
+    ],
     ...data,
   };
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(baseStructuredData) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(baseStructuredData, null, 0) }}
     />
   );
 }

@@ -65,3 +65,4 @@ Para verificar que los iconos funcionan correctamente:
 - Los archivos deben estar en formato PNG (excepto favicon.ico que es .ico)
 - Asegúrate de que los iconos sean legibles incluso en tamaños pequeños
 - El fondo debe ser sólido o transparente según el diseño
+

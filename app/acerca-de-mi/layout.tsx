@@ -26,10 +26,11 @@ export const metadata: Metadata = {
     siteName: "Agrimensor Pablo Venerus",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://miagrimensor.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Pablo Venerus - Agrimensor Profesional",
+        type: "image/png",
       },
     ],
     locale: "es_AR",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Acerca de Pablo Venerus - Agrimensor Profesional",
     description: "Más de 14 años de experiencia en agrimensura y topografía con tecnología de última generación.",
-    images: ["/og-image.png"],
+    images: ["https://miagrimensor.com/og-image.png"],
   },
   alternates: {
     canonical: "https://miagrimensor.com/acerca-de-mi",

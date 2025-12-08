@@ -484,10 +484,8 @@ Ofrecemos servicios en CABA y en una amplia zona del Gran Buenos Aires, incluyen
 - **Lanús**
 - **Lomas de Zamora**
 - **Vicente López**
-- **San Fernando**
 - **San Isidro**
 - **Tigre**
-- **La Matanza**
 - **San Martín**
 - **Ituzaingó**
 

@@ -10,16 +10,12 @@ const serviceAreas = [
   "Lanús",
   "Lomas de Zamora",
   "Vicente López",
-  "San Fernando",
   "San Isidro",
-  "La Matanza",
   "San Martín",
   "Ituzaingó",
   "Quilmes",
   "Berazategui",
-  "Florencio Varela",
-  "Morón",
-  "Tres de Febrero"
+  "Morón"
 ];
 
 const ServiceCoverage = () => {

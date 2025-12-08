@@ -523,8 +523,78 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
     }
   };
 
+  const baseUrl = "https://miagrimensor.com";
+  const postUrl = `${baseUrl}/blog/${post.slug}`;
+
+  // Structured data para artículo
+  const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image ? `${baseUrl}${post.image}` : `${baseUrl}/og-image.png`,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: post.author,
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Agrimensor Pablo Venerus",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo_miagrimensor.png`,
+        width: 200,
+        height: 60,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    keywords: post.tags.join(", "),
+    articleSection: post.category,
+  };
+
+  // Breadcrumbs structured data
+  const breadcrumbsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Structured Data para SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData, null, 0) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsStructuredData, null, 0) }}
+      />
       {/* Header del artículo */}
       <div className="bg-gradient-to-b from-primary/10 to-background border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">

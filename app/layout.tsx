@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/structured-data";
@@ -7,6 +7,13 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://miagrimensor.com"),
@@ -41,12 +48,6 @@ export const metadata: Metadata = {
     "Declaraciones Juradas",
     "Subdivisiones PH",
   ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
   openGraph: {
     type: "website",
     siteName: "Agrimensor Pablo Venerus",
@@ -57,10 +58,11 @@ export const metadata: Metadata = {
       "Servicios profesionales de agrimensura y topografía en Avellaneda, Buenos Aires. Más de 14 años de experiencia. Estados parcelarios, mensuras y amojonamientos.",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://miagrimensor.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Agrimensor Pablo Venerus - Servicios de Agrimensura",
+        type: "image/png",
       },
     ],
   },
@@ -75,7 +77,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Agrimensor Pablo Venerus - Excelencia en Agrimensura",
     description: "Servicios profesionales de agrimensura y topografía en Avellaneda, Buenos Aires. Más de 14 años de experiencia.",
-    images: ["/og-image.png"],
+    images: ["https://miagrimensor.com/og-image.png"],
+    creator: "@miagrimensor",
   },
   alternates: {
     canonical: "https://miagrimensor.com",
@@ -104,12 +107,26 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "icon",
+        type: "image/png",
+        url: "/web-app-manifest-192x192.png",
+        sizes: "192x192",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        url: "/web-app-manifest-512x512.png",
+        sizes: "512x512",
+      },
     ],
     shortcut: "/favicon.ico",
   },
@@ -147,6 +164,7 @@ export default function RootLayout({
   return (
     <html lang="es-AR" suppressHydrationWarning>
       <head>
+        {/* Theme script - debe estar antes de cualquier render */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -176,6 +194,9 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Preconnect para mejorar rendimiento */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${inter.className} antialiased bg-background text-foreground transition-colors duration-200`}>
         <StructuredData type="ProfessionalService" />

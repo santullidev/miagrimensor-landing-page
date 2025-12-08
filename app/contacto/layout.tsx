@@ -19,10 +19,11 @@ export const metadata: Metadata = {
     siteName: "Agrimensor Pablo Venerus",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://miagrimensor.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Contacto - Pablo Venerus",
+        type: "image/png",
       },
     ],
     locale: "es_AR",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contacto - Pablo Venerus",
     description: "Solicita tu presupuesto de servicios de agrimensura.",
-    images: ["/og-image.png"],
+    images: ["https://miagrimensor.com/og-image.png"],
   },
   alternates: {
     canonical: "https://miagrimensor.com/contacto",

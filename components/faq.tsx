@@ -11,7 +11,7 @@ const faq = [
   {
     question: "¿En dónde trabajo?",
     answer:
-      "Ofrezco servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de Avellaneda, Lanús, Lomas de Zamora, Vicente López, San Fernando, San Isidro, Tigre, La Matanza, San Martín e Ituzaingó.",
+      "Ofrezco servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de Avellaneda, Lanús, Lomas de Zamora, Vicente López, San Isidro, Tigre, San Martín e Ituzaingó.",
   },
   {
     question: "¿Qué tipos de trabajo realizo?",
