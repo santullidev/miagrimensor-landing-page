@@ -7,6 +7,10 @@ frontend:
         - npm run type-check
     build:
       commands:
+        # 🔑 Inyectar variables de entorno ANTES del build
+        - echo "RESEND_API_KEY=$RESEND_API_KEY" >> .env.production
+        - echo "RESEND_FROM_EMAIL=$RESEND_FROM_EMAIL" >> .env.production
+        - echo "RESEND_TO_EMAIL=$RESEND_TO_EMAIL" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next
