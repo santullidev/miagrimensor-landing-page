@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Inicializar Resend solo si la API key está disponible
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: NextRequest) {
   try {
+    // Verificar que Resend esté configurado
+    if (!resend || !process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY no está configurada');
+      return NextResponse.json(
+        { error: 'Servicio de email no configurado. Por favor, contacta directamente por WhatsApp o teléfono.' },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     const { nombre, email, mensaje, numeroPartida } = body;
 
@@ -82,10 +92,32 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Error en API route /api/contact:', error);
+    
+    // Si el error es de parsing JSON, devolver un error más específico
+    if (error instanceof SyntaxError || (error as Error).message.includes('JSON')) {
+      return NextResponse.json(
+        { error: 'Error al procesar los datos del formulario' },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json(
-      { error: 'Error interno del servidor' },
+      { 
+        error: 'Error interno del servidor',
+        details: process.env.NODE_ENV === 'development' ? String(error) : undefined
+      },
       { status: 500 }
     );
   }
+}
+
+// Método GET para verificar que la ruta funciona
+export async function GET() {
+  return NextResponse.json({
+    status: 'ok',
+    message: 'API de contacto está funcionando',
+    resendConfigured: !!process.env.RESEND_API_KEY,
+    timestamp: new Date().toISOString(),
+  });
 }
 

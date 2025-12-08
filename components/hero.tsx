@@ -41,6 +41,14 @@ const Hero = () => {
         body: JSON.stringify(formData),
       });
 
+      // Verificar que la respuesta sea JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        console.error('Respuesta no es JSON:', text.substring(0, 200));
+        throw new Error('Error en el servidor. Por favor, contacta directamente por WhatsApp o teléfono.');
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
