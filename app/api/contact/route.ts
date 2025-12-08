@@ -104,7 +104,6 @@ export async function POST(request: NextRequest) {
     // ❌ Manejo de errores de Resend
     if (error) {
       console.error('❌ [Resend Error]');
-      console.error('  Código:', error.code || 'unknown');
       console.error('  Mensaje:', error.message);
       console.error('  Detalles:', JSON.stringify(error, null, 2));
       return NextResponse.json(
