@@ -527,12 +527,15 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
   const postUrl = `${baseUrl}/blog/${post.slug}`;
 
   // Structured data para artículo
+  const postImage = post.featuredImage || (post.images && post.images[0]) || `${baseUrl}/og-image.png`;
+  const fullImageUrl = postImage.startsWith('http') ? postImage : `${baseUrl}${postImage}`;
+  
   const articleStructuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    image: post.image ? `${baseUrl}${post.image}` : `${baseUrl}/og-image.png`,
+    image: fullImageUrl,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     author: {

@@ -21,6 +21,8 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
 
   const baseUrl = "https://miagrimensor.com";
   const postUrl = `${baseUrl}/blog/${slug}`;
+  const postImage = post.featuredImage || (post.images && post.images[0]) || `${baseUrl}/og-image.png`;
+  const fullImageUrl = postImage.startsWith('http') ? postImage : `${baseUrl}${postImage}`;
   
   return {
     title: post.seo.title,
@@ -42,7 +44,7 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
       tags: post.tags,
       images: [
         {
-          url: post.image || `${baseUrl}/og-image.png`,
+          url: fullImageUrl,
           width: 1200,
           height: 630,
           alt: post.seo.title,
@@ -54,7 +56,7 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
       card: "summary_large_image",
       title: post.seo.title,
       description: post.seo.description,
-      images: [post.image || `${baseUrl}/og-image.png`],
+      images: [fullImageUrl],
     },
   };
 }

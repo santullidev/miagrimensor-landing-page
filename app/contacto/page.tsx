@@ -35,13 +35,20 @@ export default function ContactoPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulación de envío de email (aquí puedes integrar con tu servicio de email)
     try {
-      // Simular delay de envío
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Aquí iría la lógica real de envío de email
-      console.log("Datos del formulario:", formData);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al enviar el formulario');
+      }
       
       setSubmitSuccess(true);
       setFormData({
@@ -55,6 +62,7 @@ export default function ContactoPage() {
       setTimeout(() => setSubmitSuccess(false), 5000);
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
+      alert(error instanceof Error ? error.message : 'Error al enviar el formulario. Por favor, intenta nuevamente.');
     } finally {
       setIsSubmitting(false);
     }
