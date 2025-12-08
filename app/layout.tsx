@@ -141,7 +141,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  manifest: "/site.webmanifest",
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || undefined,
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
