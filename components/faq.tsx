@@ -6,43 +6,48 @@ import {
 import { cn } from "@/lib/utils";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
+import Link from "next/link";
 
 const faq = [
   {
     question: "¿En dónde trabajo?",
-    answer:
-      "Ofrezco servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de Avellaneda, Lanús, Lomas de Zamora, Vicente López, San Isidro, Tigre, San Martín e Ituzaingó.",
+    answer: (
+      <>
+        Ofrezco servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de Avellaneda, Lanús, Lomas de Zamora, Vicente López, San Isidro, Tigre, San Martín e Ituzaingó.
+      </>
+    ),
   },
   {
     question: "¿Qué tipos de trabajo realizo?",
-    answer:
-      "Ejerciendo Agrimensura en todos sus aspectos, a saber: Topografía, Geodesia, Fotogrametría, Agrimensura legal, etc. Para mayor información acerca de las tareas que brindo a realizar en ejercicio profesional diríjase a la sección SERVICIOS, o bien, contáctactame a través de WhatsApp.",
+    answer: (
+      <>
+        Ejerciendo Agrimensura en todos sus aspectos, a saber: Agrimensura legal, Topografía y Geodesia, Montajes, entre otros. Para mayor información acerca de las tareas que brindo a realizar en ejercicio profesional diríjase a la sección <Link href="/servicios" className="text-green-600 font-medium hover:underline">SERVICIOS</Link>, o bien, contáctame a través de WhatsApp.
+      </>
+    ),
   },
   {
-    question: "¿Cuándo se realiza un estado parcelario o cédula catastral (Ley Provincial de Catastro | Ley 10.707)?",
-    answer:
-      "Se realiza previo a toda transmisión o modificación en la titularidad del dominio, siempre y cuando dicho estado parcelario no se encuentre vigente.",
+    question: "¿Cuándo se realiza y cuál es la vigencia de un estado parcelario (Ley 10.707)?",
+    answer: (
+      <>
+        Para una explicación detallada sobre cuándo se realiza y cuál es la vigencia del estado parcelario, te invito a leer mi artículo donde explico todo en detalle:{" "}
+        <Link
+          href="/blog/todo-sobre-el-estado-parcelario-en-la-provincia-de-buenos-aires"
+          className="text-green-600 font-semibold hover:underline block mt-2"
+        >
+          Todo sobre el Estado Parcelario en Provincia de Buenos Aires
+        </Link>
+      </>
+    ),
   },
   {
-    question: "¿Cuál es la vigencia de un estado parcelario?",
-    answer:
-      "• En parcelas urbanas baldías: 2 años (Art 15 Ley 10.707)\n" +
-      "• En parcelas urbanas edificadas: 3 años (Disp. 6117/2015)\n" +
-      "• En parcelas rurales: 3 años (Disp. 6117/2015)\n" +
-      "• En sub parcelas PH, ubicadas en planta baja o planta superior que contengan superficie descubierta (terraza), también son 3 años por la Disp. 6117/2015.\n\n" +
-      "Otra de las novedades que trajo la Disposición 6117/2015 es que las sub parcelas de PH, ubicadas en planta 1er piso o superiores como así también en subsuelo y cuyo plano origen sea anterior al año 1994, deberán constituir el estado parcelario correspondiente.\n\n" +
-      "Como siempre, las sub parcelas, cocheras o bauleras que no contengan superficie descubierta, están exceptuadas de constituir el Estado Parcelario por la resolución 22/2012.",
+    question: "¿El estado parcelario o cédula catastral incluye el amojonamiento de la parcela?",
+    answer: (
+      <>
+        No. Se puede hacer, pero debe haberse solicitado para que se presupueste adecuadamente. Son trabajos distintos.
+      </>
+    ),
   },
-  {
-    question: "¿Cuánto tiempo tarda un trabajo de agrimensura?",
-    answer:
-      "Los tiempos varían según el tipo de trabajo. Los estados parcelarios suelen completarse en 24-48 horas, mientras que trabajos más complejos como subdivisiones o relevamientos topográficos pueden tomar entre 1-2 semanas. Siempre te proporciono un cronograma detallado al inicio del proyecto.",
-  },
-  {
-    question: "¿Qué documentación necesito para solicitar un servicio?",
-    answer:
-      "Para la mayoría de los trabajos necesitarás: título de propiedad, plano de mensura vigente, y documentación municipal actualizada. Para casos específicos, te asesoro sobre la documentación adicional requerida según el tipo de trabajo a realizar.",
-  },
+
 ];
 
 const FAQ = () => {
@@ -86,15 +91,15 @@ const FAQ = () => {
                   <span className="pr-2 sm:pr-4 break-words min-w-0 flex-1 text-left leading-relaxed whitespace-normal hyphens-auto overflow-wrap-anywhere">
                     {question}
                   </span>
-                  <ChevronDownIcon 
+                  <ChevronDownIcon
                     className={cn(
                       "h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-muted-foreground transition-all duration-300 ease-out ml-2 sm:ml-3 mt-0.5",
                       "group-data-[state=open]:rotate-180 group-data-[state=open]:text-green-600"
-                    )} 
+                    )}
                   />
                 </AccordionPrimitive.Trigger>
               </AccordionPrimitive.Header>
-              <AccordionContent 
+              <AccordionContent
                 className={cn(
                   "overflow-hidden transition-all duration-500 ease-out",
                   "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
