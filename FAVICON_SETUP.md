@@ -66,3 +66,6 @@ Para verificar que los iconos funcionan correctamente:
 - Asegúrate de que los iconos sean legibles incluso en tamaños pequeños
 - El fondo debe ser sólido o transparente según el diseño
 
+
+
+

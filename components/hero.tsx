@@ -8,9 +8,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ArrowUpRight, DraftingCompass, Send, CheckCircle } from "lucide-react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const backgroundImages = [
+  "/hero-background.png",
+  "/hero-background_2.jpeg",
+  "/hero-background_3.jpeg"
+];
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -19,6 +27,13 @@ const Hero = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -54,7 +69,7 @@ const Hero = () => {
       if (!response.ok) {
         throw new Error(data.error || 'Error al enviar el formulario');
       }
-      
+
       setSubmitSuccess(true);
       setFormData({
         nombre: "",
@@ -62,7 +77,7 @@ const Hero = () => {
         mensaje: "",
         numeroPartida: ""
       });
-      
+
       // Resetear mensaje de éxito después de 5 segundos
       setTimeout(() => setSubmitSuccess(false), 5000);
     } catch (error) {
@@ -74,23 +89,29 @@ const Hero = () => {
   };
 
 
-
   return (
     <div className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden pt-16 lg:pt-8">
-      {/* Background estático */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/hero-background.jpeg')"
-        }}
-      >
-        {/* Overlay para mejorar legibilidad del texto sobre la imagen */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-800/40 to-slate-900/60 z-10" />
-      </div>
-      
+      {/* Background Carousel */}
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={currentImageIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('${backgroundImages[currentImageIndex]}')`
+          }}
+        >
+          {/* Overlay para mejorar legibilidad - Replicado en cada slide para transición suave */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-800/40 to-slate-900/60 z-10" />
+        </motion.div>
+      </AnimatePresence>
+
       {/* Gradiente de difuminado en la parte inferior */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
-      
+
       {/* Contenido principal */}
       <div className="relative z-50 w-full flex items-center justify-center min-h-[calc(100vh-4rem)]">
         <div className="max-w-7xl w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-8 lg:gap-y-14 gap-x-10 px-4 sm:px-6 py-8 lg:py-12 overflow-hidden">
@@ -101,7 +122,7 @@ const Hero = () => {
             <div className="mt-8 relative">
               {/* Línea decorativa vertical sutil */}
               <div className="absolute -left-2 sm:-left-3 top-0 bottom-0 w-0.5 sm:w-1 bg-gradient-to-b from-green-400/70 via-green-300/50 to-green-200/30 rounded-full hidden lg:block"></div>
-              
+
               <h1 className="font-headline text-white drop-shadow-xl relative pl-0 lg:pl-4">
                 {/* Título principal - palabras completas sin cortar */}
                 <span className="block text-4xl xs:text-5xl sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem] 2xl:text-[4.75rem] font-black mb-1 sm:mb-2 leading-[0.9] tracking-[-0.04em] text-white drop-shadow-2xl whitespace-nowrap">
@@ -110,7 +131,7 @@ const Hero = () => {
                 <span className="block text-4xl xs:text-5xl sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem] 2xl:text-[4.75rem] font-black mb-4 sm:mb-5 leading-[0.9] tracking-[-0.04em] text-white drop-shadow-2xl whitespace-nowrap">
                   y Topografía
                 </span>
-                
+
                 {/* Subtítulo con valor y línea decorativa - palabras completas juntas */}
                 <div className="relative mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/20">
                   <div className="absolute left-0 top-0 w-12 sm:w-16 h-0.5 sm:h-1 bg-gradient-to-r from-green-400/80 via-green-300/60 to-transparent rounded-full"></div>
@@ -122,7 +143,7 @@ const Hero = () => {
             </div>
             <p className="mt-6 max-w-[60ch] xs:text-lg text-white/90 break-words leading-relaxed drop-shadow-md">
               Estados parcelarios, mensura y planos para escriturar con rapidez y respaldo.
-              Desde principios del año 2010,  ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes. 
+              Desde principios del año 2010,  ofrezco mis servicios, con dedicación, con entusiasmo a esta hermosa profesión, resolviendo rápida y eficazmente las necesidades de cada uno de nuestros clientes.
             </p>
             <div className="mt-10 lg:mt-12 flex flex-col sm:flex-row items-center gap-4 w-full">
               <Button
@@ -146,7 +167,7 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          
+
           {/* Formulario de contacto */}
           <div id="formulario" className="relative lg:max-w-lg xl:max-w-xl w-full lg:order-2 scroll-mt-20">
             <Card className="border border-green/30 bg-white shadow-soft-xl rounded-modern-lg">
@@ -186,7 +207,7 @@ const Hero = () => {
                         className="bg-white"
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-foreground">
                         Correo electrónico *
@@ -202,7 +223,7 @@ const Hero = () => {
                         className="bg-white"
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="numeroPartida" className="text-foreground">
                         Número de Partida <span className="text-xs text-muted-foreground">(Opcional pero fundamental)</span>
@@ -217,7 +238,7 @@ const Hero = () => {
                         className="bg-white"
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="mensaje" className="text-foreground">
                         Mensaje o consulta específica *
@@ -233,10 +254,10 @@ const Hero = () => {
                         className="bg-white resize-none"
                       />
                     </div>
-                    
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-green hover:bg-green-100 text-white shadow-soft-lg hover:shadow-soft-xl rounded-modern min-h-[48px] transition-all duration-250 font-semibold focus:ring-2 focus:ring-green-50 focus:ring-offset-2" 
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-green hover:bg-green-100 text-white shadow-soft-lg hover:shadow-soft-xl rounded-modern min-h-[48px] transition-all duration-250 font-semibold focus:ring-2 focus:ring-green-50 focus:ring-offset-2"
                       size="lg"
                       disabled={isSubmitting}
                     >
@@ -252,7 +273,7 @@ const Hero = () => {
                         </>
                       )}
                     </Button>
-                    
+
                     <p className="text-xs text-muted-foreground text-center pt-2">
                       * Campos obligatorios. Tus datos están seguros con nosotros.
                     </p>

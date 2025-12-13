@@ -8,6 +8,8 @@ import CTASection from "@/components/cta-section";
 import ScrollToTop from "@/components/scroll-to-top";
 import ServiceCoverage from "@/components/service-coverage";
 
+import WorkGallery from "@/components/work-gallery";
+
 export default function Home() {
   return (
     <>
@@ -18,7 +20,8 @@ export default function Home() {
       <ServiceCoverage />
       <BlogPreview />
       <FAQ />
-      
+      <WorkGallery />
+
       <Footer />
       <ScrollToTop />
     </>

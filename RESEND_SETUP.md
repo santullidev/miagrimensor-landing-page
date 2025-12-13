@@ -92,3 +92,6 @@ Para más información: https://resend.com/pricing
 - Verifica que `RESEND_TO_EMAIL` sea un email válido
 - Revisa los logs en Resend Dashboard → Logs
 
+
+
+

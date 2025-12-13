@@ -48,3 +48,6 @@ Las rutas están configuradas para usar `/favicon.ico/` como carpeta:
 2. Cambiar las rutas en el código para que apunten a la raíz (`/favicon.ico` en lugar de `/favicon.ico/favicon.ico`)
 
 
+
+
+

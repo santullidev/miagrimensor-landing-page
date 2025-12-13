@@ -115,8 +115,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer 
-      className="mt-12 xs:mt-20 bg-green-light/20 border-t border-green/10 w-full"
+    <footer
+      className="bg-green-light/20 border-t border-green/10 w-full"
       role="contentinfo"
       itemScope
       itemType="https://schema.org/WPFooter"
@@ -133,7 +133,7 @@ const Footer = () => {
 
             {/* Description - Compact */}
             <p className="text-sm leading-relaxed text-muted-foreground max-w-md">
-              Servicios profesionales de agrimensura y topografía en CABA y Gran Buenos Aires. 
+              Servicios profesionales de agrimensura y topografía en CABA y Gran Buenos Aires.
               Estados parcelarios, mensura y planos para escriturar.
             </p>
 
@@ -141,15 +141,15 @@ const Footer = () => {
             <address className="not-italic space-y-1" itemScope itemType="https://schema.org/LocalBusiness">
               <meta itemProp="name" content="Pablo Venerus - Agrimensor" />
               <meta itemProp="address" content="Avellaneda, Buenos Aires, Argentina" />
-              
+
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center gap-2 group">
-                  <info.icon 
-                    className="text-green-600 group-hover:text-green-700 transition-colors duration-200 flex-shrink-0" 
-                    size={13} 
+                  <info.icon
+                    className="text-green-600 group-hover:text-green-700 transition-colors duration-200 flex-shrink-0"
+                    size={13}
                     aria-hidden="true"
                   />
-                  <Link 
+                  <Link
                     href={info.href}
                     className="text-sm text-muted-foreground hover:text-green-600 transition-colors duration-200 break-words"
                     aria-label={info.ariaLabel}
@@ -164,8 +164,8 @@ const Footer = () => {
             {/* Social Media - Compact */}
             <div className="flex items-center gap-2 pt-0.5">
               <span className="text-sm text-muted-foreground">Síguenos:</span>
-              <Link 
-                href="https://www.linkedin.com/company/miagrimensor" 
+              <Link
+                href="https://www.linkedin.com/company/miagrimensor"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-1.5 rounded-modern bg-green/10 hover:bg-green/20 text-green-600 hover:text-green-700 transition-all duration-200"
@@ -179,7 +179,7 @@ const Footer = () => {
           {/* Footer Sections - Compact grid */}
           {footerSections.map(({ title, links }) => (
             <nav key={title} className="space-y-2" aria-labelledby={`footer-${title.toLowerCase()}`}>
-              <h3 
+              <h3
                 id={`footer-${title.toLowerCase()}`}
                 className="font-headline font-semibold text-foreground text-sm mb-2 border-b border-green/30 pb-1.5"
               >
@@ -193,9 +193,9 @@ const Footer = () => {
                       className="group flex items-center gap-1.5 text-sm text-muted-foreground hover:text-green-600 transition-colors duration-200 leading-relaxed"
                       aria-label={description ? `${linkTitle}: ${description}` : linkTitle}
                     >
-                      <ArrowRight 
-                        size={12} 
-                        className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0 text-green-600" 
+                      <ArrowRight
+                        size={12}
+                        className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0 text-green-600"
                         aria-hidden="true"
                       />
                       <span className="group-hover:underline">{linkTitle}</span>
@@ -216,8 +216,8 @@ const Footer = () => {
           <div className="text-center sm:text-left space-y-1">
             <p>
               &copy; {currentYear}{" "}
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="font-medium text-foreground hover:text-green-600 transition-colors duration-200"
                 aria-label="Ir a página de inicio"
               >
@@ -233,9 +233,9 @@ const Footer = () => {
           {/* Developer Credit - Compact */}
           <div>
             Desarrollado por{" "}
-            <Link 
-              href="https://makebly.io" 
-              target="_blank" 
+            <Link
+              href="https://makebly.io"
+              target="_blank"
               rel="noopener noreferrer"
               className="font-medium hover:text-green-600 transition-colors duration-200"
               aria-label="Visitar Makebly.io"

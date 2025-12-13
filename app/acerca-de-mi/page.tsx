@@ -20,6 +20,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar/navbar";
 import ScrollToTop from "@/components/scroll-to-top";
 import ServiceCoverage from "@/components/service-coverage";
+import WorkGallery from "@/components/work-gallery";
 
 // Imágenes estáticas - integradas en el diseño
 const images = [
@@ -61,12 +62,12 @@ export default function AcercaDeMiPage() {
     <>
       {/* Navbar */}
       <Navbar />
-      
+
       <div className="min-h-screen bg-background">
         {/* Header */}
         <div className="bg-gradient-to-b from-green-light/20 via-background to-background border-b border-green/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-            <Link 
+            <Link
               href="/"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-green-600 transition-colors mb-6 group"
             >
@@ -94,7 +95,7 @@ export default function AcercaDeMiPage() {
                     Pablo Venerus
                   </h2>
                   <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
-                    Agrimensor profesional con sede en Avellaneda, ofrece servicios integrales de topografía e ingeniería con más de catorce años de experiencia continua. 
+                    Agrimensor profesional con sede en Avellaneda, ofrece servicios integrales de topografía e ingeniería con más de catorce años de experiencia continua.
                   </p>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     Me especializo en adaptar cada proyecto a las necesidades específicas de mis clientes, utilizando tecnología de última generación y metodologías probadas para garantizar resultados precisos y confiables en cada trabajo.
@@ -285,21 +286,21 @@ export default function AcercaDeMiPage() {
               <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
                 Consultas y asesoramiento sin cargo. Presupuestos EN EL DÍA.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <Button 
-                  asChild 
-                  size="lg" 
+                <Button
+                  asChild
+                  size="lg"
                   className="text-lg px-8 py-6 min-h-[48px] bg-green hover:bg-green-100 text-white border border-green-300 rounded-modern shadow-soft-lg hover:shadow-soft-xl font-semibold transition-all duration-250 focus:ring-2 focus:ring-green-50 focus:ring-offset-2"
                 >
                   <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer">
                     Hablemos en WhatsApp <ArrowUpRight className="ml-2 h-5 w-5" strokeWidth={2} />
                   </a>
                 </Button>
-                <Button 
-                  asChild 
-                  variant="outline" 
-                  size="lg" 
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
                   className="text-lg px-8 py-6 min-h-[48px] bg-background hover:bg-green/5 text-foreground border-green/30 hover:border-green/50 rounded-modern shadow-soft font-medium transition-all duration-250"
                 >
                   <Link href="/servicios">
@@ -327,12 +328,14 @@ export default function AcercaDeMiPage() {
                   <div className="p-3 rounded-modern bg-green/10 border border-green/20">
                     <MapPin className="text-green-600" size={24} strokeWidth={2} />
                   </div>
-                  <span className="font-medium text-foreground">Avellaneda, Buenos Aires</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Work Gallery - Integrada con el fondo */}
+        <WorkGallery className="bg-green-light/10 border-b border-green/20 pb-12" />
       </div>
 
       {/* Footer */}
