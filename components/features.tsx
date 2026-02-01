@@ -2,78 +2,18 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
-  BookCheck,
-  Navigation,
-  Goal,
-  Users,
-  Zap,
-  Home,
   X,
-  ChevronLeft,
-  ChevronRight,
+  ChevronDown,
+  ChevronUp,
   ZoomIn,
   ZoomOut,
   RotateCcw,
   ArrowRight,
-  ChevronDown,
-  ChevronUp,
 } from "lucide-react";
-import ImageWithFallback from "@/components/ui/image-with-fallback";
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-const features = [
-  {
-    icon: Goal,
-    title: "Estado Parcelario en la Provincia de Buenos Aires",
-    description:
-      "El Estado Parcelario en la Provincia de Buenos Aires es obligatorio según la Ley 10.707/94 al momento de una venta, hipoteca o cualquier acto de transmisión de derechos reales. Realizamos la certificación oficial de medidas y límites del inmueble, verificación de documentación catastral ante ARBA e informe técnico completo para escrituración. Nuestro servicio incluye relevamiento técnico, generación del plano georreferenciado, registro en el Catastro y obtención de la cédula catastral.",
-    image: "/servicios/estados-parcelarios-1.jpg",
-  },
-  {
-    icon: Goal,
-    title: "Estado Parcelario en Ciudad de Buenos Aires (CABA)",
-    description:
-      "El Estado Parcelario en la Ciudad Autónoma de Buenos Aires es obligatorio según la Ley de Catastro N° 6437 para actos de constitución, modificación y transmisión de derechos reales. Realizamos la certificación oficial cumpliendo con todos los elementos esenciales: nomenclatura catastral, ubicación georreferenciada, límites del inmueble, medidas, restricciones, tipificación de mejoras y partida inmobiliaria. Nuestro servicio incluye la constitución mediante acto de mensura registrado y verificación de subsistencia según plazos establecidos.",
-    image: "/servicios/certifParcCaba_Página_1.jpg",
-  },
-  {
-    icon: BookCheck,
-    title: "Planos de Mensura para División, Unificación, Anexión o Usucapión",
-    description:
-      "Este plano es la medición, ubicación y documentación de un inmueble y sus límites conforme a las causas jurídicas que lo originan, es decir, la aplicación del título de propiedad al terreno propiamente dicho. La mensura es la generadora de las parcelas catastrales.",
-    image: "/servicios/planos-mensura.jpg",
-  },
-  {
-    icon: Users,
-    title: "Declaraciones Juradas (revalúos)",
-    description:
-      "Servicio especializado en la elaboración de Declaraciones Juradas de Revalúo para la actualización periódica de valores catastrales de inmuebles. A través de un análisis detallado y preciso, determinamos el valor actualizado considerando ubicación, dimensiones, uso del suelo y mejoras realizadas. Estas declaraciones son fundamentales para trámites fiscales ante ARBA, actualizaciones catastrales y procesos legales relacionados con la propiedad, asegurando el cumplimiento de normativas vigentes.",
-    image: "/servicios/declaraciones-juradas-1.jpg",
-  },
-  {
-    icon: Navigation,
-    title: "Relevamientos topográficos",
-    description:
-      "Realizamos relevamientos planialtimétricos detallados para obras civiles, infraestructura y estudios de terreno, proporcionando mediciones precisas sobre la forma, dimensiones y características del terreno. Utilizamos equipos avanzados como estaciones totales y sistemas GPS/GNSS de alta precisión para garantizar la exactitud de la información recopilada. Estos relevamientos son fundamentales para la planificación y ejecución de proyectos de construcción, delimitación de propiedades y estudios técnicos, cumpliendo con normativas profesionales vigentes.",
-    image: "/servicios/EjemploRelevamientoTopografico.jpg",
-  },
-  {
-    icon: Zap,
-    title: "Amojonamientos",
-    description:
-      "Delimitación física y precisa de los límites de una propiedad mediante la colocación de mojones o hitos en sus vértices, estableciendo de manera permanente los linderos del terreno. Este procedimiento es esencial para prevenir disputas de linderos, facilitar la construcción de cercas o muros perimetrales, y asegurar el respeto de las dimensiones legales del inmueble. Realizado con equipos de alta precisión topográfica y conforme a normativas legales, proporcionando seguridad jurídica y claridad en la extensión de su propiedad.",
-    image: "/servicios/amojonamientos.jpg",
-  },
-  {
-    icon: Home,
-    title: "Subdivisiones en PH",
-    description:
-      "Servicio especializado en la división y modificación de unidades funcionales dentro del régimen de Propiedad Horizontal. Realizamos planos técnicos precisos para subdividir unidades existentes, unificar espacios, crear nuevas unidades funcionales o complementarias, y actualizar la documentación catastral y registral correspondiente. Este servicio es fundamental para adaptar los espacios a nuevas necesidades, maximizar el aprovechamiento de los inmuebles y cumplir con todas las normativas legales y reglamentos de copropiedad vigentes.",
-    image: "/servicios/subdivisiones.jpg",
-  },
-];
+import { services as features } from "@/lib/services";
 
 const Features = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -299,7 +239,7 @@ const Features = () => {
                 </div>
               </CardContent>
               
-              <CardHeader className="cursor-pointer p-5 sm:p-6 relative z-10 flex-1 flex flex-col bg-background/80 backdrop-blur-sm" onClick={() => window.location.href = '/servicios'}>
+              <CardHeader className="cursor-pointer p-5 sm:p-6 relative z-10 flex-1 flex flex-col bg-background/80 backdrop-blur-sm" onClick={() => window.location.href = `/servicios/${feature.slug}`}>
                 {/* Icon with green accent */}
                 <div className="mb-3 w-10 h-10 rounded-modern bg-gradient-to-br from-green/15 to-green/25 flex items-center justify-center group-hover:from-green/25 group-hover:to-green/35 transition-all duration-300 shadow-sm border border-green/20">
                   <feature.icon className="text-green-600 w-5 h-5 group-hover:text-green-700 transition-colors duration-300" />
