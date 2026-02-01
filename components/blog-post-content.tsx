@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Calendar,
@@ -113,7 +112,6 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
     let inCardSection = false;
     let cardContent: JSX.Element[] = [];
     let cardTitle = '';
-    let isImportantCard = false; // Para Artículo 50 y otras secciones importantes
 
     lines.forEach((line, index) => {
       // Detectar placeholder de flujo de proceso
@@ -128,25 +126,25 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
           }
           // Renderizar card normal con el flujo del proceso
           const processSteps = flujo.content.split('→').map(s => s.trim()).filter(s => s);
-          const cardBg = 'bg-gradient-to-br from-blue/5 to-blue/10 border-blue/30';
+          const cardBg = 'bg-slate-50/50';
           elements.push(
-            <Card key={`flujo-${index}`} className={`${cardBg} border-2 shadow-soft-lg my-6 sm:my-8 rounded-modern-lg overflow-hidden`}>
-              <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6 pt-5 sm:pt-6">
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground leading-tight">Flujo del proceso:</h3>
-              </CardHeader>
-              <CardContent className="px-4 sm:px-6 pb-5 sm:pb-6">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 text-foreground text-sm sm:text-base font-medium text-center leading-relaxed flex-wrap">
+            <div key={`flujo-${index}`} className={`${cardBg} my-8 py-6`}>
+              <div className="pb-4 px-0 pt-0">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">Flujo del proceso:</h3>
+              </div>
+              <div className="px-0 pb-0">
+                <div className="flex flex-col sm:flex-row items-center justify-start gap-2 sm:gap-3 md:gap-4 text-foreground text-base font-medium leading-relaxed flex-wrap">
                   {processSteps.map((step, stepIndex) => (
                     <React.Fragment key={stepIndex}>
                       <span className="whitespace-normal sm:whitespace-nowrap">{step}</span>
                       {stepIndex < processSteps.length - 1 && (
-                        <span className="text-foreground text-lg sm:text-xl md:text-2xl font-bold">→</span>
+                        <span className="text-muted-foreground text-lg sm:text-xl md:text-2xl font-bold">→</span>
                       )}
                     </React.Fragment>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           );
         }
         return;
@@ -212,20 +210,18 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
       // Función para cerrar card si está abierta
       const closeCard = () => {
         if (inCardSection && cardContent.length > 0) {
-          const cardBg = isImportantCard ? 'bg-gradient-to-br from-green/5 via-blue/5 to-green/5 border-green/30' : 'bg-gradient-to-br from-slate/5 via-slate/10 to-slate/5 border-slate/20';
           elements.push(
-            <Card key={`card-${cardKey++}`} className={`${cardBg} border-2 shadow-soft-lg my-6 sm:my-8 rounded-modern-lg overflow-hidden`}>
-              <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6 pt-5 sm:pt-6">
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground leading-tight">{cardTitle}</h3>
-              </CardHeader>
-              <CardContent className="px-4 sm:px-6 pb-5 sm:pb-6 space-y-3 sm:space-y-4">
+            <div key={`card-${cardKey++}`} className="my-8 sm:my-10">
+              <div className="pb-4 px-0 pt-0">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-2">{cardTitle}</h3>
+              </div>
+              <div className="px-0 pb-0 space-y-3 sm:space-y-4">
                 {cardContent}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           );
           cardContent = [];
           inCardSection = false;
-          isImportantCard = false;
           cardTitle = '';
         }
         if (currentList.length > 0) {
@@ -285,7 +281,6 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
         if (shouldBeCard) {
           inCardSection = true;
           cardTitle = headingText;
-          isImportantCard = headingText.includes('Artículo 50') || headingText.includes('Importancia') || headingText.includes('Certificado Catastral') || headingText.includes('Ley de Catastro') || headingText.includes('Estado Parcelario') && !headingText.includes('El Estado Parcelario en la Ciudad');
           return;
         }
         elements.push(<h2 key={`h2-${index}`} className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-5 mt-8 sm:mt-10 leading-tight">{headingText}</h2>);
@@ -298,7 +293,6 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
         if (shouldBeCard) {
           inCardSection = true;
           cardTitle = headingText;
-          isImportantCard = headingText.includes('Artículo') || headingText.includes('Importancia') || headingText.includes('Elementos') || headingText.includes('Resumen General') || headingText.includes('Objetivos') || headingText.includes('Principios');
           return;
         }
         elements.push(<h3 key={`h3-${index}`} className="text-lg sm:text-xl lg:text-2xl font-bold mb-3 sm:mb-4 mt-6 sm:mt-8">{headingText}</h3>);
@@ -311,7 +305,6 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
         if (shouldBeCard) {
           inCardSection = true;
           cardTitle = headingText;
-          isImportantCard = headingText.includes('Elementos') || headingText.includes('Esenciales') || headingText.includes('Complementarios');
           return;
         }
         elements.push(<h4 key={`h4-${index}`} className="text-base sm:text-lg lg:text-xl font-bold mb-2 sm:mb-3 mt-4 sm:mt-6">{headingText}</h4>);
@@ -397,7 +390,6 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
             trimmedLine.startsWith('Flujo del proceso:')) && !inCardSection) {
           inCardSection = true;
           cardTitle = trimmedLine;
-          isImportantCard = trimmedLine.includes('Certificado Catastral') || trimmedLine.includes('Flujo');
           return;
         }
         
@@ -454,18 +446,17 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
       }
     }
     
-    // Cerrar card pendiente al final
+    // Cerrar card pendiente al final (ahora solo un div contenedor sin estilo de tarjeta)
     if (inCardSection && cardContent.length > 0) {
-      const cardBg = isImportantCard ? 'bg-gradient-to-br from-green/5 via-blue/5 to-green/5 border-green/30' : 'bg-gradient-to-br from-slate/5 via-slate/10 to-slate/5 border-slate/20';
       elements.push(
-        <Card key={`card-${cardKey++}`} className={`${cardBg} border-2 shadow-soft-lg my-6 sm:my-8 rounded-modern-lg overflow-hidden`}>
-          <CardHeader className="pb-3 sm:pb-4 px-4 sm:px-6 pt-5 sm:pt-6">
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground leading-tight">{cardTitle}</h3>
-          </CardHeader>
-          <CardContent className="px-4 sm:px-6 pb-5 sm:pb-6 space-y-3 sm:space-y-4">
+        <div key={`card-${cardKey++}`} className="my-8 sm:my-10">
+          <div className="pb-4 px-0 pt-0">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-2">{cardTitle}</h3>
+          </div>
+          <div className="px-0 pb-0 space-y-3 sm:space-y-4">
             {cardContent}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       );
     }
 
@@ -627,7 +618,7 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
             </div>
           )}
           
-          <div className="bg-card border rounded-xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+          <div className="mb-6 sm:mb-8">
             {renderContent(post.content)}
           </div>
         </article>
@@ -638,13 +629,13 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Artículos relacionados</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {relatedPosts.map((relatedPost) => (
-                <Card
+                <div
                   key={relatedPost.id}
-                  className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                  className="group"
                 >
                   <Link href={`/blog/${relatedPost.slug}`}>
                     {/* Imagen destacada */}
-                    <div className="relative h-24 sm:h-32 overflow-hidden">
+                    <div className="relative h-24 sm:h-32 overflow-hidden rounded-lg mb-3">
                       {relatedPost.featuredImage ? (
                         <img
                           src={relatedPost.featuredImage}
@@ -661,14 +652,14 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
                       )}
                     </div>
 
-                    <CardHeader className="pb-3 sm:pb-4 px-3 sm:px-4">
+                    <div className="pb-3 px-1">
                       {/* Categoría */}
-                      <Badge variant="secondary" className="text-xs w-fit">
+                      <Badge variant="secondary" className="text-xs w-fit mb-2">
                         {relatedPost.category}
                       </Badge>
 
                       {/* Título */}
-                      <h3 className="text-sm sm:text-lg font-bold tracking-tight group-hover:text-primary transition-colors line-clamp-2">
+                      <h3 className="text-sm sm:text-lg font-bold tracking-tight group-hover:text-primary transition-colors line-clamp-2 mb-2">
                         {relatedPost.title}
                       </h3>
 
@@ -676,11 +667,11 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
                       <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2">
                         {relatedPost.excerpt}
                       </p>
-                    </CardHeader>
+                    </div>
 
-                    <CardContent className="pt-0 px-3 sm:px-4 pb-3 sm:pb-4">
+                    <div className="pt-0 px-1 pb-3">
                       {/* Metadatos */}
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-muted-foreground mb-3 sm:mb-4 gap-1 sm:gap-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-muted-foreground mb-3 gap-1 sm:gap-0">
                         <div className="flex items-center gap-1">
                           <Calendar size={10} className="sm:w-3 sm:h-3" />
                           <span className="text-xs">{formatDate(relatedPost.publishedAt)}</span>
@@ -692,17 +683,15 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
                       </div>
 
                       {/* Botón leer más */}
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors h-8 text-xs"
+                      <div
+                        className="w-full group-hover:text-primary transition-colors text-xs flex items-center font-medium"
                       >
                         Leer más
                         <ArrowRight size={12} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </CardContent>
+                      </div>
+                    </div>
                   </Link>
-                </Card>
+                </div>
               ))}
             </div>
           </div>

@@ -26,10 +26,10 @@ const faq = [
   {
     question: "¿Cuál es la vigencia de un estado parcelario?",
     answer:
-      "• En parcelas urbanas baldías: 2 años (Art 15 Ley 10.707)\n" +
-      "• En parcelas urbanas edificadas: 3 años (Disp. 6117/2015)\n" +
-      "• En parcelas rurales: 3 años (Disp. 6117/2015)\n" +
-      "• En sub parcelas PH, ubicadas en planta baja o planta superior que contengan superficie descubierta (terraza), también son 3 años por la Disp. 6117/2015.\n\n" +
+      "En parcelas urbanas baldías: 2 años (Art 15 Ley 10.707)\n\n" +
+      "En parcelas urbanas edificadas: 3 años (Disp. 6117/2015)\n\n" +
+      "En parcelas rurales: 3 años (Disp. 6117/2015)\n\n" +
+      "En sub parcelas PH, ubicadas en planta baja o planta superior que contengan superficie descubierta (terraza), también son 3 años por la Disp. 6117/2015.\n\n" +
       "Otra de las novedades que trajo la Disposición 6117/2015 es que las sub parcelas de PH, ubicadas en planta 1er piso o superiores como así también en subsuelo y cuyo plano origen sea anterior al año 1994, deberán constituir el estado parcelario correspondiente.\n\n" +
       "Como siempre, las sub parcelas, cocheras o bauleras que no contengan superficie descubierta, están exceptuadas de constituir el Estado Parcelario por la resolución 22/2012.",
   },

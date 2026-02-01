@@ -1,7 +1,6 @@
 "use client"
 
-import { MapPin, CheckCircle } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle } from "lucide-react";
 
 const serviceAreas = [
   "CABA",
@@ -36,47 +35,21 @@ const ServiceCoverage = () => {
           </p>
         </div>
 
-        {/* Map container with neighborhoods list */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Interactive map with CABA image */}
-          <Card className="border-soft rounded-modern-lg shadow-soft-lg bg-card/50 backdrop-blur-sm overflow-hidden">
-            <CardContent className="p-0">
-              <div className="relative aspect-[4/3] bg-gradient-to-br from-green/10 to-cream/50">
-                {/* CABA Map Image */}
-                <img
-                  src="/Mapa-CABA-Barrios-Nombres.svg.png"
-                  alt="Mapa de CABA con barrios"
-                  className="w-full h-full object-cover"
-                />
-                {/* Overlay with text */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-end">
-                  <div className="w-full p-6 text-white">
-                    <h3 className="font-headline text-xl sm:text-2xl font-semibold mb-2 drop-shadow-lg">
-                      CABA + Gran Buenos Aires
-                    </h3>
-                    <p className="text-sm sm:text-base text-white/95 drop-shadow-md">
-                      Servicios en todos los Barrios de CABA
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
+        {/* Neighborhoods list container */}
+        <div className="max-w-4xl mx-auto">
           {/* Neighborhoods list in elegant typography */}
           <div className="space-y-4">
-            <div className="mb-6">
+            <div className="mb-6 text-center">
               <h3 className="font-headline text-2xl font-semibold mb-3 text-foreground">
                 Barrios y Localidades
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 Ofrezco servicios en las siguientes zonas del Gran Buenos Aires y CABA.
-                Consulta sin cargo para verificar cobertura en tu zona específica.
               </p>
             </div>
 
             {/* Elegant grid list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {serviceAreas.map((area, index) => (
                 <div
                   key={index}
@@ -94,10 +67,10 @@ const ServiceCoverage = () => {
             </div>
 
             {/* Additional info */}
-            <div className="mt-8 p-4 rounded-modern bg-green-light/30 border border-green/20">
+            <div className="mt-8 p-4 rounded-modern bg-green-light/30 border border-green/20 text-center">
               <p className="text-sm text-muted-foreground leading-relaxed">
                 <strong className="font-semibold text-foreground">Nota:</strong> Si tu localidad no está en la lista, 
-                no dudes en contactarnos. Evaluamos proyectos en toda el área metropolitana de Buenos Aires.
+                no dudes en contactarnos. Evaluamos proyectos en toda la Provincia de Buenos Aires.
               </p>
             </div>
           </div>
