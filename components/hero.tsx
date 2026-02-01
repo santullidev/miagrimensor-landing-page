@@ -9,8 +9,7 @@ import { cn } from "@/lib/utils";
 const heroImages = [
   "/hero-background_1.jpeg",
   "/hero-background_2.jpeg",
-  "/hero-background_3.jpeg",
-  "/hero-background_4.jpeg"
+  "/hero-background_3.jpeg"
 ];
 
 const Hero = () => {

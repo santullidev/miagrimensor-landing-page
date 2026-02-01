@@ -167,7 +167,7 @@ export default function ServicePage() {
                 
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h4 className="font-bold mb-3">¿Por qué elegirnos?</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2 text-sm text-muted-foreground mb-4">
                     <li className="flex items-center gap-2">
                        <CheckCircle className="w-4 h-4 text-green" />
                        <span>Atención personalizada</span>
@@ -185,6 +185,12 @@ export default function ServicePage() {
                        <span>Tecnología de punta</span>
                     </li>
                   </ul>
+                  <div className="pt-3 border-t border-border/50">
+                    <Link href="/acerca-de-mi" className="text-xs text-muted-foreground hover:text-green transition-colors flex items-center gap-1 group">
+                      <span>Conoce más sobre mi trayectoria</span>
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

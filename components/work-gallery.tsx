@@ -8,8 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Full pool of images to rotate through
 const allImages = [
-  { src: "/assets/trabajo/barrio_privado_1.jpeg", alt: "Relevamiento en barrio privado" },
-  { src: "/assets/trabajo/barrio_privado_2.jpeg", alt: "Infraestructura en barrio cerrado" },
   { src: "/assets/trabajo/campo_1.jpeg", alt: "Medición de campo extensivo" },
   { src: "/assets/trabajo/campo_2.jpeg", alt: "Topografía rural" },
   { src: "/assets/trabajo/campo_3.jpeg", alt: "Agrimensura rural" },
