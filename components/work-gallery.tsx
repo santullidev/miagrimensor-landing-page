@@ -5,28 +5,7 @@ import Image from "next/image";
 import { X, ZoomIn, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Full pool of images to rotate through
-const allImages = [
-  { src: "/assets/trabajo/campo_1.jpeg", alt: "Medición de campo extensivo" },
-  { src: "/assets/trabajo/campo_2.jpeg", alt: "Topografía rural" },
-  { src: "/assets/trabajo/campo_3.jpeg", alt: "Agrimensura rural" },
-  { src: "/assets/trabajo/campo_4.jpeg", alt: "Trabajo de campo" },
-  { src: "/assets/trabajo/costa_1.jpeg", alt: "Relevamiento costero" },
-  { src: "/assets/trabajo/costa_2.jpeg", alt: "Medición en zona de costa" },
-  { src: "/assets/trabajo/costa_3.jpeg", alt: "Topografía de ribera" },
-  { src: "/assets/trabajo/costa_4.jpeg", alt: "Obras civiles en costa" },
-  { src: "/assets/trabajo/costa_5.jpeg", alt: "Proyecto costero" },
-  { src: "/assets/trabajo/costa_6.jpeg", alt: "Agrimensura en zona costera" },
-  { src: "/assets/trabajo/costa_7.jpeg", alt: "Relevamiento de terreno costero" },
-  { src: "/assets/trabajo/costa_8.jpeg", alt: "Detalle de medición en costa" },
-  { src: "/assets/trabajo/costa_9.jpeg", alt: "Trabajo técnico en costa" },
-  { src: "/assets/trabajo/costa_10.jpeg", alt: "Vista panorámica costera" },
-  { src: "/assets/trabajo/edificio_1.jpeg", alt: "Obra en edificio vertical" },
-  { src: "/assets/trabajo/edificio_2.jpeg", alt: "Medición de estructura edilicia" },
-  { src: "/assets/trabajo/lote_1.jpeg", alt: "Amojonamiento de lote" },
-  { src: "/assets/trabajo/lote_6.jpeg", alt: "Mensura de lote urbano" },
-];
+import type { WorkGalleryData } from "@/sanity/lib/types";
 
 // Initial layout configuration
 const initialLayout = [
@@ -40,15 +19,22 @@ const initialLayout = [
   { className: "md:col-span-1 h-[300px]" },
 ];
 
-export default function WorkGallery({ className }: { className?: string }) {
+interface WorkGalleryProps {
+  gallery: WorkGalleryData
+  className?: string
+}
+
+export default function WorkGallery({ gallery, className }: WorkGalleryProps) {
+  const allImages = gallery.images || [];
+
   const [visibleImages, setVisibleImages] = useState(() => {
-    // Initial selection
     const images = [];
-    for (let i = 0; i < initialLayout.length; i++) {
+    const slotsCount = Math.min(initialLayout.length, allImages.length);
+    for (let i = 0; i < slotsCount; i++) {
       images.push({
-        ...initialLayout[i],
-        image: allImages[i % allImages.length],
-        id: `slot-${i}-${Date.now()}`
+        ...initialLayout[i % initialLayout.length],
+        image: { src: allImages[i].url, alt: allImages[i].alt },
+        id: `slot-${i}-init`,
       });
     }
     return images;
@@ -58,76 +44,76 @@ export default function WorkGallery({ className }: { className?: string }) {
   const [loadingImage, setLoadingImage] = useState(false);
 
   useEffect(() => {
+    if (allImages.length <= initialLayout.length) return;
+
     const interval = setInterval(() => {
       setVisibleImages((currentImages) => {
         const newImages = [...currentImages];
-
-        // 1. Pick a random slot to change
         const slotToChange = Math.floor(Math.random() * newImages.length);
-
-        // 2. Get currently visible URLs to avoid duplicates in the same view (optional but good)
         const currentUrls = new Set(newImages.map(img => img.image.src));
-
-        // 3. Find available images (not currently displayed)
-        // If pool is small, might need to relax this, but we have 15 images and 8 slots.
-        const availableImages = allImages.filter(img => !currentUrls.has(img.src));
+        const availableImages = allImages.filter(img => !currentUrls.has(img.url));
 
         if (availableImages.length > 0) {
-          // 4. Pick a random new image
           const newImage = availableImages[Math.floor(Math.random() * availableImages.length)];
-
-          // 5. Update the slot
           newImages[slotToChange] = {
             ...newImages[slotToChange],
-            image: newImage,
-            id: `slot-${slotToChange}-${Date.now()}` // Force re-render for animation
+            image: { src: newImage.url, alt: newImage.alt },
+            id: `slot-${slotToChange}-${Math.random().toString(36).slice(2)}`,
           };
         }
-
         return newImages;
       });
-    }, 3500); // Change image every 3.5 seconds for a relaxed pace
+    }, 3500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [allImages]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (lightboxImage && e.key === "Escape") {
-        setLightboxImage(null);
-      }
+      if (lightboxImage && e.key === "Escape") setLightboxImage(null);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [lightboxImage]);
 
-  const openLightbox = (src: string) => {
-    setLoadingImage(true);
-    setLightboxImage(src);
-  };
+  if (allImages.length === 0) return null;
 
   return (
-    <section className={cn("bg-background py-16 xs:py-24 overflow-hidden", className)}>
-      <div className="container px-4 sm:px-6 mb-12">
+    <section className={cn("relative bg-background py-16 xs:py-24 overflow-hidden", className)}>
+      {/* Background Video (Optional) */}
+      {gallery.videoUrl && (
+        <div className="absolute inset-0 w-full h-full z-0 opacity-10 pointer-events-none">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={gallery.videoUrl} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
+        </div>
+      )}
+
+      <div className="relative z-10 container px-4 sm:px-6 mb-12">
         <div className="text-center max-w-3xl mx-auto">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Galería de Trabajos
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Una muestra dinámica de nuestros proyectos recientes en agrimensura y topografía.
-            </p>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+            {gallery.sectionTitle || "Galería de Trabajos"}
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            {gallery.sectionSubtitle || "Una muestra dinámica de nuestros proyectos recientes."}
+          </p>
         </div>
       </div>
 
-      <div className="container max-w-7xl mx-auto px-4">
+      <div className="relative z-10 container max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {visibleImages.map((item, index) => (
             <div
               key={index}
               className={cn("relative overflow-hidden rounded-xl cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 bg-muted group", item.className)}
-              onClick={() => openLightbox(item.image.src)}
+              onClick={() => { setLoadingImage(true); setLightboxImage(item.image.src); }}
             >
               <AnimatePresence mode="popLayout">
                 <motion.div
@@ -161,24 +147,16 @@ export default function WorkGallery({ className }: { className?: string }) {
       <AnimatePresence>
         {lightboxImage && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
             onClick={() => setLightboxImage(null)}
           >
-            <button
-              className="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors z-[70] hover:scale-110 active:scale-95"
-              onClick={() => setLightboxImage(null)}
-            >
+            <button className="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors z-[70]" onClick={() => setLightboxImage(null)}>
               <X className="w-10 h-10 drop-shadow-md" />
             </button>
-
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
               className="relative w-full max-w-6xl h-full max-h-[85vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
@@ -187,18 +165,12 @@ export default function WorkGallery({ className }: { className?: string }) {
                   <Loader2 className="w-12 h-12 text-white animate-spin" />
                 </div>
               )}
-
               <Image
                 src={lightboxImage}
                 alt="Vista ampliada"
                 fill
-                className={cn(
-                  "object-contain transition-opacity duration-300",
-                  loadingImage ? "opacity-0" : "opacity-100"
-                )}
-                sizes="100vw"
-                quality={95}
-                priority
+                className={cn("object-contain transition-opacity duration-300", loadingImage ? "opacity-0" : "opacity-100")}
+                sizes="100vw" quality={95} priority
                 onLoad={() => setLoadingImage(false)}
               />
             </motion.div>

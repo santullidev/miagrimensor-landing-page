@@ -2,19 +2,38 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { NavigationSheet } from "./navigation-sheet";
+import type { NavbarData } from "@/sanity/lib/types";
+import { SITE_CONFIG } from "@/lib/constants";
 
-const Navbar = () => {
+interface NavbarProps {
+  data?: Partial<NavbarData>
+}
+
+const defaultData: NavbarData = {
+  links: [
+    { label: 'Acerca de mí', href: '/acerca-de-mi', isHashLink: false },
+    { label: 'Servicios', href: '/servicios', isHashLink: false },
+    { label: 'Preguntas Frecuentes', href: '/#faq', isHashLink: true },
+    { label: 'Blog', href: '/blog', isHashLink: false },
+    { label: 'Contacto', href: '/contacto', isHashLink: false },
+  ],
+  ctaButton: { text: 'WhatsApp', href: SITE_CONFIG.whatsappUrl }
+};
+
+const Navbar = ({ data: propData }: NavbarProps) => {
+  const data = { ...defaultData, ...propData } as NavbarData;
+
   return (
-    <nav className="h-16 bg-gradient-to-r from-green/60 via-green/70 to-green/60 backdrop-blur-md border-b-2 border-green/40 sticky top-0 z-50 shadow-soft-lg">
+    <nav className="h-16 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-green/20 sticky top-0 z-50 shadow-soft">
       <div className="h-full flex items-center justify-between max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
         {/* Logo */}
         <div className="flex-shrink-0 min-w-0 flex-1 md:flex-none logo-container">
-          <Logo />
+          <Logo logoLight={propData?.logoLight} logoDark={propData?.logoDark} />
         </div>
 
         {/* Desktop Menu - Centrado */}
         <div className="hidden md:flex items-center justify-center flex-1">
-          <NavMenu />
+          <NavMenu links={data.links} />
         </div>
 
         {/* Botones de la derecha */}
@@ -24,14 +43,14 @@ const Navbar = () => {
             size="sm"
             asChild
           >
-            <a href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-              WhatsApp
+            <a href={data.ctaButton.href || "#"} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+              {data.ctaButton.text}
             </a>
           </Button>
 
           {/* Mobile Menu */}
           <div className="md:hidden">
-            <NavigationSheet />
+            <NavigationSheet data={data} />
           </div>
         </div>
       </div>

@@ -9,14 +9,15 @@ import {
 import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { NavLink } from "@/sanity/lib/types";
 
 interface NavMenuProps extends NavigationMenuProps {
   onLinkClick?: () => void;
+  links: NavLink[];
 }
 
-export const NavMenu = ({ onLinkClick, ...props }: NavMenuProps) => {
+export const NavMenu = ({ onLinkClick, links, ...props }: NavMenuProps) => {
   const pathname = usePathname();
-  const isHome = pathname === "/";
 
   const handleLinkClick = () => {
     if (onLinkClick) {
@@ -30,58 +31,31 @@ export const NavMenu = ({ onLinkClick, ...props }: NavMenuProps) => {
   return (
     <NavigationMenu {...props}>
       <NavigationMenuList className="gap-2 data-[orientation=horizontal]:gap-4 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:space-y-1">
-        
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/acerca-de-mi" className={props.orientation === "vertical" ? verticalLinkClassName : linkClassName} onClick={handleLinkClick}>
-              Acerca de mí
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/servicios" className={props.orientation === "vertical" ? verticalLinkClassName : linkClassName} onClick={handleLinkClick}>
-              Servicios
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link 
-              href="/#faq" 
-              className={props.orientation === "vertical" ? verticalLinkClassName : linkClassName}
-              onClick={(e) => {
-                handleLinkClick();
-                // Si estamos en la página principal, hacer scroll suave después de cerrar el menú
-                if (window.location.pathname === '/') {
-                  e.preventDefault();
-                  setTimeout(() => {
-                    const element = document.getElementById('faq');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }, 300); // Esperar 300ms para que el menú se cierre
-                }
-              }}
-            >
-              Preguntas Frecuentes
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/blog" className={props.orientation === "vertical" ? verticalLinkClassName : linkClassName} onClick={handleLinkClick}>
-              Blog
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link href="/contacto" className={props.orientation === "vertical" ? verticalLinkClassName : linkClassName} onClick={handleLinkClick}>
-              Contacto
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+        {links.map((link, idx) => (
+          <NavigationMenuItem key={`${link.label}-${idx}`}>
+            <NavigationMenuLink asChild>
+              <Link 
+                href={link.href || "#"} 
+                className={props.orientation === "vertical" ? verticalLinkClassName : linkClassName} 
+                onClick={(e) => {
+                  handleLinkClick();
+                  if (link.isHashLink && window.location.pathname === '/') {
+                    e.preventDefault();
+                    const targetId = link.href.split('#')[1];
+                    setTimeout(() => {
+                      const element = document.getElementById(targetId);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 300);
+                  }
+                }}
+              >
+                {link.label}
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   );

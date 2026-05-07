@@ -12,8 +12,14 @@ import { Menu } from "lucide-react";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
 import { useState } from "react";
+import Link from "next/link";
+import type { NavbarData } from "@/sanity/lib/types";
 
-export const NavigationSheet = () => {
+interface NavigationSheetProps {
+  data: NavbarData;
+}
+
+export const NavigationSheet = ({ data }: NavigationSheetProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLinkClick = () => {
@@ -37,7 +43,7 @@ export const NavigationSheet = () => {
           </div>
           
           <div className="flex-1 mt-4 px-4">
-            <NavMenu orientation="vertical" className="space-y-1" onLinkClick={handleLinkClick} />
+            <NavMenu orientation="vertical" className="space-y-1" onLinkClick={handleLinkClick} links={data.links} />
           </div>
 
           <div className="flex-shrink-0 mt-4 pt-4 border-t-2 border-green-300/50 px-4 pb-4">
@@ -47,13 +53,13 @@ export const NavigationSheet = () => {
               asChild
             >
               <a 
-                href="https://api.whatsapp.com/send/?phone=5491167058156&text=Hola%21+Quisiera+un+presupuesto+sobre+un+trabajo+de+Agrimensura" 
+                href={data.ctaButton.href || "#"} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="cursor-pointer"
                 onClick={handleLinkClick}
               >
-                WhatsApp
+                {data.ctaButton.text}
               </a>
             </Button>
           </div>

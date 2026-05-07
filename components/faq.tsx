@@ -6,46 +6,19 @@ import {
 import { cn } from "@/lib/utils";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
+import type { SanityFaqItem } from "@/sanity/lib/types";
 
-const faq = [
-  {
-    question: "¿En dónde trabajo?",
-    answer:
-      "Ofrezco servicios en CABA y en una amplia zona del Gran Buenos Aires, que incluye los partidos de Avellaneda, Lanús, Lomas de Zamora, Vicente López, San Fernando, San Isidro, Tigre, La Matanza, San Martín e Ituzaingó.",
-  },
-  {
-    question: "¿Qué tipos de trabajo realizo?",
-    answer:
-      "Ejerciendo Agrimensura en todos sus aspectos, a saber: Topografía, Geodesia, Fotogrametría, Agrimensura legal, etc. Para mayor información acerca de las tareas que brindo a realizar en ejercicio profesional diríjase a la sección SERVICIOS, o bien, contáctactame a través de WhatsApp.",
-  },
-  {
-    question: "¿Cuándo se realiza un estado parcelario o cédula catastral (Ley Provincial de Catastro | Ley 10.707)?",
-    answer:
-      "Se realiza previo a toda transmisión o modificación en la titularidad del dominio, siempre y cuando dicho estado parcelario no se encuentre vigente.",
-  },
-  {
-    question: "¿Cuál es la vigencia de un estado parcelario?",
-    answer:
-      "En parcelas urbanas baldías: 2 años (Art 15 Ley 10.707)\n\n" +
-      "En parcelas urbanas edificadas: 3 años (Disp. 6117/2015)\n\n" +
-      "En parcelas rurales: 3 años (Disp. 6117/2015)\n\n" +
-      "En sub parcelas PH, ubicadas en planta baja o planta superior que contengan superficie descubierta (terraza), también son 3 años por la Disp. 6117/2015.\n\n" +
-      "Otra de las novedades que trajo la Disposición 6117/2015 es que las sub parcelas de PH, ubicadas en planta 1er piso o superiores como así también en subsuelo y cuyo plano origen sea anterior al año 1994, deberán constituir el estado parcelario correspondiente.\n\n" +
-      "Como siempre, las sub parcelas, cocheras o bauleras que no contengan superficie descubierta, están exceptuadas de constituir el Estado Parcelario por la resolución 22/2012.",
-  },
-  {
-    question: "¿Cuánto tiempo tarda un trabajo de agrimensura?",
-    answer:
-      "Los tiempos varían según el tipo de trabajo. Los estados parcelarios suelen completarse en 24-48 horas, mientras que trabajos más complejos como subdivisiones o relevamientos topográficos pueden tomar entre 1-2 semanas. Siempre te proporciono un cronograma detallado al inicio del proyecto.",
-  },
-  {
-    question: "¿Qué documentación necesito para solicitar un servicio?",
-    answer:
-      "Para la mayoría de los trabajos necesitarás: título de propiedad, plano de mensura vigente, y documentación municipal actualizada. Para casos específicos, te asesoro sobre la documentación adicional requerida según el tipo de trabajo a realizar.",
-  },
-];
+interface FAQProps {
+  items: SanityFaqItem[]
+  sectionTitle?: string
+  sectionSubtitle?: string
+}
 
-const FAQ = () => {
+const FAQ = ({
+  items,
+  sectionTitle = "Preguntas Frecuentes",
+  sectionSubtitle = "Resuelve tus dudas más comunes sobre los servicios de agrimensura",
+}: FAQProps) => {
   return (
     <div
       id="faq"
@@ -53,10 +26,10 @@ const FAQ = () => {
     >
       <div className="text-center mb-12">
         <h2 className="text-3xl xs:text-4xl md:text-5xl leading-[1.15] font-bold tracking-tight mb-4 break-words">
-          Preguntas Frecuentes
+          {sectionTitle}
         </h2>
         <p className="xs:text-lg text-muted-foreground max-w-2xl mx-auto break-words">
-          Resuelve tus dudas más comunes sobre los servicios de agrimensura
+          {sectionSubtitle}
         </p>
       </div>
 
@@ -66,9 +39,9 @@ const FAQ = () => {
           collapsible
           className="space-y-3"
         >
-          {faq.map(({ question, answer }, index) => (
+          {items.map(({ _id, question, answer }, index) => (
             <AccordionItem
-              key={question}
+              key={_id || `faq-${index}`}
               value={`question-${index}`}
               className="group"
             >

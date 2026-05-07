@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
+import { SanityPortableText } from "./portable-text";
 
 import { type BlogPost } from "@/lib/blog-data";
 
@@ -692,7 +693,11 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
           )}
           
           <div className="mb-6 sm:mb-8">
-            {renderContent(post.content)}
+            {post.contentAny ? (
+              <SanityPortableText value={post.contentAny} />
+            ) : (
+              renderContent(post.content)
+            )}
           </div>
         </article>
 
@@ -706,7 +711,7 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
                   key={relatedPost.id}
                   className="group"
                 >
-                  <Link href={`/blog/${relatedPost.slug}`}>
+                  <Link href={`/blog/${relatedPost.slug || ""}`}>
                     {/* Imagen destacada */}
                     <div className="relative h-24 sm:h-32 overflow-hidden rounded-lg mb-3">
                       {relatedPost.featuredImage ? (

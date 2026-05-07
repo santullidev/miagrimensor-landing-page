@@ -1,37 +1,28 @@
-"use client"
-
 import { CheckCircle } from "lucide-react";
 
-const serviceAreas = [
-  "CABA",
-  "Tigre",
-  "Avellaneda",
-  "Lanús",
-  "Lomas de Zamora",
-  "Vicente López",
-  "San Fernando",
-  "San Isidro",
-  "La Matanza",
-  "San Martín",
-  "Ituzaingó",
-  "Quilmes",
-  "Berazategui",
-  "Florencio Varela",
-  "Morón",
-  "Tres de Febrero"
-];
+interface ServiceCoverageProps {
+  areas: string[]
+  note?: string
+  sectionTitle?: string
+  sectionSubtitle?: string
+}
 
-const ServiceCoverage = () => {
+const ServiceCoverage = ({
+  areas,
+  note,
+  sectionTitle = "Algunas de las Zonas donde Trabajo",
+  sectionSubtitle = "Ofrezco mis servicios profesionales de agrimensura en CABA y Gran Buenos Aires",
+}: ServiceCoverageProps) => {
   return (
     <section id="cobertura" className="relative py-section section-lg bg-green-light/30 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="font-headline text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Algunas de las Zonas donde Trabajo
+            {sectionTitle}
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Ofrezco mis servicios profesionales de agrimensura en CABA y Gran Buenos Aires
+            {sectionSubtitle}
           </p>
         </div>
 
@@ -50,9 +41,9 @@ const ServiceCoverage = () => {
 
             {/* Elegant grid list */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {serviceAreas.map((area, index) => (
+              {areas.map((area, index) => (
                 <div
-                  key={index}
+                  key={`${area}-${index}`}
                   className="group flex items-center gap-3 p-3 rounded-modern bg-card border-soft hover:border-green/30 hover:shadow-soft transition-all duration-250 cursor-default"
                 >
                   <CheckCircle 
@@ -67,12 +58,13 @@ const ServiceCoverage = () => {
             </div>
 
             {/* Additional info */}
-            <div className="mt-8 p-4 rounded-modern bg-green-light/30 border border-green/20 text-center">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                <strong className="font-semibold text-foreground">Nota:</strong> Si tu localidad no está en la lista, 
-                no dudes en contactarnos. Evaluamos proyectos en toda la Provincia de Buenos Aires.
-              </p>
-            </div>
+            {note && (
+              <div className="mt-8 p-4 rounded-modern bg-green-light/30 border border-green/20 text-center">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  <strong className="font-semibold text-foreground">Nota:</strong> {note}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -81,4 +73,3 @@ const ServiceCoverage = () => {
 };
 
 export default ServiceCoverage;
-

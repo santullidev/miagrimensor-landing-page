@@ -12,6 +12,7 @@ export interface BlogPost {
   featuredImage?: string;
   images?: string[];
   featured: boolean;
+  contentAny?: any[];
   seo: {
     title: string;
     description: string;
