@@ -14,6 +14,7 @@ export const SITE_CONFIG = {
   linkedinUrl: 'https://www.linkedin.com/company/miagrimensor',
   baseUrl: 'https://miagrimensor.com',
   siteName: 'Agrimensor Pablo Venerus',
+  siteDescription: 'Servicios profesionales de agrimensura, estados parcelarios y mensuras en Avellaneda y alrededores.',
 } as const
 
 export type SiteConfig = typeof SITE_CONFIG
