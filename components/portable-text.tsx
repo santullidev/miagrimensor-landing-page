@@ -47,7 +47,7 @@ const components: PortableTextComponents = {
       return (
         <div className="my-8 sm:my-10">
           <img
-            src={`https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'}/${value.asset._ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png').replace('-webp', '.webp').replace('-avif', '.avif')}`}
+            src={`https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'q9dxbo03'}/${process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'}/${value.asset._ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png').replace('-webp', '.webp').replace('-avif', '.avif')}`}
             alt={value.alt || "Imagen de blog"}
             className="w-full rounded-modern shadow-soft-lg border border-green/20"
           />
