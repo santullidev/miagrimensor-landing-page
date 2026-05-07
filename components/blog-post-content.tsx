@@ -548,7 +548,7 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
       "@type": "WebPage",
       "@id": postUrl,
     },
-    keywords: post.seo?.keywords?.join(", ") || post.tags.join(", "),
+    keywords: post.seo?.keywords?.join(", ") || post.tags?.join(", ") || "",
     articleSection: post.category,
   };
 
@@ -611,12 +611,12 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
               <Badge variant="secondary" className="text-xs">
                 {post.category}
               </Badge>
-              {post.tags.slice(0, 3).map((tag) => (
+              {post.tags && post.tags.slice(0, 3).map((tag) => (
                 <Badge key={tag} variant="outline" className="text-xs">
                   {tag}
                 </Badge>
               ))}
-              {post.tags.length > 3 && (
+              {post.tags && post.tags.length > 3 && (
                 <Badge variant="outline" className="text-xs">
                   +{post.tags.length - 3}
                 </Badge>

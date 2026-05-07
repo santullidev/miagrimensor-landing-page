@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
   return {
     title: post.seo?.title || post.title,
     description: post.seo?.description || post.excerpt,
-    keywords: post.seo?.keywords || post.tags,
+    keywords: post.seo?.keywords || post.tags || [],
     authors: [{ name: post.author }],
     alternates: {
       canonical: postUrl,
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
       locale: "es_AR",
       publishedTime: post.publishedAt,
       authors: [post.author],
-      tags: post.tags,
+      tags: post.tags || [],
       images: [
         {
           url: postImage,
