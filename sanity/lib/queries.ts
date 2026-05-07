@@ -10,7 +10,8 @@ export const siteSettingsQuery = groq`
     address, linkedinUrl,
     serviceAreas, coverageNote, coverageTitle, coverageSubtitle,
     yearsExperience, projectsCompleted,
-    ogImage, logoLight, logoDark
+    ogImage, logoLight, logoDark,
+    footerSections
   }
 `
 

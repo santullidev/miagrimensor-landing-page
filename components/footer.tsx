@@ -21,39 +21,41 @@ const Footer = ({ settings: propSettings }: FooterProps) => {
   const settings = { ...defaultSettings, ...propSettings } as SiteSettings;
   const currentYear = new Date().getFullYear();
 
-  // Links del footer — se pueden migrar a Sanity en un paso futuro
-  const footerSections = [
-    {
-      title: "Servicios",
-      links: [
-        { title: "Estados Parcelarios", href: "/servicios", description: "Certificación catastral obligatoria" },
-        { title: "Planos de Mensura", href: "/servicios", description: "Medición y documentación oficial" },
-      ],
-    },
-    {
-      title: "Información",
-      links: [
-        { title: "Acerca de mí", href: "/acerca-de-mi", description: "Conoce al agrimensor" },
-        { title: "Zona de Cobertura", href: "/#cobertura", description: "CABA y Gran Buenos Aires" },
-        { title: "Preguntas Frecuentes", href: "/#faq", description: "Resuelve tus dudas" },
-      ],
-    },
-    {
-      title: "Blog",
-      links: [
-        { title: "Estado Parcelario CABA", href: "/blog/todo-sobre-el-estado-parcelario-en-la-ciudad-autonoma-de-buenos-aires", description: "Guía completa para CABA" },
-        { title: "Estado Parcelario Provincia", href: "/blog/todo-sobre-el-estado-parcelario-en-la-provincia-de-buenos-aires", description: "Información para Provincia" },
-        { title: "Trabajos Realizados", href: "/blog/algunos-de-mis-trabajos-realizados", description: "Portafolio de proyectos" },
-      ],
-    },
-    {
-      title: "Contacto",
-      links: [
-        { title: "Solicitar Presupuesto", href: "/contacto", description: "Completa el formulario de contacto" },
-        { title: "WhatsApp", href: settings.whatsappUrl, description: "Chat directo" },
-      ],
-    },
-  ];
+  // Links del footer — Dinámicos desde Sanity con fallback estático
+  const footerSections = settings.footerSections && settings.footerSections.length > 0 
+    ? settings.footerSections 
+    : [
+        {
+          title: "Servicios",
+          links: [
+            { title: "Estados Parcelarios", href: "/servicios", description: "Certificación catastral obligatoria" },
+            { title: "Planos de Mensura", href: "/servicios", description: "Medición y documentación oficial" },
+          ],
+        },
+        {
+          title: "Información",
+          links: [
+            { title: "Acerca de mí", href: "/acerca-de-mi", description: "Conoce al agrimensor" },
+            { title: "Zona de Cobertura", href: "/#cobertura", description: "CABA y Gran Buenos Aires" },
+            { title: "Preguntas Frecuentes", href: "/#faq", description: "Resuelve tus dudas" },
+          ],
+        },
+        {
+          title: "Blog",
+          links: [
+            { title: "Estado Parcelario CABA", href: "/blog/todo-sobre-el-estado-parcelario-en-la-ciudad-autonoma-de-buenos-aires", description: "Guía completa para CABA" },
+            { title: "Estado Parcelario Provincia", href: "/blog/todo-sobre-el-estado-parcelario-en-la-provincia-de-buenos-aires", description: "Información para Provincia" },
+            { title: "Trabajos Realizados", href: "/blog/algunos-de-mis-trabajos-realizados", description: "Portafolio de proyectos" },
+          ],
+        },
+        {
+          title: "Contacto",
+          links: [
+            { title: "Solicitar Presupuesto", href: "/contacto", description: "Completa el formulario de contacto" },
+            { title: "WhatsApp", href: settings.whatsappUrl, description: "Chat directo" },
+          ],
+        },
+      ];
 
   const contactInfo = [
     { icon: Phone, title: "Teléfono", value: settings.phone, href: settings.phoneHref, ariaLabel: "Llamar" },

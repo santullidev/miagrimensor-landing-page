@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { getBlogPostBySlug } from "@/lib/blog-data";
+import { sanityFetch } from "@/sanity/lib/client";
+import { postBySlugQuery } from "@/sanity/lib/queries";
+import type { SanityBlogPost } from "@/sanity/lib/types";
 
 interface BlogPostLayoutProps {
   children: React.ReactNode;
@@ -10,7 +12,11 @@ interface BlogPostLayoutProps {
 
 export async function generateMetadata({ params }: BlogPostLayoutProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await sanityFetch<SanityBlogPost>({ 
+    query: postBySlugQuery, 
+    params: { slug }, 
+    tags: [`blogPost:${slug}`] 
+  });
 
   if (!post) {
     return {
@@ -21,20 +27,19 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
 
   const baseUrl = "https://miagrimensor.com";
   const postUrl = `${baseUrl}/blog/${slug}`;
-  const postImage = post.featuredImage || (post.images && post.images[0]) || `${baseUrl}/og-image.png`;
-  const fullImageUrl = postImage.startsWith('http') ? postImage : `${baseUrl}${postImage}`;
+  const postImage = post.featuredImageUrl || `${baseUrl}/og-image.png`;
   
   return {
-    title: post.seo.title,
-    description: post.seo.description,
-    keywords: post.seo.keywords,
+    title: post.seo?.title || post.title,
+    description: post.seo?.description || post.excerpt,
+    keywords: post.seo?.keywords || post.tags,
     authors: [{ name: post.author }],
     alternates: {
       canonical: postUrl,
     },
     openGraph: {
-      title: post.seo.title,
-      description: post.seo.description,
+      title: post.seo?.title || post.title,
+      description: post.seo?.description || post.excerpt,
       type: "article",
       url: postUrl,
       siteName: "Agrimensor Pablo Venerus",
@@ -44,19 +49,19 @@ export async function generateMetadata({ params }: BlogPostLayoutProps): Promise
       tags: post.tags,
       images: [
         {
-          url: fullImageUrl,
+          url: postImage,
           width: 1200,
           height: 630,
-          alt: post.seo.title,
+          alt: post.seo?.title || post.title,
           type: "image/png",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: post.seo.title,
-      description: post.seo.description,
-      images: [fullImageUrl],
+      title: post.seo?.title || post.title,
+      description: post.seo?.description || post.excerpt,
+      images: [postImage],
     },
   };
 }

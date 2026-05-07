@@ -15,12 +15,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { SanityPortableText } from "./portable-text";
-
-import { type BlogPost } from "@/lib/blog-data";
+import type { SanityBlogPost } from "@/sanity/lib/types";
 
 interface BlogPostContentProps {
-  post: BlogPost;
-  relatedPosts: BlogPost[];
+  post: SanityBlogPost;
+  relatedPosts: SanityBlogPost[];
 }
 
 export default function BlogPostContent({ post, relatedPosts }: BlogPostContentProps) {
@@ -519,8 +518,8 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
   const postUrl = `${baseUrl}/blog/${post.slug}`;
 
   // Structured data para artículo
-  const postImage = post.featuredImage || (post.images && post.images[0]) || `${baseUrl}/og-image.png`;
-  const fullImageUrl = postImage.startsWith('http') ? postImage : `${baseUrl}${postImage}`;
+  const postImage = post.featuredImageUrl || `${baseUrl}/og-image.png`;
+  const fullImageUrl = postImage;
   
   const articleStructuredData = {
     "@context": "https://schema.org",
@@ -549,7 +548,7 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
       "@type": "WebPage",
       "@id": postUrl,
     },
-    keywords: post.tags.join(", "),
+    keywords: post.seo?.keywords?.join(", ") || post.tags.join(", "),
     articleSection: post.category,
   };
 
@@ -682,10 +681,10 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <article className="prose prose-sm sm:prose-base lg:prose-lg max-w-none">
           {/* Imagen destacada */}
-          {post.featuredImage && (
+          {post.featuredImageUrl && (
             <div className="relative w-full h-64 sm:h-80 lg:h-96 mb-6 sm:mb-8 rounded-xl overflow-hidden">
               <img
-                src={post.featuredImage}
+                src={post.featuredImageUrl}
                 alt={post.title}
                 className="w-full h-full object-cover"
               />
@@ -693,10 +692,10 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
           )}
           
           <div className="mb-6 sm:mb-8">
-            {post.contentAny ? (
-              <SanityPortableText value={post.contentAny} />
+            {post.content ? (
+              <SanityPortableText value={post.content} />
             ) : (
-              renderContent(post.content)
+              renderContent(post.excerpt)
             )}
           </div>
         </article>
@@ -708,15 +707,15 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {relatedPosts.map((relatedPost) => (
                 <div
-                  key={relatedPost.id}
+                  key={relatedPost._id}
                   className="group"
                 >
                   <Link href={`/blog/${relatedPost.slug || ""}`}>
                     {/* Imagen destacada */}
                     <div className="relative h-24 sm:h-32 overflow-hidden rounded-lg mb-3">
-                      {relatedPost.featuredImage ? (
+                      {relatedPost.featuredImageUrl ? (
                         <img
-                          src={relatedPost.featuredImage}
+                          src={relatedPost.featuredImageUrl}
                           alt={relatedPost.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />

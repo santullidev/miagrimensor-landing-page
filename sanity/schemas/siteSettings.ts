@@ -159,6 +159,36 @@ export default defineType({
       type: 'image',
       group: 'seo',
     }),
+    defineField({
+      name: 'footerSections',
+      title: 'Secciones del Footer',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'footerSection',
+          title: 'Sección',
+          fields: [
+            { name: 'title', title: 'Título', type: 'string' },
+            {
+              name: 'links',
+              title: 'Links',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    { name: 'title', title: 'Texto', type: 'string' },
+                    { name: 'href', title: 'URL', type: 'string' },
+                    { name: 'description', title: 'Descripción', type: 'string' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }),
   ],
   preview: {
     prepare: () => ({ title: 'Configuración del Sitio' }),

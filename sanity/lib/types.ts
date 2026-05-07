@@ -4,6 +4,17 @@
  */
 
 // ── Site Settings ────────────────────────────────────────────────────────────
+export interface FooterLink {
+  title: string
+  href: string
+  description?: string
+}
+
+export interface FooterSection {
+  title: string
+  links: FooterLink[]
+}
+
 export interface SiteSettings {
   siteName: string
   siteDescription: string
@@ -24,6 +35,7 @@ export interface SiteSettings {
   ogImage?: SanityImage
   logoLight?: SanityImage
   logoDark?: SanityImage
+  footerSections?: FooterSection[]
 }
 
 // ── Hero ─────────────────────────────────────────────────────────────────────

@@ -71,44 +71,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     )
     .slice(0, 3);
 
-  // Transform to the format blog-post-content expects
-  const legacyPost = {
-    id: post._id,
-    slug: post.slug,
-    title: post.title,
-    excerpt: post.excerpt,
-    content: typeof post.content === 'string' ? post.content : post.excerpt,
-    featuredImage: post.featuredImageUrl,
-    author: post.author,
-    publishedAt: post.publishedAt,
-    readTime: post.readTime,
-    category: post.category,
-    tags: post.tags || [],
-    featured: post.featured || false,
-    contentAny: post.content,
-    seo: post.seo || { title: post.title, description: post.excerpt, keywords: post.tags || [] },
-  };
-
-  const legacyRelated = relatedPosts.map(p => ({
-    id: p._id,
-    slug: p.slug,
-    title: p.title,
-    excerpt: p.excerpt,
-    content: '',
-    featuredImage: p.featuredImageUrl,
-    author: p.author,
-    publishedAt: p.publishedAt,
-    readTime: p.readTime,
-    category: p.category,
-    tags: p.tags || [],
-    featured: p.featured || false,
-    seo: { title: p.title, description: p.excerpt, keywords: p.tags || [] },
-  }));
-
   return (
     <>
       <Navbar data={navbar ? { ...navbar, logoLight: settings?.logoLight, logoDark: settings?.logoDark } : undefined} />
-      <BlogPostContent post={legacyPost} relatedPosts={legacyRelated} />
+      <BlogPostContent post={post} relatedPosts={relatedPosts} />
       <Footer settings={safeSettings} />
       <ScrollToTop />
     </>
