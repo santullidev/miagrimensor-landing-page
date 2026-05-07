@@ -14,7 +14,7 @@ interface HeroProps {
 const Hero = ({ hero }: HeroProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const images = hero?.images || [];
+  const images = (hero?.images || []).filter(img => !!img);
 
   useEffect(() => {
     if (images.length <= 1) return;
