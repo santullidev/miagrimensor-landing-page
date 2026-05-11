@@ -13,6 +13,7 @@ export default defineType({
         {
           type: 'object',
           name: 'navLink',
+          options: { modal: 'inline' },
           fields: [
             { name: 'label', title: 'Texto del link', type: 'string', validation: (Rule: any) => Rule.required() },
             { name: 'href', title: 'URL o anchor', type: 'string', description: 'Ej: /servicios  o  #faq', validation: (Rule: any) => Rule.required() },
@@ -35,6 +36,7 @@ export default defineType({
       name: 'ctaButton',
       title: 'Botón CTA del menú (WhatsApp)',
       type: 'object',
+      options: { collapsible: true, collapsed: false },
       fields: [
         { name: 'text', title: 'Texto', type: 'string', initialValue: 'WhatsApp' },
         { name: 'href', title: 'URL', type: 'string' },

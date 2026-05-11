@@ -70,7 +70,7 @@ export const navbarConfigQuery = groq`
 export const specializedEquipmentQuery = groq`
   *[_type == "specializedEquipment"][0] {
     active, title, subtitle, description,
-    features, benefits, videoUrl,
+    features, benefits, badgeText, videoUrl,
     "mainImage": mainImage.asset->url,
     "gallery": gallery[] {
       "url": asset->url,

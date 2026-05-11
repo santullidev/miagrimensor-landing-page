@@ -115,7 +115,7 @@ export default function SpecializedEquipment({ data }: SpecializedEquipmentProps
               {/* Overlay Badge */}
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm border border-green/20 px-4 py-2 rounded-modern shadow-lg flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-bold text-foreground">Equipamiento 2024</span>
+                <span className="text-xs font-bold text-foreground">{data.badgeText || 'Equipamiento 2024'}</span>
               </div>
             </div>
 

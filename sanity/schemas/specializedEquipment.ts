@@ -39,14 +39,17 @@ export default defineType({
     defineField({
       name: 'benefits',
       title: 'Beneficios',
+      description: 'Cada beneficio se edita directamente en la lista, sin abrir ventana emergente.',
       type: 'array',
       of: [
         {
           type: 'object',
+          options: { modal: 'inline' },
           fields: [
             { name: 'title', title: 'Título', type: 'string' },
             { name: 'description', title: 'Descripción', type: 'string' },
           ],
+          preview: { select: { title: 'title', subtitle: 'description' } },
         },
       ],
       initialValue: [
@@ -54,6 +57,13 @@ export default defineType({
         { title: 'Rapidez extrema', description: 'Reducción de tiempos en campo hasta en un 70%.' },
         { title: 'Documentación visual', description: 'Registros fotográficos y métricos integrados.' },
       ],
+    }),
+    defineField({
+      name: 'badgeText',
+      title: 'Badge (sobre la imagen)',
+      type: 'string',
+      description: 'Texto del badge que aparece en la esquina inferior de la imagen. Ej: "Equipamiento 2024"',
+      initialValue: 'Equipamiento 2024',
     }),
     defineField({
       name: 'mainImage',

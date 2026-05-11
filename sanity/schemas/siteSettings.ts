@@ -168,6 +168,7 @@ export default defineType({
           type: 'object',
           name: 'footerSection',
           title: 'Sección',
+          options: { modal: 'inline' },
           fields: [
             { name: 'title', title: 'Título', type: 'string' },
             {
@@ -177,15 +178,18 @@ export default defineType({
               of: [
                 {
                   type: 'object',
+                  options: { modal: 'inline' },
                   fields: [
                     { name: 'title', title: 'Texto', type: 'string' },
                     { name: 'href', title: 'URL', type: 'string' },
                     { name: 'description', title: 'Descripción', type: 'string' },
                   ],
+                  preview: { select: { title: 'title', subtitle: 'href' } },
                 },
               ],
             },
           ],
+          preview: { select: { title: 'title' } },
         },
       ],
     }),

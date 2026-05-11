@@ -55,6 +55,7 @@ export default defineType({
       name: 'primaryButton',
       title: 'Botón principal (WhatsApp)',
       type: 'object',
+      options: { collapsible: true, collapsed: false },
       fields: [
         { name: 'text', title: 'Texto del botón', type: 'string', initialValue: 'Hablemos en Whatsapp' },
         { name: 'href', title: 'URL', type: 'string' },
@@ -64,6 +65,7 @@ export default defineType({
       name: 'secondaryButton',
       title: 'Botón secundario',
       type: 'object',
+      options: { collapsible: true, collapsed: false },
       fields: [
         { name: 'text', title: 'Texto del botón', type: 'string', initialValue: 'Mis Servicios' },
         { name: 'href', title: 'URL interna', type: 'string', initialValue: '/servicios' },

@@ -151,7 +151,6 @@ export interface NavbarData {
   logoDark?: SanityImage
 }
 
-// ── Specialized Equipment ───────────────────────────────────────────────────
 export interface SpecializedEquipmentData {
   active: boolean
   title: string
@@ -159,6 +158,7 @@ export interface SpecializedEquipmentData {
   description: string
   features: string[]
   benefits: { title: string; description: string }[]
+  badgeText?: string
   videoUrl?: string
   mainImage?: string
   gallery?: { url: string; alt?: string }[]
