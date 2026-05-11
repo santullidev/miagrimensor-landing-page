@@ -39,17 +39,29 @@ export default defineType({
     defineField({
       name: 'benefits',
       title: 'Beneficios',
-      description: 'Cada beneficio se edita directamente en la lista, sin abrir ventana emergente.',
+      description: 'Hacé click en ▸ para editar. El popover es pequeño y no bloquea la pantalla.',
       type: 'array',
       of: [
         {
           type: 'object',
-          options: { modal: 'inline' },
+          // En Sanity v3 la única opción real es 'popover' (menos intrusivo que el dialog)
+          options: { modal: { type: 'popover', width: 1 } },
           fields: [
-            { name: 'title', title: 'Título', type: 'string' },
-            { name: 'description', title: 'Descripción', type: 'string' },
+            {
+              name: 'title',
+              title: 'Título del beneficio',
+              type: 'string',
+            },
+            {
+              name: 'description',
+              title: 'Descripción',
+              type: 'string',
+            },
           ],
-          preview: { select: { title: 'title', subtitle: 'description' } },
+          // Preview rico: muestra título + descripción directamente en la lista
+          preview: {
+            select: { title: 'title', subtitle: 'description' },
+          },
         },
       ],
       initialValue: [

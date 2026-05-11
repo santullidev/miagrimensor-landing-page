@@ -168,7 +168,7 @@ export default defineType({
           type: 'object',
           name: 'footerSection',
           title: 'Sección',
-          options: { modal: 'inline' },
+          options: { modal: { type: 'popover', width: 2 } },
           fields: [
             { name: 'title', title: 'Título', type: 'string' },
             {
@@ -178,7 +178,7 @@ export default defineType({
               of: [
                 {
                   type: 'object',
-                  options: { modal: 'inline' },
+                  options: { modal: { type: 'popover', width: 1 } },
                   fields: [
                     { name: 'title', title: 'Texto', type: 'string' },
                     { name: 'href', title: 'URL', type: 'string' },

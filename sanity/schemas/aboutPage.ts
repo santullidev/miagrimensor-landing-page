@@ -53,7 +53,7 @@ export default defineType({
         {
           type: 'object',
           name: 'stat',
-          options: { modal: 'inline' },
+          options: { modal: { type: 'popover', width: 1 } },
           fields: [
             { name: 'iconName', title: 'Ícono (Lucide)', type: 'string', description: 'Ej: Calendar, Award, Users' },
             { name: 'title', title: 'Título', type: 'string' },
@@ -74,7 +74,7 @@ export default defineType({
         {
           type: 'object',
           name: 'technology',
-          options: { modal: 'inline' },
+          options: { modal: { type: 'popover', width: 1 } },
           fields: [
             { name: 'emoji', title: 'Emoji', type: 'string', description: 'Ej: 📐' },
             { name: 'title', title: 'Nombre de la tecnología', type: 'string' },
@@ -96,7 +96,7 @@ export default defineType({
         {
           type: 'object',
           name: 'highlightedService',
-          options: { modal: 'inline' },
+          options: { modal: { type: 'popover', width: 1 } },
           fields: [
             { name: 'title', title: 'Nombre del servicio', type: 'string' },
             { name: 'description', title: 'Descripción corta', type: 'text', rows: 3 },
@@ -116,7 +116,7 @@ export default defineType({
         {
           type: 'object',
           name: 'photo',
-          options: { modal: 'inline' },
+          options: { modal: { type: 'popover', width: 1 } },
           fields: [
             { name: 'image', title: 'Imagen', type: 'image', options: { hotspot: true } },
             { name: 'alt', title: 'Descripción (alt)', type: 'string' },

@@ -13,7 +13,7 @@ export default defineType({
         {
           type: 'object',
           name: 'navLink',
-          options: { modal: 'inline' },
+          options: { modal: { type: 'popover', width: 1 } },
           fields: [
             { name: 'label', title: 'Texto del link', type: 'string', validation: (Rule: any) => Rule.required() },
             { name: 'href', title: 'URL o anchor', type: 'string', description: 'Ej: /servicios  o  #faq', validation: (Rule: any) => Rule.required() },
