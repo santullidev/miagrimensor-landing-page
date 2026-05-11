@@ -18,22 +18,36 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // Revalidar todas las páginas del sitio
-    revalidatePath('/', 'layout')
+    // 1. Purgar el caché de datos de Sanity por tag (CRÍTICO: sin esto los datos no se refrescan)
+    const tags = [
+      'siteSettings',
+      'heroSection',
+      'service',
+      'faqItem',
+      'blogPost',
+      'ctaSection',
+      'workGallery',
+      'navbarConfig',
+      'specializedEquipment',
+      'aboutPage',
+    ]
+    tags.forEach((tag) => revalidateTag(tag))
+
+    // 2. Regenerar páginas estáticas (ISR)
+    revalidatePath('/', 'layout')          // layout raíz + todas las sub-rutas
     revalidatePath('/')
-    revalidatePath('/servicios')
-    revalidatePath('/servicios/[slug]', 'page')
-    revalidatePath('/blog')
-    revalidatePath('/blog/[slug]', 'page')
+    revalidatePath('/servicios', 'layout') // cubre /servicios y /servicios/[slug]
+    revalidatePath('/blog', 'layout')      // cubre /blog y /blog/[slug]
     revalidatePath('/acerca-de-mi')
     revalidatePath('/contacto')
 
-    console.log('✅ [Revalidate] Todas las páginas revalidadas:', new Date().toISOString())
+    console.log('✅ [Revalidate] Tags y paths revalidados:', new Date().toISOString())
 
     return NextResponse.json({
       revalidated: true,
       now: new Date().toISOString(),
-      paths: ['/', '/servicios', '/blog', '/acerca-de-mi'],
+      tags,
+      paths: ['/', '/servicios', '/blog', '/acerca-de-mi', '/contacto'],
     })
   } catch (err) {
     console.error('❌ [Revalidate] Error:', err)
