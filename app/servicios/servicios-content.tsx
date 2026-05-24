@@ -110,7 +110,7 @@ export default function ServiciosContent({ services, settings }: ServiciosConten
                       <div className="mb-6 sm:mb-8">
                         <h4 className="font-semibold text-base sm:text-lg flex items-center gap-2 mb-3"><CheckCircle className="text-green w-4 h-4 sm:w-5 sm:h-5" /> Características</h4>
                         <ul className="space-y-1.5 sm:space-y-2">
-                          {service.features.slice(0, 3).map((feature, idx) => (
+                          {(service.features || []).slice(0, 3).map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm">
                               <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
                               <span className="break-words">{feature}</span>
@@ -140,7 +140,7 @@ export default function ServiciosContent({ services, settings }: ServiciosConten
                       )}
 
                       <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
-                        {service.highlights.map((highlight, idx) => (
+                        {(service.highlights || []).map((highlight, idx) => (
                           <Badge key={idx} variant="secondary" className="bg-green/10 text-green border-green/20 text-xs px-2 py-1">{highlight}</Badge>
                         ))}
                       </div>

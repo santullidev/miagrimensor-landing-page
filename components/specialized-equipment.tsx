@@ -35,7 +35,7 @@ export default function SpecializedEquipment({ data }: SpecializedEquipmentProps
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              {data.features.map((feature, idx) => (
+              {(data.features || []).map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3 p-3 rounded-modern bg-white/50 border border-green/10 shadow-sm">
                   <CheckCircle2 className="text-green-600 flex-shrink-0" size={20} />
                   <span className="text-sm font-medium text-foreground">{feature}</span>
@@ -46,7 +46,7 @@ export default function SpecializedEquipment({ data }: SpecializedEquipmentProps
             <div className="space-y-4">
               <h4 className="font-headline font-bold text-lg text-foreground">¿Por qué elegir esta tecnología?</h4>
               <div className="grid gap-4">
-                {data.benefits.map((benefit, idx) => {
+                {(data.benefits || []).map((benefit, idx) => {
                   const Icon = icons[idx % icons.length];
                   return (
                     <Card key={idx} className="border-green/10 bg-white/80 shadow-soft hover:shadow-soft-lg transition-all duration-300">

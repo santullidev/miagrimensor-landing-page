@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     Características
                   </h3>
                   <ul className="space-y-4">
-                    {service.features.map((feature, i) => (
+                    {(service.features || []).map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-muted-foreground group">
                         <ChevronRight className="text-green-500 mt-1 flex-shrink-0 group-hover:translate-x-1 transition-transform" size={16} />
                         <span>{feature}</span>
@@ -164,7 +164,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     Puntos Clave
                   </h3>
                   <div className="space-y-3">
-                    {service.highlights.map((highlight, i) => (
+                    {(service.highlights || []).map((highlight, i) => (
                       <div key={i} className="p-4 rounded-modern bg-muted/30 border border-border/50 text-sm font-medium">
                         {highlight}
                       </div>
