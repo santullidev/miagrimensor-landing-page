@@ -81,6 +81,7 @@ export interface SanityBlogPost {
   category: string
   tags: string[]
   featured: boolean
+  order?: number
   content?: any[] // Portable Text blocks
   seo?: {
     title: string

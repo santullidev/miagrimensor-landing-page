@@ -125,7 +125,7 @@ export const servicesSlugsQuery = groq`
 // ── Blog ─────────────────────────────────────────────────────────────────────
 
 export const allPostsQuery = groq`
-  *[_type == "blogPost"] | order(publishedAt desc) {
+  *[_type == "blogPost"] | order(order asc, publishedAt desc) {
     _id,
     title,
     "slug": slug.current,
@@ -136,12 +136,13 @@ export const allPostsQuery = groq`
     readTime,
     category,
     tags,
-    featured
+    featured,
+    order
   }
 `
 
 export const featuredPostsQuery = groq`
-  *[_type == "blogPost" && featured == true] | order(publishedAt desc) [0...3] {
+  *[_type == "blogPost" && featured == true] | order(order asc, publishedAt desc) [0...3] {
     _id,
     title,
     "slug": slug.current,
@@ -151,7 +152,8 @@ export const featuredPostsQuery = groq`
     publishedAt,
     readTime,
     category,
-    tags
+    tags,
+    order
   }
 `
 

@@ -93,6 +93,14 @@ export default defineType({
       group: 'main',
       initialValue: false,
     }),
+    defineField({
+      name: 'order',
+      title: 'Orden de prioridad',
+      type: 'number',
+      group: 'main',
+      initialValue: 0,
+      description: 'Número para ordenar manualmente (ej. 1, 2, 3). Valores menores aparecen primero.',
+    }),
 
     // ── Contenido con editor rico
     defineField({
@@ -173,6 +181,15 @@ export default defineType({
       title: 'title',
       subtitle: 'category',
       media: 'featuredImage',
+      order: 'order',
+    },
+    prepare(selection) {
+      const { title, subtitle, media, order } = selection
+      return {
+        title: order !== undefined ? `[${order}] ${title}` : title,
+        subtitle: subtitle,
+        media: media,
+      }
     },
   },
 })

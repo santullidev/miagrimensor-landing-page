@@ -85,7 +85,11 @@ export default defineConfig({
               .title('📝 Blog & Artículos')
               .child(
                 S.documentTypeList('blogPost')
-                  .title('Artículos del Blog'),
+                  .title('Artículos del Blog')
+                  .defaultOrdering([
+                    { field: 'order', direction: 'asc' },
+                    { field: 'publishedAt', direction: 'desc' },
+                  ]),
               ),
 
             // ── 👤 PERFIL PROFESIONAL ──────
