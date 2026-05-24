@@ -11,11 +11,11 @@ import {
   ArrowRight,
   LinkedinIcon,
   MessageCircle,
-  X,
 } from "lucide-react";
 import Link from "next/link";
 import { SanityPortableText } from "./portable-text";
 import type { SanityBlogPost } from "@/sanity/lib/types";
+import ImageLightbox from "./image-lightbox";
 
 interface BlogPostContentProps {
   post: SanityBlogPost;
@@ -809,34 +809,11 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
 
       {/* Modal para imagen ampliada */}
       {selectedImage && (
-        <div 
-          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 animate-in fade-in duration-200"
-          onClick={closeImageModal}
-        >
-          {/* Botón cerrar */}
-          <button
-            onClick={closeImageModal}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-[101] bg-black/50 backdrop-blur-sm rounded-full p-2 sm:p-3"
-            aria-label="Cerrar"
-          >
-            <X size={24} className="sm:w-6 sm:h-6" />
-          </button>
-
-          {/* Imagen ampliada */}
-          <div className="relative max-w-[95vw] max-h-[95vh] flex items-center justify-center">
-            <img 
-              src={selectedImage.src} 
-              alt={selectedImage.alt} 
-              className="max-w-full max-h-[90vh] object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
-          </div>
-
-          {/* Texto de ayuda en mobile */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-xs sm:text-sm text-center bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 sm:hidden">
-            Toca fuera de la imagen para cerrar
-          </div>
-        </div>
+        <ImageLightbox
+          imageUrl={selectedImage.src}
+          title={selectedImage.alt}
+          onClose={closeImageModal}
+        />
       )}
     </div>
   );

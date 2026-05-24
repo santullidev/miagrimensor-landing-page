@@ -1,5 +1,60 @@
+"use client";
+
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import React from "react";
+import React, { useState } from "react";
+import ImageLightbox from "./image-lightbox";
+
+interface PortableTextImageProps {
+  value: {
+    asset?: {
+      _ref?: string;
+    };
+    alt?: string;
+    caption?: string;
+  };
+}
+
+function PortableTextImage({ value }: PortableTextImageProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  if (!value?.asset?._ref) return null;
+
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "q9dxbo03";
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+  const assetRef = value.asset._ref;
+  const fileName = assetRef
+    .replace("image-", "")
+    .replace("-jpg", ".jpg")
+    .replace("-png", ".png")
+    .replace("-webp", ".webp")
+    .replace("-avif", ".avif");
+
+  const imageUrl = `https://cdn.sanity.io/images/${projectId}/${dataset}/${fileName}`;
+  const altText = value.alt || "Imagen de blog";
+
+  return (
+    <>
+      <div className="my-8 sm:my-10">
+        <img
+          src={imageUrl}
+          alt={altText}
+          className="w-full rounded-modern shadow-soft-lg border border-green/20 cursor-pointer hover:opacity-90 transition-opacity"
+          onClick={() => setIsOpen(true)}
+        />
+        {value.caption && (
+          <p className="text-xs sm:text-sm text-muted-foreground mt-3 text-center">{value.caption}</p>
+        )}
+      </div>
+      {isOpen && (
+        <ImageLightbox
+          imageUrl={imageUrl}
+          title={altText}
+          onClose={() => setIsOpen(false)}
+        />
+      )}
+    </>
+  );
+}
 
 const components: PortableTextComponents = {
   block: {
@@ -42,21 +97,7 @@ const components: PortableTextComponents = {
     },
   },
   types: {
-    image: ({ value }) => {
-      if (!value?.asset?._ref) return null;
-      return (
-        <div className="my-8 sm:my-10">
-          <img
-            src={`https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'q9dxbo03'}/${process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'}/${value.asset._ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png').replace('-webp', '.webp').replace('-avif', '.avif')}`}
-            alt={value.alt || "Imagen de blog"}
-            className="w-full rounded-modern shadow-soft-lg border border-green/20"
-          />
-          {value.caption && (
-            <p className="text-xs sm:text-sm text-muted-foreground mt-3 text-center">{value.caption}</p>
-          )}
-        </div>
-      );
-    },
+    image: ({ value }) => <PortableTextImage value={value} />,
   },
 };
 
